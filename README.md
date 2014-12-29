@@ -1,4 +1,0 @@
-ITA-dashboards
-==============
-
-data visualization

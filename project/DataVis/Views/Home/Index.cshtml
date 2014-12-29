@@ -1,0 +1,21 @@
+﻿<div id="main">
+    <div id="dataTable"></div>
+    <div id="chart"></div>
+    <div id="chartConfig" style="display: none"></div>
+    <div id="uploadData"></div>
+</div>
+
+<script>
+    core.registerModule(moduleDataTable);
+    core.startModule(moduleDataTable, document.getElementById("dataTable"));
+
+    core.registerModule(moduleHighChart);
+    core.startModule(moduleHighChart, document.getElementById("chart"));
+
+    core.registerModule(moduleUploadData);
+    core.startModule(moduleUploadData, document.getElementById("uploadData"));
+
+    core.registerModule(moduleChartConfig);
+    core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
+
+</script>
