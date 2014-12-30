@@ -1,0 +1,4 @@
+var events = {
+    textChanged: 'textChanged'
+}
+
