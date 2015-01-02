@@ -1,4 +1,0 @@
-var events = {
-    textChanged: 'textChanged'
-}
-

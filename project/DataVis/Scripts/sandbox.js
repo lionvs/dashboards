@@ -2,15 +2,18 @@ var sandBox = {
     create: function (element) {
         
         return {
-            getElement: function() {
+            getContainer: function() {
                 return element;
             },
 
             notify: function(event) {
                 core.triggerEvent(event);
             },
-            listen: function (eventType,eventFunc) {
-               core.registerEvent(eventType,eventFunc);
+            listen: function (eventType, func) {
+                core.registerEvent(eventType, func, element);
+            },
+            stopListen: function(eventType) {
+                core.unRegisterEvent(eventType, element);
             },
             getDatasource: function() {
                 return core.getDatasource();

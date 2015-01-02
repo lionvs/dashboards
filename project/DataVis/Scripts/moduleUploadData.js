@@ -62,7 +62,7 @@
         name: "uploadData",
         init: function (sb) {
             mySandbox = sb;
-            var element = sb.getElement();
+            var element = sb.getContainer();
             element.innerHTML = '<span class="btn btn-block btn-lg btn-info btn-file"> \
             Upload .xlsx file \
             <input type="file" id="fileToUpload"> \

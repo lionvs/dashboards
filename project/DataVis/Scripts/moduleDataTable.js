@@ -27,15 +27,15 @@ var moduleDataTable = function () {
     }
 
     function main(sb) {
-        var e = sb.getElement();
-        var d = sb.getDatasource();
+        var element = sb.getContainer();
+        var dataSource = sb.getDatasource();
 
-        if (d.data.length < 1)
-            $(e).hide();
+        if (dataSource.data.length < 1)
+            $(element).hide();
         else
-            $(e).show();
+            $(element).show();
 
-        e.innerHTML = createTableHtml(d);
+        element.innerHTML = createTableHtml(dataSource);
     }
 
     return {

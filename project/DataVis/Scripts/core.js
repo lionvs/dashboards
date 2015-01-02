@@ -44,10 +44,25 @@ var core = function () {
             registeredModules[module.name].init(sb);
         },
 
-        registerEvent: function(eventType, eventFunc) {
+        stopModule: function (module, element) {
+            registeredModules[module.name].destroy(element);
+            for (var eventType in registeredEvents)
+                this.unRegisterEvent(eventType, element);
+        },
+
+        registerEvent: function (eventType, eventFunc, element) {
             if (!registeredEvents[eventType])
                 registeredEvents[eventType] = [];
-            registeredEvents[eventType].push(eventFunc);
+            registeredEvents[eventType].push({
+                func: eventFunc,
+                idElement: element
+            });
+        },
+
+        unRegisterEvent: function(eventType, element) {
+            registeredEvents[eventType] = registeredEvents[eventType].filter(function(obj) {
+                return obj.idElement != element;
+            });
         },
 
         triggerEvent: function (event) {
@@ -55,8 +70,8 @@ var core = function () {
                 dataSource = event.data;
             else if(event.type === events.updatedChartConfig) 
                 configChart = event.data;
-            for (var ev in registeredEvents[event.type] )
-                registeredEvents[event.type][ev](event.data);
+            for (var listener in registeredEvents[event.type])
+                registeredEvents[event.type][listener].func(event.data);
         },
 
         getDatasource: function() {

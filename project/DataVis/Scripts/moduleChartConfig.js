@@ -39,7 +39,7 @@
     }
 
     function main(sb) {
-        var element = sb.getElement();
+        var element = sb.getContainer();
         element.innerHTML = 'Select xAxis <select id="xAxis" class="combo"></select><br /> \
     Select titles of data  <select id="seriesName" class="combo"></select><br />                   \
     Select yAxis (data)  <select id="seriesData" class="combo"></select><br />                      \

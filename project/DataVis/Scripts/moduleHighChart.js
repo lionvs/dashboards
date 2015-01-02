@@ -68,16 +68,16 @@ var moduleHighChart = function () {
     }
 
     function main(sb) {
-        var e = sb.getElement();
-        var d = sb.getDatasource();
-        if (d.data.length < 1)
-            $(e).hide();
+        var element = sb.getContainer();
+        var dataSource = sb.getDatasource();
+        if (dataSource.data.length < 1)
+            $(element).hide();
         else
-            $(e).show();
+            $(element).show();
 
         var config = sb.getConfigChart();
 
-        drawChart(e, d, config);
+        drawChart(element, dataSource, config);
     }
 
     return {
