@@ -3,6 +3,10 @@
     var mySandbox;
     var elementInputFile;
 
+    function getDefaultConfig() {
+        return null;
+    }
+
     function getSchema(data) {
         var schema= {}
         for(var i=0;i<data.length;i++)
@@ -58,18 +62,33 @@
         }
     };
 
-    return {
-        name: "uploadData",
-        init: function (sb) {
-            mySandbox = sb;
-            var element = sb.getContainer();
-            element.innerHTML = '<span class="btn btn-block btn-lg btn-info btn-file"> \
+    function main(sb,config) {
+        var element = sb.getContainer();
+        element.innerHTML = '<span class="btn btn-block btn-lg btn-info btn-file"> \
             Upload .xlsx file \
             <input type="file" id="fileToUpload"> \
             </span>';
 
-            elementInputFile = element.childNodes[0].childNodes[1];
-            $(elementInputFile).change(uploadedData);
+        elementInputFile = element.childNodes[0].childNodes[1];
+        $(elementInputFile).change(uploadedData);
+    }
+
+    return {
+        name: "uploadData",
+        init: function (sb) {
+            mySandbox = sb;
+            var config = getDefaultConfig();
+            main(sb, config);
+
+            return {
+                setConfig: function (newConfig) {
+                    config = newConfig;
+                    main(sb, config);
+                },
+                getConfig: function () {
+                    return config;
+                }
+            }
         }
     }
 }();

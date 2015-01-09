@@ -1,5 +1,8 @@
 var moduleHighChart = function () {
 
+    function getDefaultConfig() {
+        return null;
+    }
 
     function getUniqueValues(data, property) {
         var uniqueValues = [];
@@ -42,6 +45,8 @@ var moduleHighChart = function () {
     }
 
     function drawChart(element, datasource, configChart) {
+        if (!configChart)
+            return;
         var xAxis = getUniqueValues(datasource.data, configChart.xAxis);
         var seriesNames = getUniqueValues(datasource.data, configChart.seriesName);
         var series = getSeries(datasource.data, seriesNames, xAxis, configChart);
@@ -67,15 +72,14 @@ var moduleHighChart = function () {
         });
     }
 
-    function main(sb) {
+    function main(sb,config) {
         var element = sb.getContainer();
         var dataSource = sb.getDatasource();
+
         if (dataSource.data.length < 1)
             $(element).hide();
         else
             $(element).show();
-
-        var config = sb.getConfigChart();
 
         drawChart(element, dataSource, config);
     }
@@ -83,13 +87,25 @@ var moduleHighChart = function () {
     return {
         name: "highChart",
         init: function (sb) {
+            var config = getDefaultConfig();
             sb.listen(events.updatedDataSource, function () {
-                main(sb);
+                main(sb,config);
             });
-            sb.listen(events.updatedChartConfig, function () {
-                main(sb);
+            sb.listen(events.updatedChartConfig, function (newConfig) {
+                config = newConfig;
+                main(sb,config);
             });
-            main(sb);
+            main(sb, config);
+
+            return {
+                setConfig: function (newConfig) {
+                    config = newConfig;
+                    main(sb, config);
+                },
+                getConfig: function () {
+                    return config;
+                }
+            }
         }
     }
 }();

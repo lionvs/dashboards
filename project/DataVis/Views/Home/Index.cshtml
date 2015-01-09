@@ -6,6 +6,8 @@
 </div>
 
 <script>
+    var core = core(sandBox, eventManager, dashboard);
+
     core.registerModule(moduleDataTable);
     core.startModule(moduleDataTable, document.getElementById("dataTable"));
 

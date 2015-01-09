@@ -1,38 +1,10 @@
-var core = function () {
+var core = function (sandbox,eventManager,dashboard) {
     var registeredModules = {};
-    var registeredEvents = {};
     var dataSource = {
         data: [],
         schema: []
     }
-    var configChart = {
-        title: "Chart",
-        xAxis: "",
-        seriesName: "",
-        seriesData: "",
-        chartType: "",
-        tooltip :
-            {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-                footerFormat: '</table>',
-                backgroundColor: '#FCFFC5',
-                borderColor: 'black',
-                borderRadius: 10,
-                borderWidth: 3,
-                shared: true,
-                useHTML: true,
-                crosshairs: [true,true]
-            },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        }
-
-    };
+    
 
     return {
         registerModule: function(module) {
@@ -41,50 +13,44 @@ var core = function () {
 
         startModule: function(module, element) {
             var sb = sandBox.create(element);
-            registeredModules[module.name].init(sb);
+            var moduleInstance = registeredModules[module.name].init(sb);
+            dashboard.addModule(moduleInstance, element);
         },
 
         stopModule: function (module, element) {
             registeredModules[module.name].destroy(element);
-            for (var eventType in registeredEvents)
-                this.unRegisterEvent(eventType, element);
+            dashboard.removeModule(element);
+            eventManager.unRegisterAllEvents(element);
         },
 
         registerEvent: function (eventType, eventFunc, element) {
-            if (!registeredEvents[eventType])
-                registeredEvents[eventType] = [];
-            registeredEvents[eventType].push({
-                func: eventFunc,
-                idElement: element
-            });
+            eventManager.registerEvent(eventType, eventFunc, element);
         },
 
         unRegisterEvent: function(eventType, element) {
-            registeredEvents[eventType] = registeredEvents[eventType].filter(function(obj) {
-                return obj.idElement != element;
-            });
+            eventManager.unRegisterEvent(eventType, element);
         },
 
         triggerEvent: function (event) {
             if (event.type === events.updatedDataSource) 
                 dataSource = event.data;
-            else if(event.type === events.updatedChartConfig) 
-                configChart = event.data;
-            for (var listener in registeredEvents[event.type])
-                registeredEvents[event.type][listener].func(event.data);
+            eventManager.triggerEvent(event);
         },
 
         getDatasource: function() {
             return dataSource;
         },
 
-        getConfigChart: function() {
-            return configChart;
+        setConfig: function (element, config) {
+            dashboard.setConfig(element, config);
+        },
+        getConfig: function (element) {
+            return dashboard.getConfig(element);
         }
         
 
     }
-}();
+}
 
 
 

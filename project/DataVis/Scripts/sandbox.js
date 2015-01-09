@@ -17,11 +17,7 @@ var sandBox = {
             },
             getDatasource: function() {
                 return core.getDatasource();
-            },
-            getConfigChart: function () {
-                return core.getConfigChart();
             }
-
         }
     }
 };

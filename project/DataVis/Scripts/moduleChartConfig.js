@@ -1,5 +1,36 @@
 ﻿var moduleChartConfig = function () {
 
+    function getDefaultConfig() {
+        return {
+            title: "Chart",
+            xAxis: "",
+            seriesName: "",
+            seriesData: "",
+            chartType: "",
+            tooltip:
+            {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+                footerFormat: '</table>',
+                backgroundColor: '#FCFFC5',
+                borderColor: 'black',
+                borderRadius: 10,
+                borderWidth: 3,
+                shared: true,
+                useHTML: true,
+                crosshairs: [true, true]
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            }
+
+        }
+    }
+
     function createCombo(element, dataSource) {
         var schema = dataSource.schema;
         var select = element.getElementsByClassName('combo');
@@ -14,7 +45,6 @@
                 }
             }
         }
-        $(element).show();
     }
 
     function getSelectedText(element) {
@@ -25,20 +55,19 @@
         return element.options[element.selectedIndex].text;
     }
 
-    function comboBoxChanged(sb, element) {
-        var configChart = sb.getConfigChart();
+    function comboBoxChanged(sb, element,config) {
         var select = element.getElementsByClassName('combo');
         for (var i = 0; i < select.length; i++)
-            configChart[select[i].id] = getSelectedText(select[i]);
-        configChart.chartType = getSelectedText(element.querySelector("#chartType"));
+            config[select[i].id] = getSelectedText(select[i]);
+        config.chartType = getSelectedText(element.querySelector("#chartType"));
         var event = {
             type: events.updatedChartConfig,
-            data: configChart
+            data: config
         }
         sb.notify(event);
     }
 
-    function main(sb) {
+    function main(sb,config) {
         var element = sb.getContainer();
         element.innerHTML = 'Select xAxis <select id="xAxis" class="combo"></select><br /> \
     Select titles of data  <select id="seriesName" class="combo"></select><br />                   \
@@ -57,14 +86,14 @@
         createCombo(element, dataSource);
 
         $(element.querySelector("#chartType")).change(function () {
-            comboBoxChanged(sb, element);
+            comboBoxChanged(sb, element,config);
         });
         var combo = element.getElementsByClassName('combo');
         for (var i = 0; i < combo.length; i++)
             $(combo[i]).change(function () {
-                comboBoxChanged(sb, element);
+                comboBoxChanged(sb, element,config);
             });
-        comboBoxChanged(sb, element);
+        comboBoxChanged(sb, element,config);
 
         if (dataSource.data.length < 1)
             $(element).hide();
@@ -75,10 +104,20 @@
     return {
         name: "chartConfig",
         init: function (sb) {
+            var config = getDefaultConfig();
             sb.listen(events.updatedDataSource, function () {
-                main(sb);
+                main(sb,config);
             });
-            main(sb);
+            main(sb,config);
+            return {
+                setConfig: function(newConfig) {
+                    config = newConfig;
+                    main(sb, config);
+                },
+                getConfig: function() {
+                    return config;
+                }
+            }
         }
     }
 }();
