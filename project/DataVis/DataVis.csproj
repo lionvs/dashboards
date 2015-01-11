@@ -171,6 +171,7 @@
     <Content Include="Scripts\events.js" />
     <Content Include="Scripts\moduleChartConfig.js" />
     <Content Include="Scripts\moduleDataTable.js" />
+    <Content Include="Scripts\moduleFilters.js" />
     <Content Include="Scripts\moduleHighChart.js" />
     <Content Include="Scripts\moduleUploadData.js" />
     <Content Include="Scripts\sandbox.js" />
