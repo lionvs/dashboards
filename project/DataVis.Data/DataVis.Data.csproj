@@ -47,11 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Dashboard.cs" />
-    <Compile Include="Models\DataSource.cs" />
-    <Compile Include="Models\DataVisDBContext.cs" />
-    <Compile Include="Models\Mapping\DashboardMap.cs" />
-    <Compile Include="Models\Mapping\DataMap.cs" />
-    <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

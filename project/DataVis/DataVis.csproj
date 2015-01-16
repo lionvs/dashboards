@@ -58,9 +58,6 @@
     <Reference Include="Ninject.WebApi.DependencyResolver">
       <HintPath>..\packages\Ninject.WebApi.DependencyResolver.0.1.4758.24814\lib\net45\Ninject.WebApi.DependencyResolver.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleCrypto">
-      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -147,12 +144,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IsAuthorizeAttribute.cs" />
-    <Compile Include="App_Start\NinjectTypeRegistrator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\DataController.cs" />
     <Compile Include="Controllers\API\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -162,9 +156,8 @@
     <Compile Include="Logic\DataParser.cs" />
     <Compile Include="Logic\IDataParser.cs" />
     <Compile Include="Logic\IXlsParser.cs" />
+    <Compile Include="Logic\NinjectTypeRegistrator.cs" />
     <Compile Include="Logic\XlsParser.cs" />
-    <Compile Include="Models\UserLoginModel.cs" />
-    <Compile Include="Models\UserRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +179,7 @@
     <Content Include="Scripts\Src\modernizr-2.6.2.js" />
     <Content Include="Scripts\Src\respond.js" />
     <Content Include="Scripts\Src\respond.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -203,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -235,25 +227,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_LoginSystem.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataVis.BusinessLogic\DataVis.BusinessLogic.csproj">
-      <Project>{47087b6a-d85e-4012-955d-6a10b06b7161}</Project>
-      <Name>DataVis.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataVis.Data\DataVis.Data.csproj">
-      <Project>{b3bc2798-7507-4e0f-b5c8-ff5d2a3c0b92}</Project>
-      <Name>DataVis.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Account\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

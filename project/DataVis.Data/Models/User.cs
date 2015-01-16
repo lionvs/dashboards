@@ -1,8 +1,9 @@
+﻿using System;
 using System.Collections.Generic;
 
 namespace DataVis.Data.Models
 {
-    public partial class User
+    class User
     {
         public User()
         {
@@ -15,7 +16,8 @@ namespace DataVis.Data.Models
         public string Email { get; set; }
         public string PasswordSalt { get; set; }
         public string PasswordHash { get; set; }
-        public System.DateTime DateRegistered { get; set; }
-        public virtual ICollection<Dashboard> Dashboards { get; set; }
+        public DateTime DateRegistered { get; set; }
+
+        public virtual List<Dashboard> Dashboards { get; set; } 
     }
 }
