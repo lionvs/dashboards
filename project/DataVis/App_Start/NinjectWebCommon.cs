@@ -1,5 +1,4 @@
 using System.Web.Http;
-using DataVis.Logic;
 using Ninject.WebApi.DependencyResolver;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DataVis.App_Start.NinjectWebCommon), "Start")]
