@@ -4,59 +4,43 @@
         return null;
     }
 
-    function createTableHtml(dataSource) {
-        var innerHtml = "<table border='1'> <tr>";
-        var i;
-        for (i = 0; i < dataSource.schema.length; i++)
-            innerHtml += "<th>" + dataSource.schema[i] + "</th>";
-        //innerHtml +='<th>Show</th>';
-        innerHtml += "</tr>";
-
-        for (var j = 0; j < dataSource.data.length; j++) {
-            innerHtml += "<tr>";
-            for (i = 0; i < dataSource.schema.length; i++) {
-                var schemaItem = dataSource.schema[i];
-                var val = dataSource.data[j][schemaItem];
-                if (!val && !isNumber(val))
-                    val = "";
-                innerHtml += "<td>" + val + "</td>";
-            }
-            //innerHtml += '<td><input type="checkbox" checked></td>'
-            innerHtml += "</tr>";
-        }
-        innerHtml += "</table>";
-        return innerHtml;
+    function fillHtmlTemplate(sb, data, schema) {
+        var angular = sb.require('angular');
+        var $scope = angular.element(sb.getContainer()).scope();
+        $scope.$apply(function () {
+            $scope.schema = schema;
+            $scope.data = data;
+        });
     }
 
-    function isNumber(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
-    }
-
-    function main(sb, config) {
+    function createDataTable(sb, config) {
         var element = sb.getContainer();
         var dataSource = sb.getDatasource();
+        var $ = sb.require('JQuery');
 
-        if (dataSource.data.length < 1)
+        if (dataSource.data.length < 1) {
             $(element).hide();
-        else
-            $(element).show();
+            return;
+        }
 
-        element.innerHTML = createTableHtml(dataSource);
+        fillHtmlTemplate(sb, dataSource.data, dataSource.schema);
+        $(element).show();
     }
 
     return {
         name: "dataTable",
         init: function (sb) {
             var config = getDefaultConfig();
+
             sb.listen(events.updatedDataSource, function () {
-                main(sb, config);
+                createDataTable(sb, config);
             });
-            main(sb, config);
+            createDataTable(sb, config);
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    main(sb, config);
+                    createDataTable(sb, config);
                 },
                 getConfig: function () {
                     return config;

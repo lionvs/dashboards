@@ -5,6 +5,7 @@
         schema: []
     }
 
+
     return {
         registerModule: function (module) {
             registeredModules[module.name] = module;

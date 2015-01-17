@@ -1,10 +1,17 @@
-﻿<div id="main">
-    <div id="dataTable"></div>
+﻿<div id="main" ng-app="application">
+    <div id="dataTable" class="dataTable"></div>
+    <div align="center" id="filter" class="filter"></div>
     <div id="chart"></div>
-    <div id="chartConfig" style="display: none"></div>
+    <div id="chartConfig"></div>
     <div id="uploadData"></div>
 </div>
+
 <script>
+    var application = angular.module('application', []);
+
+    directive.create(application, "dataTable", htmlTemplates["dataTable"]);
+    directive.create(application, "filter", htmlTemplates["filter"]);
+
     var core = core(sandBox, eventManager, dashboard);
 
     core.registerModule(moduleDataTable);
@@ -13,10 +20,14 @@
     core.registerModule(moduleHighChart);
     core.startModule(moduleHighChart, document.getElementById("chart"));
 
+    core.registerModule(moduleFilters);
+    core.startModule(moduleFilters, document.getElementById("filter"));
+
     core.registerModule(moduleUploadData);
     core.startModule(moduleUploadData, document.getElementById("uploadData"));
 
     core.registerModule(moduleChartConfig);
     core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
+
 
 </script>

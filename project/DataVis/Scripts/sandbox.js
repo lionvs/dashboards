@@ -1,6 +1,9 @@
 ﻿var sandBox = {
     create: function (element) {
-
+        var libraries = {
+            JQuery: $,
+            angular: angular
+        }
         return {
             getContainer: function () {
                 return element;
@@ -17,6 +20,9 @@
             },
             getDatasource: function () {
                 return core.getDatasource();
+            },
+            require: function (library) {
+                return libraries[library];
             }
         }
     }
