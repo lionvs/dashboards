@@ -1,4 +1,6 @@
-﻿using Excel = Microsoft.Office.Interop.Excel;
+﻿﻿using System;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.Web;
 
 namespace DataVis.Logic
@@ -13,6 +15,11 @@ namespace DataVis.Logic
             var xlWorksheet = (Excel._Worksheet)xlWorkbook.Sheets[1];
             var xlRange = xlWorksheet.UsedRange;
             object[,] data = xlRange.Value2;
+
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
+            GC.Collect();
+
             return data;
         }
     }

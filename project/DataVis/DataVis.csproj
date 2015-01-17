@@ -167,8 +167,10 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\directive.js" />
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />
+    <Content Include="Scripts\htmlTemplates.js" />
     <Content Include="Scripts\moduleChartConfig.js" />
     <Content Include="Scripts\moduleDataTable.js" />
     <Content Include="Scripts\moduleFilters.js" />
@@ -206,7 +208,7 @@
       <VersionMajor>2</VersionMajor>
       <VersionMinor>5</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

@@ -62,6 +62,7 @@ thead, tbody {
     overflow-x: auto;
 }
 
+
 .btn-file {
 position: relative;
 overflow: hidden;
@@ -80,4 +81,32 @@ outline: none;
 background: white;
 cursor: inherit;
 display: block;
+}
+
+.filter{
+    float: right; 
+    position: relative;
+    border-width: 2px;
+    border-style:ridge; 
+    border-radius: 4px;
+    border-color:skyblue;
+    padding: 5px;
+}
+
+.rangeBorderLbl{
+    width: 50px;
+    font-weight: bold;
+}
+
+.rangeBorderTxt{
+    width: 50px;
+}
+
+#filterTableWrapper {
+  position: relative;
+}
+#filterTableScroll {
+  height: 200px;
+  width: 150px;
+  overflow: auto; 
 }

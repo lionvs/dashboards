@@ -1,12 +1,5 @@
 ﻿var moduleFilters = function () {
-    var valuesOfX = ['Jan', 'Feb', 'Mar', 'Dec'];//only test array
-    var titlesArr = [
-        { val: 'London', isValid: true },
-        { val: 'Lviv', isValid: true },
-        { val: 'Kyiv', isValid: true }]; //only test array for reading titles, in real i'll parse titles from dataSource
-    //or get titles from sandbox, because other module already parse it
-
-
+    
     var config = {
         title: {
             key: 'City',               //must take from UI or sandbox
@@ -26,9 +19,28 @@
         }
     }
 
+    var titlesArr = [];
+    var valuesOfX = [];
+
+    function parseDataSource(data) {
+        var titles = _.uniq(_.map(data, function (num) {
+            return num[config.title.key];
+        }));
+        titlesArr = _.map(titles, function (num) {
+            return { value: num, isValid: true };
+        });
+        valuesOfX = _.uniq(_.map(data, function (num) {
+            return num[config.x.key];
+        }));
+    }
+
     function readValidTitlesArr() {
-        var validTitles = _.filter(titlesArr, function (num) { return num.isValid; });
-        config.title.validArr = _.map(validTitles, function (num) { return num.val; });
+        var validTitles = _.filter(titlesArr, function (num) {
+            return num.isValid;
+        });
+        config.title.validArr = _.map(validTitles, function (num) {
+            return num.value;
+        });
     }
 
     function hasValidTitle(num) {
@@ -36,7 +48,8 @@
     }
 
     function hasValidXWhenXNumber(num) {
-        return num[config.x.key] >= config.x.min && num[config.x.key] <= config.x.max;
+        return parseInt(num[config.x.key]) >= parseInt(config.x.min)
+            && parseInt(num[config.x.key]) <= parseInt(config.x.max);
     }
 
     function hasValidXWhenXString(num) {
@@ -58,37 +71,57 @@
     }
 
     function filter(inputData) {
-        var updatedConfig = _.extend({
-            x: {
-                min: (-Infinity),
-                max: (Infinity)
-            },
-            y: {
-                min: (-Infinity),
-                max: (Infinity)
-            }
-        },
-        config);
-        config = updatedConfig;
+        config.x.min = config.x.min === "" ? -Infinity : config.x.min;
+        config.x.max = config.x.max === "" ?  Infinity : config.x.max;
+        config.y.min = config.y.min === "" ? -Infinity : config.y.min;
+        config.y.max = config.y.max === "" ?  Infinity : config.y.max;
         readValidTitlesArr();
         if (parseInt(valuesOfX[0]) == valuesOfX[0]) {
-            var filteredData = _.filter(inputData, function (num) { return hasValidAllPropsWhenXNumber(num); });
+            var filteredData = _.filter(inputData, function (num) {
+                return hasValidAllPropsWhenXNumber(num);
+            });
         }
         else {
-            config.x.indexOfMin = _.indexOf(valuesOfX, num[config.x.min]);
-            config.x.indexOfMax = _.indexOf(valuesOfX, num[config.x.max]);
+            config.x.indexOfMin = _.indexOf(valuesOfX, config.x.min);
+            config.x.indexOfMax = _.indexOf(valuesOfX, config.x.max);
             config.x.indexOfMax = config.x.indexOfMax === -1 ? Infinity : config.x.indexOfMax;
-            var filteredData = _.filter(inputData, function (num) { return hasValidAllPropsWhenXString(num); });
+            var filteredData = _.filter(inputData, function (num) {
+                return hasValidAllPropsWhenXString(num);
+            });
         }
         return filteredData;
     }
 
-    function getDefaultConfig() {
-        return null;
+
+    function fillHtmlTemplate(sb, data) {
+        parseDataSource(data);
+        var angular = sb.require('angular');
+        var $scope = angular.element(sb.getContainer()).scope();
+        $scope.$apply(function () {
+            $scope.titlesArr = titlesArr;
+            $scope.filterConfig = config;
+            $scope.filterData = function () {
+                filter(data);
+            };
+        });
     }
 
-    function main(sb, config) {
-        var inputData = sb.getDatasource();
+    function createFilterUIAndData(sb, config) {
+        var element = sb.getContainer();
+        var dataSource = sb.getDatasource();
+        var $ = sb.require('JQuery');
+
+        if (dataSource.data.length < 1) {
+            $(element).hide();
+            return;
+        }
+
+        fillHtmlTemplate(sb, dataSource.data);
+        $(element).show();
+    }
+
+    function getDefaultConfig() {
+        return null;
     }
 
     return {
@@ -96,14 +129,15 @@
         init: function (sb) {
             var config = getDefaultConfig();
             sb.listen(events.updatedDataSource, function () {
-                main(sb, config);
+                createFilterUIAndData(sb, config);
             });
-            main(sb, config);
+            createFilterUIAndData(sb, config);
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
                     main(sb, config);
+                    createFilterUIAndData(sb, config);
                 },
                 getConfig: function () {
                     return config;
@@ -112,4 +146,3 @@
         }
     }
 }();
-
