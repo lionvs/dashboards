@@ -177,11 +177,11 @@
     <Content Include="Scripts\moduleHighChart.js" />
     <Content Include="Scripts\moduleUploadData.js" />
     <Content Include="Scripts\sandbox.js" />
-    <Content Include="Scripts\Src\bootstrap.js" />
-    <Content Include="Scripts\Src\bootstrap.min.js" />
-    <Content Include="Scripts\Src\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Src\respond.js" />
-    <Content Include="Scripts\Src\respond.min.js" />
+    <Content Include="Scripts\Libraries\bootstrap.js" />
+    <Content Include="Scripts\Libraries\bootstrap.min.js" />
+    <Content Include="Scripts\Libraries\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Libraries\respond.js" />
+    <Content Include="Scripts\Libraries\respond.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
