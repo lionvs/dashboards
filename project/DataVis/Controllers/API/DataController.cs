@@ -5,7 +5,6 @@ using DataVis.Logic;
 
 namespace DataVis.Controllers.API
 {
-    [Authorize]
     public class DataController : ApiController
     {
         private readonly IXlsParser _xlsParser;
