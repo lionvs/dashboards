@@ -1,0 +1,9 @@
+﻿<div class="navbar-form navbar-right">
+    <a class="btn btn-default" onclick=logOut()>Log Out</a>
+</div>
+
+<script>
+    function logOut() {
+        sessionStorage.removeItem(user.tokenKey);
+    }
+</script>

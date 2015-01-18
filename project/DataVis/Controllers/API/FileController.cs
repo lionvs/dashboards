@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataVis.Controllers.API
 {
+    [Authorize]
     public class FileController : ApiController
     {
         public JObject Post()
