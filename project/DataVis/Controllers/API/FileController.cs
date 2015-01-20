@@ -7,6 +7,7 @@ namespace DataVis.Controllers.API
 {
     public class FileController : ApiController
     {
+        [Authorize]
         public JObject Post()
         {
             var result = new JObject();

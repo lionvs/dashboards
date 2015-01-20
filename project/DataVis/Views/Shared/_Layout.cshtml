@@ -33,7 +33,26 @@
             <div class="navbar-header">
                 @Html.ActionLink("Data visualization", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
-            @Html.Partial("_LoginSystem")
+
+            <div class="navbar-form navbar-right">
+                @{
+                    if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-default" onclick=logOut()>Log Out</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-default" href="/home/login">Sign in</a>
+                        <a class="btn btn-default" href="/home/register">Register</a>
+                    }
+                }
+            </div>
+            @{
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <p class="navbar-text navbar-right">Signed in<strong> @HttpContext.Current.User.Identity.Name</strong></p>
+                }
+            }
         </div>
     </div>
     <br />
@@ -43,3 +62,19 @@
     </div>
 </body>
 </html>
+
+
+<script>
+    function logOut() {
+        $.ajax({
+            headers: user.headers,
+            type: 'POST',
+            url: '/api/Account/Logout'
+        }).done(function () {
+            sessionStorage.removeItem(user.tokenKey);
+            location.reload();
+        }).fail(function (resp) {
+            alert(resp.status + ": " + resp.statusText);
+        });
+    }
+</script>

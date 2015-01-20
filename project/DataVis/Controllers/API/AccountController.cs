@@ -55,6 +55,7 @@ namespace DataVis.Controllers.API
 
         // POST api/Account/Logout
         [Route("Logout")]
+        [AllowAnonymous]
         public IHttpActionResult Logout()
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
