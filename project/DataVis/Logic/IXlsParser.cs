@@ -2,6 +2,6 @@
 {
     public interface IXlsParser
     {
-        object[,] GetDataFromFile(string id);
+        object[,] Parse(string filename);
     }
 }

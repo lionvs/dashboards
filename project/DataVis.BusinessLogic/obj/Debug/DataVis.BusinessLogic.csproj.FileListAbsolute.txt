@@ -1,0 +1,12 @@
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll.config
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.pdb
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.pdb
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb

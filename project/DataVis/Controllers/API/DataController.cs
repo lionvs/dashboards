@@ -1,26 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Web.Http;
+using DataVis.BusinessLogic.Services.Interfaces;
+using DataVis.Data.Models;
 using Newtonsoft.Json.Linq;
-using DataVis.Logic;
 
 namespace DataVis.Controllers.API
 {
     [Authorize]
     public class DataController : ApiController
     {
-        private readonly IXlsParser _xlsParser;
-        private readonly IDataParser _dataParser;
+        private readonly IDataSourceService _dataSourceService;
 
-        public DataController(IXlsParser xlsParser, IDataParser dataParser)
+        public DataController(IDataSourceService dataSourceService)
         {
-            this._xlsParser = xlsParser;
-            this._dataParser = dataParser;
+            _dataSourceService = dataSourceService;
         }
 
-        public List<JObject> Get(string id)
+        public JObject Get(string dataId)
         {
-            var data = _xlsParser.GetDataFromFile(id);
-            return _dataParser.GetJson(data);
+            var dataSource = _dataSourceService.GetById(dataId);
+            return new JObject { { "data", dataSource.DataString }, { "id", dataSource.Id } };
+        }
+
+        public JObject Post(string data)
+        {
+            var dataSource = new DataSource() { DataString = data, Id = Guid.NewGuid().ToString("n") };
+            var addedDataSource = _dataSourceService.Add(dataSource);
+            return new JObject {{"id", addedDataSource.Id}};
         }
     }
 }

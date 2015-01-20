@@ -19,13 +19,14 @@
         return result;
     }
 
-    function uploadData() {
+    function openFile() {
+        user.setHeaders();
         var formData = new FormData();
         var opmlFile = $(elementInputFile)[0];
         var ext = opmlFile.value.substring(opmlFile.value.lastIndexOf('.') + 1);
         if (ext == "xlsx") {
             formData.append("opmlFile", opmlFile.files[0]);
-            
+
             $.ajax({
                 url: '/api/File',
                 type: 'POST',
@@ -35,8 +36,14 @@
                 processData: false,
                 headers: user.headers
             }).done(function (resp) {
-                var url = resp.url;
-                getDataBySource(url);
+                var myDataSource = {};
+                myDataSource.data = resp;
+                myDataSource.schema = getSchema(myDataSource.data);
+                var event = {
+                    type: events.updatedDataSource,
+                    data: myDataSource
+                }
+                mySandbox.notify(event);
             }).fail(function (resp) {
                 alert(resp.status + ": " + resp.statusText);
             });
@@ -45,36 +52,17 @@
         }
     };
 
-    function getDataBySource(url) {
-        user.setHeaders();
-        $.ajax({
-            url: url,
-            type: 'GET',
-            headers: user.headers
-        }).done(function (resp) {
-            var myDataSource = {};
-            myDataSource.data = resp;
-            myDataSource.schema = getSchema(myDataSource.data);
-            var event = {
-                type: events.updatedDataSource,
-                data: myDataSource
-            }
-            mySandbox.notify(event);
-        }).fail(function (resp) {
-            alert(resp.status + ": " + resp.statusText);
-        });
-    }
 
 
     function main(sb, config) {
         var element = sb.getContainer();
         element.innerHTML = '<span class="btn btn-block btn-lg btn-info btn-file"> \
-            Upload .xlsx file \
+            Open .xlsx file \
             <input type="file" id="fileToUpload"> \
             </span>';
 
         elementInputFile = element.childNodes[0].childNodes[1];
-        $(elementInputFile).change(uploadData);
+        $(elementInputFile).change(openFile);
     }
 
     return {

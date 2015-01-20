@@ -189,7 +189,7 @@
     <Compile Include="Logic\DataParser.cs" />
     <Compile Include="Logic\IDataParser.cs" />
     <Compile Include="Logic\IXlsParser.cs" />
-    <Compile Include="Logic\NinjectTypeRegistrator.cs" />
+    <Compile Include="App_Start\NinjectTypeRegistrator.cs" />
     <Compile Include="Logic\XlsParser.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -275,6 +275,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataVis.BusinessLogic\DataVis.BusinessLogic.csproj">
+      <Project>{590adbe7-19cb-40fe-a81f-210175611dcd}</Project>
+      <Name>DataVis.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataVis.Data\DataVis.Data.csproj">
+      <Project>{36e296c9-4259-4e54-8059-5b6c6fd4bc4e}</Project>
+      <Name>DataVis.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

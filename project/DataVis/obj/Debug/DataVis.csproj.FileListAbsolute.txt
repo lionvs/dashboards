@@ -193,3 +193,7 @@ D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\Microsoft.Owin
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\System.Web.Http.Owin.xml
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\DataVis.BusinessLogic.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\DataVis.Data.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\DataVis.BusinessLogic.pdb
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\bin\DataVis.Data.pdb

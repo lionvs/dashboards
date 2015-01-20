@@ -1,24 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Web;
 using System.Web.Http;
+using DataVis.Logic;
 using Newtonsoft.Json.Linq;
 
 namespace DataVis.Controllers.API
 {
     public class FileController : ApiController
     {
-        [Authorize]
-        public JObject Post()
+        private readonly IXlsParser _xlsParser;
+        private readonly IDataParser _dataParser;
+
+        public FileController(IXlsParser xlsParser, IDataParser dataParser)
         {
-            var result = new JObject();
+            this._xlsParser = xlsParser;
+            this._dataParser = dataParser;
+        }
+
+        [Authorize]
+        public List<JObject> Post()
+        {
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count == 0)
                 return null;
             var postedFile = httpRequest.Files[0];
-            var fileId = Guid.NewGuid().ToString("n");
-            var filePath = HttpContext.Current.Server.MapPath("~/Storage/" + fileId + ".xlsx");
+            var fileName = Guid.NewGuid().ToString("n");
+            var filePath = HttpContext.Current.Server.MapPath("~/Storage/" + fileName + ".xlsx");
             postedFile.SaveAs(filePath);
-            result.Add("url", "/api/data/" + fileId);
+            var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
+            File.Delete(filePath);
             return result;
         }
     }
