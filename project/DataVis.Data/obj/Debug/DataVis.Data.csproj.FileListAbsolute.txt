@@ -8,3 +8,13 @@ D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.Data\bin\Debug\Ent
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll.config
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.pdb
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.xml
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb

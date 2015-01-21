@@ -4,44 +4,41 @@
         return null;
     }
 
-    function getUniqueValues(data, property) {
-        var uniqueValues = [];
-        for (var i = 0; i < data.length; i++)
-            if ((data[i][property]) && uniqueValues.indexOf(data[i][property]) < 0)
-                uniqueValues.push(data[i][property]);
-        return uniqueValues;
+    function getUniqueValues(data, propertyName) {
+        return _.chain(data)
+         .map(function (num) { return num[propertyName]; })
+         .uniq()
+         .value();
     }
 
     function getSeries(data, seriesNames, xAxis, configChart) {
+        var keys = {
+            xAxis: configChart.xAxis,
+            seriesName: configChart.seriesName,
+            seriesData: configChart.seriesData
+        };
         var series = [];
-        var key1 = configChart.xAxis;
-        var key2 = configChart.seriesName;
-        var key3 = configChart.seriesData;
-        for (var i = 0; i < seriesNames.length; i++) {
-            var obj = {};
-            obj.name = seriesNames[i];
-            obj.data = [];
-            for (var k = 0; k < xAxis.length; k++) {
-                for (var j = 0; j < data.length; j++) {
-                    if (data[j][key2] === obj.name && data[j][key1] === xAxis[k]) {
-                        var val = data[j][key3];
-                        if (isNumber(val))
-                            obj.data.push(val);
-                        else
-                            obj.data.push(null);
-                        j = data.length;
-                    }
-                    if (j == data.length - 1)
-                        obj.data.push(null);
-                }
-            }
-            series.push(obj);
-        }
-        return series;
-    }
 
-    function isNumber(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
+        _.each(seriesNames, function (name) {
+            var currentSeriesName;
+            var seriesPoints = [];
+            _.each(xAxis, function (abscissa) {
+                var row = _.filter(data, function (d) {
+                    return ((d[keys.seriesName] === name) && (d[keys.xAxis] === abscissa));
+                });
+                var ordinate = _.map(row, function (r) {
+                    return _.property(keys.seriesData)(r);
+                });
+                if (ordinate.length === 0) { seriesPoints.push(null); } else { seriesPoints.push(ordinate[0]); }
+            });
+            if (_.isNumber(name)) { currentSeriesName = name.toString(); } else { currentSeriesName = name; }
+            var seriesObject = {
+                name: currentSeriesName,
+                data: seriesPoints
+            };
+            series.push(seriesObject);
+        });
+        return series;
     }
 
     function drawChart(element, datasource, configChart) {
@@ -53,7 +50,11 @@
 
         $(element).highcharts({
             chart: {
-                type: configChart.chartType
+                type: configChart.chartType,
+                zoomType: configChart.zoomType,
+                panning: configChart.panning,
+                panKey: configChart.panKey,
+                inverted: configChart.inverted
             },
             title: {
                 text: configChart.title
@@ -69,6 +70,7 @@
             tooltip: configChart.tooltip,
             plotOptions: configChart.plotOptions,
             series: series
+
         });
     }
 

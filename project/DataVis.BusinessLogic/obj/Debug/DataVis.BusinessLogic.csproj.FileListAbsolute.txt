@@ -10,3 +10,15 @@ D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll.config
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.pdb
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.pdb
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
+C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb

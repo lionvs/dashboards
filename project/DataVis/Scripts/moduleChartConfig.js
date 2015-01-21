@@ -2,11 +2,15 @@
 
     function getDefaultConfig() {
         return {
-            title: "Chart",
+            title: "Title",
             xAxis: "",
             seriesName: "",
             seriesData: "",
             chartType: "",
+            zoomType: "",
+            panning: true,
+            panKey: 'shift',
+            inverted: false,
             tooltip:
             {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -31,35 +35,88 @@
         }
     }
 
-    function createCombo(element, dataSource) {
-        var schema = dataSource.schema;
-        var select = element.getElementsByClassName('combo');
-        for (var j = 0; j < select.length; j++) {
-            for (var i = 0; i < schema.length; i++) {
-                var opt = document.createElement('option');
-                opt.value = schema[i];
-                opt.innerHTML = schema[i];
-                select[j].appendChild(opt);
-                if (i == j) {
-                    $(select[i]).val(opt.value);
-                }
-            }
-        }
+    function fillHtmlTemplate(sb, data, config) {
+        var schema = data.schema;
+        var angular = sb.require('angular');
+        var $scope = angular.element(sb.getContainer()).scope();
+        $scope.$apply(function () {
+
+            $scope.oneAtATime = true;
+
+            $scope.status = {
+                isFirstOpen: true,
+                isFirstDisabled: false
+            };
+
+            chartTypeOptions = [
+                "line",
+                "scatter",
+                "column",
+                "spline",
+                "area",
+                "areaspline",
+                "bar"
+            ];
+
+            config.chartType = chartTypeOptions[0];
+            config.xAxis = schema[0];
+            config.seriesName = schema[1];
+            config.seriesData = schema[2];
+
+            $scope.schemaOptions = schema;
+            $scope.chartTypeOptions = chartTypeOptions;
+            $scope.config = config;
+
+            $scope.zoomOptions = [
+                "",
+                "x",
+                "y",
+                "x and y"
+            ];
+            $scope.zoomSelect = $scope.zoomOptions[0];
+
+
+            $scope.chartConfigUpdate = function () {
+                var element = sb.getContainer();
+                comboBoxChanged(sb, element, config);
+            };
+
+            $scope.dataConfigUpdate = function () {
+                var element = sb.getContainer();
+                comboBoxChanged(sb, element, config);
+            };
+        });
     }
 
-    function getSelectedText(element) {
 
-        if (element.selectedIndex == -1)
-            return null;
 
-        return element.options[element.selectedIndex].text;
+    function createUi(sb, config) {
+        var element = sb.getContainer();
+        var dataSource = sb.getDatasource();
+        var $ = sb.require('JQuery');
+
+        if (dataSource.data.length < 1) {
+            $(element).hide();
+            return;
+        }
+
+        fillHtmlTemplate(sb, dataSource, config);
+        $(element).show();
+    }
+
+
+    function main(sb, config) {
+        var element = sb.getContainer();
+        var dataSource = sb.getDatasource();
+        createUi(sb, config);
+        comboBoxChanged(sb, element, config);
+        if (dataSource.data.length < 1)
+            $(element).hide();
+        else
+            $(element).show();
     }
 
     function comboBoxChanged(sb, element, config) {
-        var select = element.getElementsByClassName('combo');
-        for (var i = 0; i < select.length; i++)
-            config[select[i].id] = getSelectedText(select[i]);
-        config.chartType = getSelectedText(element.querySelector("#chartType"));
         var event = {
             type: events.updatedChartConfig,
             data: config
@@ -67,39 +124,8 @@
         sb.notify(event);
     }
 
-    function main(sb, config) {
-        var element = sb.getContainer();
-        element.innerHTML = 'Select xAxis <select id="xAxis" class="combo"></select><br /> \
-    Select titles of data  <select id="seriesName" class="combo"></select><br />                   \
-    Select yAxis (data)  <select id="seriesData" class="combo"></select><br />                      \
-    Select chart type  <select id="chartType">                                                 \
-                           <option>line</option>                                    \
-                           <option>column</option>                                \
-                           <option>area</option>                                    \
-                           <option>areaspline</option>                                    \
-                           <option>spline</option>                                    \
-                       </select> ';
 
 
-        var dataSource = sb.getDatasource();
-
-        createCombo(element, dataSource);
-
-        $(element.querySelector("#chartType")).change(function () {
-            comboBoxChanged(sb, element, config);
-        });
-        var combo = element.getElementsByClassName('combo');
-        for (var i = 0; i < combo.length; i++)
-            $(combo[i]).change(function () {
-                comboBoxChanged(sb, element, config);
-            });
-        comboBoxChanged(sb, element, config);
-
-        if (dataSource.data.length < 1)
-            $(element).hide();
-        else
-            $(element).show();
-    }
 
     return {
         name: "chartConfig",

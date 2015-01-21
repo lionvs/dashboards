@@ -2,15 +2,16 @@
     <div id="dataTable" class="dataTable"></div>
     <div align="center" id="filter" class="filter"></div>
     <div id="chart"></div>
-    <div id="chartConfig"></div>
+    <div id="chartConfig" class="chartConfig"></div>
     <div id="uploadData"></div>
 </div>
 
 <script>
-    var application = angular.module('application', []);
+    var application = angular.module('application', ['ui.bootstrap']);
 
     directive.create(application, "dataTable", htmlTemplates["dataTable"]);
     directive.create(application, "filter", htmlTemplates["filter"]);
+    directive.create(application, "chartConfig", htmlTemplates["chartConfig"]);
 
     var core = core(sandBox, eventManager, dashboard);
 
