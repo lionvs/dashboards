@@ -3,7 +3,7 @@
         module.directive(classTitle, function ($compile) {
             return {
                 restrict: 'C',
-                template: htmlTemplate
+                template: htmlTemplate,
             }
         });
     }

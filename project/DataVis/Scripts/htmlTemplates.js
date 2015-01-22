@@ -25,7 +25,8 @@
                     </table>                                                                                      \
                     </div>                                                                                        \
                 </div>                                                                                            \
-                <br/><input type="button" value="Filter Data" ng-click="filterData()"> ',
+                <br/><input type="button" value="Filter Data" ng-click="filterData()">  \
+                <br/><input type="button" value="Reset Data" ng-click="resetDataSource()"> ',
     chartConfig: "<ul>\
                 <accordion close-others='oneAtATime'>\
                     <accordion-group is-open='status.open'>\

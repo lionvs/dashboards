@@ -32,9 +32,11 @@
                 myDataSource.data = resp;
                 myDataSource.schema = getSchema(myDataSource.data);
                 var event = {
-                    type: events.updatedDataSource,
+                    type: events.uploadedDataSource,
                     data: myDataSource
                 }
+                mySandbox.notify(event);
+                event.type = events.updatedDataSource;
                 mySandbox.notify(event);
             }).fail(function (resp) {
                 alert(resp.status + ": " + resp.statusText);

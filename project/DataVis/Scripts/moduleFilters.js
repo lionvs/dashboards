@@ -16,7 +16,8 @@
             key: 'Temperature',               //must take from UI or sandbox
             min: (-Infinity),
             max: (Infinity)
-        }
+        },
+        originalDataSource: {}
     }
 
     var titlesArr = [];
@@ -101,8 +102,22 @@
             $scope.titlesArr = titlesArr;
             $scope.filterConfig = config;
             $scope.filterData = function () {
-                filter(data);
+                var myDataSource = {};
+                myDataSource.schema = sb.getDatasource().schema;
+                myDataSource.data = filter(data);
+                var event = {
+                    type: events.updatedDataSource,
+                    data: myDataSource
+                }
+                sb.notify(event);
             };
+            $scope.resetDataSource = function () {
+                var event = {
+                    type: events.updatedDataSource,
+                    data: config.originalDataSource
+                }
+                sb.notify(event);
+            }
         });
     }
 
@@ -120,14 +135,12 @@
         $(element).show();
     }
 
-    function getDefaultConfig() {
-        return null;
-    }
-
     return {
         name: "filter",
         init: function (sb) {
-            var config = getDefaultConfig();
+            sb.listen(events.uploadedDataSource, function (dataSource) {
+                config.originalDataSource = dataSource;
+            });
             sb.listen(events.updatedDataSource, function () {
                 createFilterUIAndData(sb, config);
             });
