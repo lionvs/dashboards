@@ -14,12 +14,12 @@
         startModule: function (module, element) {
             var sb = sandBox.create(element);
             var moduleInstance = registeredModules[module.name].init(sb);
-            dashboard.addModule(moduleInstance, element);
+            moduleManager.addModule(moduleInstance, element);
         },
 
         stopModule: function (module, element) {
             registeredModules[module.name].destroy(element);
-            dashboard.removeModule(element);
+            moduleManager.removeModule(element);
             eventManager.unRegisterAllEvents(element);
         },
 
@@ -42,10 +42,10 @@
         },
 
         setConfig: function (element, config) {
-            dashboard.setConfig(element, config);
+            moduleManager.setConfig(element, config);
         },
         getConfig: function (element) {
-            return dashboard.getConfig(element);
+            return moduleManager.getConfig(element);
         }
     }
 }

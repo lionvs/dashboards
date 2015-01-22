@@ -15,12 +15,20 @@
 
     var core = core(sandBox, eventManager, moduleManager);
 
-    moduleManager.runModule.UploadData();
-    moduleManager.runModule.DataTable();
-
-    moduleManager.runModule.HighChart();
-    moduleManager.runModule.ChartConfig();
-    moduleManager.runModule.Filters();
+    core.registerModule(moduleUploadData);
+    core.startModule(moduleUploadData, document.getElementById("uploadData"));
+  
+    core.registerModule(moduleDataTable);
+    core.startModule(moduleDataTable, document.getElementById("dataTable"));
+    
+    core.registerModule(moduleHighChart);
+    core.startModule(moduleHighChart, document.getElementById("chart"));
+   
+    core.registerModule(moduleChartConfig);
+    core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
+   
+    core.registerModule(moduleFilters);
+    core.startModule(moduleFilters, document.getElementById("filter"));
 
 
 </script>
