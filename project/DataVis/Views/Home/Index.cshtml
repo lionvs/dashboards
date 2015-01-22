@@ -13,22 +13,14 @@
     directive.create(application, "filter", htmlTemplates["filter"]);
     directive.create(application, "chartConfig", htmlTemplates["chartConfig"]);
 
-    var core = core(sandBox, eventManager, dashboard);
+    var core = core(sandBox, eventManager, moduleManager);
 
-    core.registerModule(moduleDataTable);
-    core.startModule(moduleDataTable, document.getElementById("dataTable"));
+    moduleManager.runModule.UploadData();
+    moduleManager.runModule.DataTable();
 
-    core.registerModule(moduleHighChart);
-    core.startModule(moduleHighChart, document.getElementById("chart"));
-
-    core.registerModule(moduleFilters);
-    core.startModule(moduleFilters, document.getElementById("filter"));
-
-    core.registerModule(moduleUploadData);
-    core.startModule(moduleUploadData, document.getElementById("uploadData"));
-
-    core.registerModule(moduleChartConfig);
-    core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
+    moduleManager.runModule.HighChart();
+    moduleManager.runModule.ChartConfig();
+    moduleManager.runModule.Filters();
 
 
 </script>

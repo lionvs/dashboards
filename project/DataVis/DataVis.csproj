@@ -210,7 +210,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\core.js" />
-    <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\moduleManager.js" />
     <Content Include="Scripts\directive.js" />
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />

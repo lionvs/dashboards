@@ -22,3 +22,15 @@ C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\
 C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
 C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll.config
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.pdb
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.dll
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.pdb
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
+C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb
