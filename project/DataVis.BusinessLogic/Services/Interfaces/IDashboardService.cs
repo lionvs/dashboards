@@ -1,4 +1,5 @@
-﻿using DataVis.Data.Models;
+﻿using System.Collections.Generic;
+using DataVis.Data.Models;
 
 namespace DataVis.BusinessLogic.Services.Interfaces
 {
@@ -7,6 +8,7 @@ namespace DataVis.BusinessLogic.Services.Interfaces
         Dashboard Add(Dashboard dashboard);
         void Delete(string id);
         void Update(Dashboard dashboard);
-        Dashboard GetById(string id); 
+        Dashboard GetById(string id);
+        List<Dashboard> GetByUserId(string userId);
     }
 }

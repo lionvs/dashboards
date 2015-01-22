@@ -1,4 +1,6 @@
-﻿using DataVis.BusinessLogic.Repositories;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DataVis.BusinessLogic.Repositories;
 using DataVis.BusinessLogic.Services.Interfaces;
 using DataVis.Data.Models;
 
@@ -51,6 +53,14 @@ namespace DataVis.BusinessLogic.Services
             using (var unitOfWork = _factory.CreateUnitOfWork())
             {
                 return unitOfWork.DashboardRepository.GetById(id);
+            }
+        }
+
+        public List<Dashboard> GetByUserId(string userId)
+        {
+            using (var unitOfWork = _factory.CreateUnitOfWork())
+            {
+                return unitOfWork.DashboardRepository.Get(x => x.UserId.Equals(userId)).ToList();
             }
         }
     }

@@ -52,7 +52,7 @@
             @{
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
-                    <p class="navbar-text navbar-right">Signed in<strong> @HttpContext.Current.User.Identity.Name</strong></p>
+                    <p class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></p>
                 }
             }
         </div>
