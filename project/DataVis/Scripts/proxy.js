@@ -32,7 +32,7 @@ function register(username, password, password2) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(data)
     }).done(function () {
-        alert("Done!");
+        login(data.UserName, data.Password);
     }).fail(function (resp) {
         alert(resp.status + ": " + resp.statusText);
     });
