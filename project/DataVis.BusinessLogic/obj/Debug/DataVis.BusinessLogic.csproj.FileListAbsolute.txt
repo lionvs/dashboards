@@ -34,3 +34,15 @@ C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll.config
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.xml
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb

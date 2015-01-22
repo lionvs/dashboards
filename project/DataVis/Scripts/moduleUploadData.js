@@ -8,15 +8,7 @@
     }
 
     function getSchema(data) {
-        var schema = {}
-        for (var i = 0; i < data.length; i++)
-            for (var j in data[i])
-                if (!schema[j])
-                    schema[j] = "";
-        var result = [];
-        for (var item in schema)
-            result.push(item);
-        return result;
+        return _.keys(data[0]);
     }
 
     function openFile() {

@@ -7,30 +7,7 @@
         <div class="form-group">
             <input class="form-control" id="password" type="password" placeholder="Password" />
         </div>
-        <button onclick="login()" class="btn btn-default">Log In</button>
+        <button onclick="login($('#login').val(), $('#password').val())" class="btn btn-default">Log In</button>
         <a class="btn btn-default" href="/home/register">Register</a>
     </div>
 </div>
-
-<script>
-    function login() {
-
-        var loginData = {
-            grant_type: 'password',
-            username: $("#login").val(),
-            password: $("#password").val()
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/Token',
-            data: loginData
-        }).done(function (data) {
-            sessionStorage.setItem("accessToken", data.access_token);
-            sessionStorage.setItem("username", data.userName);
-            window.location.href = '/home/index';
-        }).fail(function (resp) {
-            alert(resp.status + ": " + resp.statusText);
-        });
-    }
-</script>
