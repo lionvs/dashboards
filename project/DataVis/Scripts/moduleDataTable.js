@@ -7,10 +7,8 @@
     function fillHtmlTemplate(sb, data, schema) {
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
-        $scope.$apply(function () {
-            $scope.schema = schema;
-            $scope.data = data;
-        });
+        $scope.schema = schema;
+        $scope.data = data;
     }
 
     function createDataTable(sb, config) {

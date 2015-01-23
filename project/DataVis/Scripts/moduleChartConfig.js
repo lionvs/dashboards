@@ -39,55 +39,51 @@
         var schema = data.schema;
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
-        $scope.$apply(function () {
+        $scope.oneAtATime = true;
 
-            $scope.oneAtATime = true;
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false
+        };
 
-            $scope.status = {
-                isFirstOpen: true,
-                isFirstDisabled: false
-            };
+        chartTypeOptions = [
+            "line",
+            "scatter",
+            "column",
+            "spline",
+            "area",
+            "areaspline",
+            "bar"
+        ];
 
-            chartTypeOptions = [
-                "line",
-                "scatter",
-                "column",
-                "spline",
-                "area",
-                "areaspline",
-                "bar"
-            ];
+        config.chartType = chartTypeOptions[0];
+        config.xAxis = schema[0];
+        config.seriesName = schema[1];
+        config.seriesData = schema[2];
 
-            config.chartType = chartTypeOptions[0];
-            config.xAxis = schema[0];
-            config.seriesName = schema[1];
-            config.seriesData = schema[2];
+        $scope.schemaOptions = schema;
+        $scope.chartTypeOptions = chartTypeOptions;
+        $scope.config = config;
 
-            $scope.schemaOptions = schema;
-            $scope.chartTypeOptions = chartTypeOptions;
-            $scope.config = config;
-
-            $scope.zoomOptions = [
-                "",
-                "x",
-                "y",
-                "x and y"
-            ];
-            $scope.zoomSelect = $scope.zoomOptions[0];
+        $scope.zoomOptions = [
+            "",
+            "x",
+            "y",
+            "x and y"
+        ];
+        $scope.zoomSelect = $scope.zoomOptions[0];
 
 
-            $scope.chartConfigUpdate = function () {
-                var element = sb.getContainer();
-                comboBoxChanged(sb, element, config);
-            };
+        $scope.chartConfigUpdate = function() {
+            var element = sb.getContainer();
+            comboBoxChanged(sb, element, config);
+        };
 
-            $scope.dataConfigUpdate = function () {
-                var element = sb.getContainer();
-                comboBoxChanged(sb, element, config);
-            };
-        });
+        $scope.dataConfigUpdate = function() {
+            var element = sb.getContainer();
+            comboBoxChanged(sb, element, config);
+        };
     }
-
 
 
     function createUi(sb, config) {

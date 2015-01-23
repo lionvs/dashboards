@@ -93,32 +93,37 @@
         return filteredData;
     }
 
+    function fillScope($scope, sb, data) {
+        $scope.titlesArr = titlesArr;
+        $scope.filterConfig = config;
+        $scope.filterData = function() {
+            var myDataSource = {};
+            myDataSource.schema = sb.getDatasource().schema;
+            myDataSource.data = filter(data);
+            var event = {
+                type: events.updatedDataSource,
+                data: myDataSource
+            }
+            sb.notify(event);
+        };
+        $scope.resetDataSource = function() {
+            var event = {
+                type: events.updatedDataSource,
+                data: config.originalDataSource
+            }
+            sb.notify(event);
+        }
+    }
 
     function fillHtmlTemplate(sb, data) {
         parseDataSource(data);
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
-        $scope.$apply(function () {
-            $scope.titlesArr = titlesArr;
-            $scope.filterConfig = config;
-            $scope.filterData = function () {
-                var myDataSource = {};
-                myDataSource.schema = sb.getDatasource().schema;
-                myDataSource.data = filter(data);
-                var event = {
-                    type: events.updatedDataSource,
-                    data: myDataSource
-                }
-                sb.notify(event);
-            };
-            $scope.resetDataSource = function () {
-                var event = {
-                    type: events.updatedDataSource,
-                    data: config.originalDataSource
-                }
-                sb.notify(event);
-            }
-        });
+        if (!$scope.$$phase) {
+            $scope.$apply(function() {
+                fillScope($scope, sb, data);
+            });
+        } else fillScope($scope, sb, data);
     }
 
     function createFilterUIAndData(sb, config) {

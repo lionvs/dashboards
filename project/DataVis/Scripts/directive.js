@@ -4,6 +4,7 @@
             return {
                 restrict: 'C',
                 template: htmlTemplate,
+                scope: true
             }
         });
     }
