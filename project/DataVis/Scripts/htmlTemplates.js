@@ -1,5 +1,5 @@
 ﻿var htmlTemplates = {
-    dataTable: '<table border="1" class="table">                                                    \
+    dataTable: '<table class="table table-striped" data-height="400">                                                    \
                     <tr>                                                                            \
                         <th ng-repeat="schemaItem in schema">{{schemaItem}}</th>                    \
                     </tr>                                                                           \
@@ -27,8 +27,7 @@
                 </div>                                                                                            \
                 <br/><input type="button" value="Filter Data" ng-click="filterData()">  \
                 <br/><input type="button" value="Reset Data" ng-click="resetDataSource()"> ',
-    chartConfig: "<ul>\
-                <accordion close-others='oneAtATime'>\
+    chartConfig: "<accordion close-others='oneAtATime'>\
                     <accordion-group is-open='status.open'>\
                         <accordion-heading>\
                             Chart Options \
@@ -54,6 +53,5 @@
                             <label class='col-sm-2 control-label'>Line Type</label><select class='form-control' ng-model='config.chartType' ng-options='opt as opt for opt in chartTypeOptions' ng-change='dataConfigUpdate()'></select>\
                         </p>\
                     </accordion-group>\
-                </accordion>\
-            </ul>"
+                </accordion> "
 }
