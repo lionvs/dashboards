@@ -209,13 +209,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="HtmlTemplates\ChartConfig.html" />
+    <Content Include="HtmlTemplates\Filter.html" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\proxy.js" />
     <Content Include="Scripts\moduleManager.js" />
     <Content Include="Scripts\directive.js" />
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />
-    <Content Include="Scripts\htmlTemplates.js" />
     <Content Include="Scripts\moduleChartConfig.js" />
     <Content Include="Scripts\moduleDataTable.js" />
     <Content Include="Scripts\moduleFilters.js" />
@@ -228,6 +229,7 @@
     <Content Include="Scripts\Libraries\respond.js" />
     <Content Include="Scripts\Libraries\respond.min.js" />
     <Content Include="Scripts\user.js" />
+    <Content Include="HtmlTemplates\DataTable.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -295,6 +297,7 @@
   <ItemGroup>
     <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

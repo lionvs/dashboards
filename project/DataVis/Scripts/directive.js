@@ -1,9 +1,9 @@
 ﻿var directive = {
-    create: function (module, classTitle, htmlTemplate) {
+    create: function (module, classTitle, htmlTemplateUrl) {
         module.directive(classTitle, function ($compile) {
             return {
                 restrict: 'C',
-                template: htmlTemplate,
+                templateUrl: htmlTemplateUrl,
                 scope: true
             }
         });

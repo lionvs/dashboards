@@ -9,10 +9,9 @@
 <script>
     var application = angular.module('application', ['ui.bootstrap']);
 
-    directive.create(application, "dataTable", htmlTemplates["dataTable"]);
-    directive.create(application, "filter", htmlTemplates["filter"]);
-    directive.create(application, "chartConfig", htmlTemplates["chartConfig"]);
-//    directive.create(application, "resetData", htmlTemplates["resetData"]);
+    directive.create(application, "dataTable", "/HtmlTemplates/DataTable.html");
+    directive.create(application, "filter", "/HtmlTemplates/Filter.html");
+    directive.create(application, "chartConfig", "/HtmlTemplates/ChartConfig.html");
 
     var core = core(sandBox, eventManager, moduleManager);
 
@@ -21,17 +20,14 @@
   
     core.registerModule(moduleDataTable);
     core.startModule(moduleDataTable, document.getElementById("dataTable"));
+
+    core.registerModule(moduleFilters);
+    core.startModule(moduleFilters, document.getElementById("filter"));
     
     core.registerModule(moduleHighChart);
     core.startModule(moduleHighChart, document.getElementById("chart"));
    
     core.registerModule(moduleChartConfig);
     core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
-   
-    core.registerModule(moduleFilters);
-    core.startModule(moduleFilters, document.getElementById("filter"));
-
-//    core.registerModule(moduleResetData);
-//    core.startModule(moduleResetData, document.getElementById("resetData"));
 
 </script>
