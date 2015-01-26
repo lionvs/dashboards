@@ -28,6 +28,7 @@
     <script src="/Scripts/user.js"></script>
     <script src="/Scripts/proxy.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -53,19 +54,18 @@
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     <p class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></p>
-                    <div>
+                    <div id="mySelect">
                         <div class="navbar-form" ng-controller="headerDashboardSelector">
                             <form class="form-inline">
                                 <div class="form-group">
                                     <label class='control-label'>Current Dashboard: </label>
-                                    <select class='form-control header' ng-model='globalConfig.dashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='Update()'></select>
+                                    <select class='form-control header' ng-model='dashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='Update()'></select>
                                 </div>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                     Save Config
                                 </button>
                             </form>
-
                         </div>
                     </div>
                 }
@@ -79,8 +79,6 @@
     </div>
 </body>
 </html>
-
-<script src="/Scripts/angularControllers/headerDashboardSelector.js"></script>
 <script>
     function logOut() {
         $.ajax({
@@ -95,3 +93,4 @@
         });
     }
 </script>
+<script src="/Scripts/angularControllers/headerDashboardSelector.js"></script>

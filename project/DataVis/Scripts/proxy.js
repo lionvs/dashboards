@@ -37,3 +37,25 @@ function register(username, password, password2) {
         alert(resp.status + ": " + resp.statusText);
     });
 }
+
+function saveDashboard() {
+    user.setHeaders();
+
+    var dashboard = {
+        Title: "A U T I S T I K B O Y S",
+        Config: JSON.stringify(core.getGlobalConfig()),
+        Description: null
+    }
+
+    $.ajax({
+        headers: user.headers,
+        type: 'POST',
+        url: '/api/Dashboard',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dashboard)
+    }).done(function (resp) {
+        alert(resp.status + ": " + resp.statusText);
+    }).fail(function (resp) {
+        alert(resp.status + ": " + resp.statusText);
+    });
+}

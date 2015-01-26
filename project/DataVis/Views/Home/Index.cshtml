@@ -1,4 +1,4 @@
-﻿<div id="main" ng-app="application">
+﻿<div id="main">
     <div id="dataTable" class="dataTable"></div>
     <div align="center" id="filter" class="col-sm-2 filter"></div>
     <div id="chart"></div>
@@ -16,13 +16,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="saveConfig()">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="saveDashboard()">Save</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
     var application = angular.module('application', ['ui.bootstrap']);
 
@@ -34,21 +33,17 @@
 
     core.registerModule(moduleUploadData);
     core.startModule(moduleUploadData, document.getElementById("uploadData"));
-  
+
     core.registerModule(moduleDataTable);
     core.startModule(moduleDataTable, document.getElementById("dataTable"));
 
     core.registerModule(moduleFilters);
     core.startModule(moduleFilters, document.getElementById("filter"));
-    
+
     core.registerModule(moduleHighChart);
     core.startModule(moduleHighChart, document.getElementById("chart"));
-   
+
     core.registerModule(moduleChartConfig);
     core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
 
-    function saveConfig() {
-        var c = core.getGlobalConfig();
-        return core.getGlobalConfig();
-    }
 </script>

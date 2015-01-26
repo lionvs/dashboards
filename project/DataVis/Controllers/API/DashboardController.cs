@@ -50,17 +50,22 @@ namespace DataVis.Controllers.API
 
         public JObject Post(DashboardModel dashboardModel)
         {
-            var dashboard = new Dashboard
+            if (ModelState.IsValid)
             {
-                Title = dashboardModel.Title,
-                Config = dashboardModel.Config,
-                Id = Guid.NewGuid().ToString("n"),
-                UserId = HttpContext.Current.User.Identity.GetUserId()
-            };
-            if (dashboardModel.Description != null)
-                dashboard.Description = dashboardModel.Description;
-            var addedDashboard = _dashboardService.Add(dashboard);
-            return new JObject { "id", addedDashboard.Id };
+                var dashboard = new Dashboard
+                {
+                    Title = dashboardModel.Title,
+                    Config = dashboardModel.Config,
+                    Id = Guid.NewGuid().ToString("n"),
+                    UserId = HttpContext.Current.User.Identity.GetUserId()
+                };
+                if (dashboardModel.Description != null)
+                    dashboard.Description = dashboardModel.Description;
+                var addedDashboard = _dashboardService.Add(dashboard);
+                return new JObject { "id", addedDashboard.Id };
+            }
+            else return null;
+
         }
     }
 }
