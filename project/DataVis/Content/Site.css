@@ -110,3 +110,11 @@ display: block;
   width: 150px;
   overflow: auto; 
 }
+
+select.form-control.header {
+    width: 400px;
+}
+
+select.form-control.modalWindow {
+    width: 100%;
+}

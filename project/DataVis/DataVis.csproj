@@ -211,6 +211,7 @@
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
     <Content Include="HtmlTemplates\Filter.html" />
+    <Content Include="Scripts\angularControllers\headerDashboardSelector.js" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\proxy.js" />
     <Content Include="Scripts\moduleManager.js" />

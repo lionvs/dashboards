@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="application">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +53,21 @@
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     <p class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></p>
+                    <div>
+                        <div class="navbar-form" ng-controller="headerDashboardSelector">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label class='control-label'>Current Dashboard: </label>
+                                    <select class='form-control header' ng-model='globalConfig.dashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='Update()'></select>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                                    Save Config
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
                 }
             }
         </div>
@@ -65,7 +80,7 @@
 </body>
 </html>
 
-
+<script src="/Scripts/angularControllers/headerDashboardSelector.js"></script>
 <script>
     function logOut() {
         $.ajax({
