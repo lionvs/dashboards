@@ -1,10 +1,11 @@
 ﻿var moduleManager = function () {
     var runningModules = [];
     return {
-        addModule: function (moduleInstance, element) {
+        addModule: function (moduleInstance, element,name) {
             runningModules.push({
                 module: moduleInstance,
-                element: element
+                element: element,
+                moduleName: name
             });
         },
         removeModule: function (element) {
@@ -23,6 +24,17 @@
                 return obj.element === element;
             });
             return moduleWithinCurrentElement.module.getConfig();
+        },
+        getGlobalConfig: function() {
+            var globalConfig = [];
+            for (var i = 0; i < runningModules.length; i++) {
+                globalConfig.push({
+                    config: this.getConfig(runningModules[i].element),
+                    name: runningModules[i].moduleName
+                });
+            };
+            return globalConfig;
         }
+       
     }
 }();

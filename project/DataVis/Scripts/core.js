@@ -14,7 +14,7 @@
         startModule: function (module, element) {
             var sb = sandBox.create(element);
             var moduleInstance = registeredModules[module.name].init(sb);
-            moduleManager.addModule(moduleInstance, element);
+            moduleManager.addModule(moduleInstance, element,module.name);
         },
 
         stopModule: function (module, element) {
@@ -46,6 +46,9 @@
         },
         getConfig: function (element) {
             return moduleManager.getConfig(element);
+        },
+        getGlobalConfig: function() {
+            return moduleManager.getGlobalConfig();
         }
     }
 }
