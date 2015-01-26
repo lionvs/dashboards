@@ -1,4 +1,4 @@
-﻿var core = function (sandbox, eventManager, dashboard) {
+﻿var core = function (sandbox, eventManager, moduleManager) {
     var registeredModules = {};
     var dataSource = {
         data: [],
