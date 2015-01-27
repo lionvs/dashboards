@@ -19,7 +19,7 @@ namespace DataVis.Controllers.API
             this._dataParser = dataParser;
         }
 
-        [Authorize]
+       // [Authorize]
         public List<JObject> Post()
         {
             var httpRequest = HttpContext.Current.Request;

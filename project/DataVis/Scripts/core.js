@@ -11,10 +11,10 @@
             registeredModules[module.name] = module;
         },
 
-        startModule: function (module, element) {
+        startModule: function (moduleName, element) {
             var sb = sandBox.create(element);
-            var moduleInstance = registeredModules[module.name].init(sb);
-            moduleManager.addModule(moduleInstance, element,module.name);
+            var moduleInstance = registeredModules[moduleName].init(sb);
+            moduleManager.addModule(moduleInstance, element, moduleName);
         },
 
         stopModule: function (module, element) {
@@ -49,6 +49,14 @@
         },
         getGlobalConfig: function() {
             return moduleManager.getGlobalConfig();
+        },
+        setGlobalConfig: function(globalConfig, container) {
+            container.innerHTML = "";
+            _.each(globalConfig, function(config) {
+                $(container).append("<div class='" + config.name + "'></div>");
+                this.startModule(config.name, container.lastChild);
+                this.setConfig(container.lastChild, config.config);
+            }, this);
         }
     }
 }

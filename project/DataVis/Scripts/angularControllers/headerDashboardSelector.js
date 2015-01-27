@@ -1,5 +1,4 @@
 ﻿var dashboard;
-if (typeof application != 'undefined') {
     application.controller("headerDashboardSelector", function ($scope) {
 
         $scope.dashboard = dashboard;
@@ -14,4 +13,3 @@ if (typeof application != 'undefined') {
             "dashboard7"
         ];
     });
-}

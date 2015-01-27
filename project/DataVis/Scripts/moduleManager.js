@@ -1,7 +1,7 @@
 ﻿var moduleManager = function () {
     var runningModules = [];
     return {
-        addModule: function (moduleInstance, element,name) {
+        addModule: function (moduleInstance, element, name) {
             runningModules.push({
                 module: moduleInstance,
                 element: element,
@@ -26,15 +26,13 @@
             return moduleWithinCurrentElement.module.getConfig();
         },
         getGlobalConfig: function() {
-            var globalConfig = [];
-            for (var i = 0; i < runningModules.length; i++) {
-                globalConfig.push({
-                    config: this.getConfig(runningModules[i].element),
-                    name: runningModules[i].moduleName
-                });
-            };
+            var globalConfig = _.map(runningModules, function(module) {
+                return {
+                    config: this.getConfig(module.element),
+                    name: module.moduleName
+                }
+            }, this);
             return globalConfig;
         }
-       
     }
 }();

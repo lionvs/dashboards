@@ -4,6 +4,7 @@
     <div id="chart"></div>
     <div id="chartConfig" class="chartConfig"></div>
     <div id="uploadData"></div>
+    <div id="globalConfig"></div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -23,7 +24,6 @@
     </div>
 </div>
 <script>
-    var application = angular.module('application', ['ui.bootstrap']);
 
     directive.create(application, "dataTable", "/HtmlTemplates/DataTable.html");
     directive.create(application, "filter", "/HtmlTemplates/Filter.html");
@@ -32,18 +32,18 @@
     var core = core(sandBox, eventManager, moduleManager);
 
     core.registerModule(moduleUploadData);
-    core.startModule(moduleUploadData, document.getElementById("uploadData"));
+    core.startModule(moduleUploadData.name, document.getElementById("uploadData"));
 
     core.registerModule(moduleDataTable);
-    core.startModule(moduleDataTable, document.getElementById("dataTable"));
+    core.startModule(moduleDataTable.name, document.getElementById("dataTable"));
 
     core.registerModule(moduleFilters);
-    core.startModule(moduleFilters, document.getElementById("filter"));
+    core.startModule(moduleFilters.name, document.getElementById("filter"));
 
     core.registerModule(moduleHighChart);
-    core.startModule(moduleHighChart, document.getElementById("chart"));
+    core.startModule(moduleHighChart.name, document.getElementById("chart"));
 
     core.registerModule(moduleChartConfig);
-    core.startModule(moduleChartConfig, document.getElementById("chartConfig"));
+    core.startModule(moduleChartConfig.name, document.getElementById("chartConfig"));
 
 </script>

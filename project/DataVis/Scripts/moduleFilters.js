@@ -154,7 +154,6 @@
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    main(sb, config);
                     createFilterUIAndData(sb, config);
                 },
                 getConfig: function () {
