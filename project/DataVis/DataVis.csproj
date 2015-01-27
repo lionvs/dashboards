@@ -201,6 +201,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dashboard.mdf" />
+    <Content Include="App_Data\dashboard_log.ldf">
+      <DependentUpon>dashboard.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\database.mdf" />
     <Content Include="App_Data\database_log.ldf">
       <DependentUpon>database.mdf</DependentUpon>
@@ -253,7 +257,7 @@
       <VersionMajor>2</VersionMajor>
       <VersionMinor>5</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
+      <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

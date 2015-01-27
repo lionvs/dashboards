@@ -62,10 +62,9 @@ namespace DataVis.Controllers.API
                 if (dashboardModel.Description != null)
                     dashboard.Description = dashboardModel.Description;
                 var addedDashboard = _dashboardService.Add(dashboard);
-                return new JObject { "id", addedDashboard.Id };
+                return new JObject { { "success", true } };
             }
-            else return null;
-
+            else return new JObject { { "success", false } };
         }
     }
 }

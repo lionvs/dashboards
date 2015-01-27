@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataVis.Controllers.API
 {
-    //[Authorize]
+    [Authorize]
     public class DataController : ApiController
     {
         private readonly IDataSourceService _dataSourceService;

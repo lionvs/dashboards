@@ -54,7 +54,9 @@ function saveDashboard() {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(dashboard)
     }).done(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        if (resp.success === true)
+            alert("done");
+        else alert("error");
     }).fail(function (resp) {
         alert(resp.status + ": " + resp.statusText);
     });
