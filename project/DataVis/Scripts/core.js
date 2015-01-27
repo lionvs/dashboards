@@ -11,10 +11,10 @@
             registeredModules[module.name] = module;
         },
 
-        startModule: function (moduleName, element) {
+        startModule: function (moduleName, element,position) {
             var sb = sandBox.create(element);
             var moduleInstance = registeredModules[moduleName].init(sb);
-            moduleManager.addModule(moduleInstance, element, moduleName);
+            moduleManager.addModule(moduleInstance, element, moduleName,position);
         },
 
         stopModule: function (module, element) {
@@ -54,7 +54,7 @@
             container.innerHTML = "";
             _.each(globalConfig, function(config) {
                 $(container).append("<div class='" + config.name + "'></div>");
-                this.startModule(config.name, container.lastChild);
+                this.startModule(config.name, container.lastChild,config.position);
                 this.setConfig(container.lastChild, config.config);
             }, this);
         }

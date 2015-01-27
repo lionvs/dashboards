@@ -1,7 +1,10 @@
 ﻿var moduleManager = function () {
     var runningModules = [];
     return {
-        addModule: function (moduleInstance, element, name) {
+        addModule: function (moduleInstance, element, name, position) {
+           
+            $(element).draggable();
+            $(element).offset(position);
             runningModules.push({
                 module: moduleInstance,
                 element: element,
@@ -26,10 +29,15 @@
             return moduleWithinCurrentElement.module.getConfig();
         },
         getGlobalConfig: function() {
-            var globalConfig = _.map(runningModules, function(module) {
+            var globalConfig = _.map(runningModules, function (module) {
+                var offset = $(module.element).offset();
                 return {
                     config: this.getConfig(module.element),
-                    name: module.moduleName
+                    name: module.moduleName,
+                    position: {
+                        left: offset.left,
+                        top: offset.top
+                    }
                 }
             }, this);
             return globalConfig;

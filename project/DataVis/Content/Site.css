@@ -42,10 +42,6 @@ thead, tbody {
     display: block;
 }
 
-#main {
-    overflow: hidden;
-}
-
 #dataTable {
     float: left;
     height: 350px;

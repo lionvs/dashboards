@@ -1,10 +1,11 @@
 ﻿<div id="main">
+    
     <div id="dataTable" class="dataTable"></div>
     <div align="center" id="filter" class="col-sm-2 filter"></div>
     <div id="chart"></div>
     <div id="chartConfig" class="chartConfig"></div>
     <div id="uploadData"></div>
-    <div id="globalConfig"></div>
+    
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -22,6 +23,7 @@
             </div>
         </div>
     </div>
+   
 </div>
 <script>
 
@@ -41,7 +43,7 @@
     core.startModule(moduleFilters.name, document.getElementById("filter"));
 
     core.registerModule(moduleHighChart);
-    core.startModule(moduleHighChart.name, document.getElementById("chart"));
+    core.startModule(moduleHighChart.name, document.getElementById("chart"),{top:300,left:50});
 
     core.registerModule(moduleChartConfig);
     core.startModule(moduleChartConfig.name, document.getElementById("chartConfig"));
