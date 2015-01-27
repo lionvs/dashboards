@@ -39,7 +39,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Data visualization", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-form navbar-right">
@@ -58,7 +58,7 @@
             @{
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
-                    <p class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></p>
+                    <div class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></div>
                     <div id="mySelect">
                         <div class="navbar-form" ng-controller="headerDashboardSelector">
                             <form class="form-inline">
@@ -68,7 +68,7 @@
                                 </div>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-                                    Save Config
+                                    Save
                                 </button>
                             </form>
                         </div>

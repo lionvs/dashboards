@@ -1,20 +1,31 @@
 ﻿<div id="main">
-    
+
     <div id="dataTable" class="dataTable"></div>
     <div align="center" id="filter" class="col-sm-2 filter"></div>
     <div id="chart"></div>
     <div id="chartConfig" class="chartConfig"></div>
     <div id="uploadData"></div>
-    
+
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
         <div class="modal-dialog">
+
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Save dashboard</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control modalWindow" placeholder="Dashboard Name" aria-describedby="basic-addon1" ng-model="configNameInput">
+                    <form>
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -23,7 +34,7 @@
             </div>
         </div>
     </div>
-   
+
 </div>
 <script>
 
@@ -43,7 +54,7 @@
     core.startModule(moduleFilters.name, document.getElementById("filter"));
 
     core.registerModule(moduleHighChart);
-    core.startModule(moduleHighChart.name, document.getElementById("chart"),{top:300,left:50});
+    core.startModule(moduleHighChart.name, document.getElementById("chart"), { top: 300, left: 50 });
 
     core.registerModule(moduleChartConfig);
     core.startModule(moduleChartConfig.name, document.getElementById("chartConfig"));

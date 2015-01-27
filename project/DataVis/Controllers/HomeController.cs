@@ -4,7 +4,7 @@ namespace DataVis.Controllers
 {
     public class HomeController : Controller
     {
-       // [Authorize]
+        [Authorize]
         public ActionResult Index()
         {
             return View();

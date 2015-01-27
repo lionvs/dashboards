@@ -48,9 +48,7 @@
   <ItemGroup>
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\DashboardContext.cs" />
-    <Compile Include="Models\DataSource.cs" />
     <Compile Include="Models\Mapping\DashboardMap.cs" />
-    <Compile Include="Models\Mapping\DataSourceMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

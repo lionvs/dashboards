@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace DataVis.Data.Models.Mapping
@@ -34,6 +33,7 @@ namespace DataVis.Data.Models.Mapping
             this.Property(t => t.Title).HasColumnName("Title");
             this.Property(t => t.Config).HasColumnName("Config");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DataSource).HasColumnName("DataSource");
             this.Property(t => t.UserId).HasColumnName("UserId");
         }
     }

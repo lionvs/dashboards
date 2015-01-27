@@ -54,9 +54,7 @@
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWorkFactory.cs" />
     <Compile Include="Services\DashboardService.cs" />
-    <Compile Include="Services\DataSourceService.cs" />
     <Compile Include="Services\Interfaces\IDashboardService.cs" />
-    <Compile Include="Services\Interfaces\IDataSourceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

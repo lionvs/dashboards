@@ -11,7 +11,6 @@ namespace DataVis
         {
             kernel.Bind<IXlsParser>().To<XlsParser>();
             kernel.Bind<IDataParser>().To<DataParser>();
-            kernel.Bind<IDataSourceService>().To<DataSourceService>();
             kernel.Bind<IDashboardService>().To<DashboardService>();
         }
     }

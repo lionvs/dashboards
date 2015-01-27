@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataVis.Controllers.API
 {
+    [Authorize]
     public class FileController : ApiController
     {
         private readonly IXlsParser _xlsParser;
@@ -19,7 +20,6 @@ namespace DataVis.Controllers.API
             this._dataParser = dataParser;
         }
 
-       // [Authorize]
         public List<JObject> Post()
         {
             var httpRequest = HttpContext.Current.Request;

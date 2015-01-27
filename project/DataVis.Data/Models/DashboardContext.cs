@@ -16,12 +16,10 @@ namespace DataVis.Data.Models
         }
 
         public DbSet<Dashboard> Dashboards { get; set; }
-        public DbSet<DataSource> DataSources { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DashboardMap());
-            modelBuilder.Configurations.Add(new DataSourceMap());
         }
     }
 }

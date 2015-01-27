@@ -8,16 +8,10 @@ namespace DataVis.BusinessLogic.Repositories
         private readonly DashboardContext _context = new DashboardContext();
 
         private IGenericRepository<Dashboard> _dashboardRepository;
-        private IGenericRepository<DataSource> _datasourceRepository;
 
         public IGenericRepository<Dashboard> DashboardRepository
         {
             get { return _dashboardRepository ?? (_dashboardRepository = new GenericRepository<Dashboard>(_context)); }
-        }
-
-        public IGenericRepository<DataSource> DataSourceRepository
-        {
-            get { return _datasourceRepository ?? (_datasourceRepository = new GenericRepository<DataSource>(_context)); }
         }
 
         public void Save()

@@ -36,16 +36,9 @@ namespace DataVis.Controllers.API
             return result;
         }
 
-        public JObject Get(string id)
+        public Dashboard Get(string id)
         {
-            var dashboard = _dashboardService.GetById(id);
-            return new JObject()
-            {
-                {"title", dashboard.Title},
-                {"description", dashboard.Description},
-                {"config", dashboard.Config},
-                {"id", dashboard.Id}
-            };
+            return _dashboardService.GetById(id);
         }
 
         public JObject Post(DashboardModel dashboardModel)
@@ -57,11 +50,10 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = HttpContext.Current.User.Identity.GetUserId()
+                    UserId = HttpContext.Current.User.Identity.GetUserId(),
+                    DataSource = dashboardModel.DataSource
                 };
-                if (dashboardModel.Description != null)
-                    dashboard.Description = dashboardModel.Description;
-                var addedDashboard = _dashboardService.Add(dashboard);
+                _dashboardService.Add(dashboard);
                 return new JObject { { "success", true } };
             }
             else return new JObject { { "success", false } };
