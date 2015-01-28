@@ -1,29 +1,9 @@
 ﻿var moduleFilters = function () {
     
-    var config = {
-        title: {
-            key: 'City',               //must take from UI or sandbox
-            validArr: []
-        },
-        x: {
-            key: 'Month',               //must take from UI or sandbox
-            min: (-Infinity),
-            max: (Infinity),
-            indexOfMin: (-Infinity),
-            indexOfMax: (Infinity)
-        },
-        y: {
-            key: 'Temperature',               //must take from UI or sandbox
-            min: (-Infinity),
-            max: (Infinity)
-        },
-        originalDataSource: {}
-    }
-
     var titlesArr = [];
     var valuesOfX = [];
 
-    function parseDataSource(data) {
+    function parseDataSource(data, config) {
         var titles = _.uniq(_.map(data, function (num) {
             return num[config.title.key];
         }));
@@ -35,7 +15,7 @@
         }));
     }
 
-    function readValidTitlesArr() {
+    function readValidTitlesArr(config) {
         var validTitles = _.filter(titlesArr, function (num) {
             return num.isValid;
         });
@@ -44,42 +24,42 @@
         });
     }
 
-    function hasValidTitle(num) {
+    function hasValidTitle(num, config) {
         return _.contains(config.title.validArr, num[config.title.key]);
     }
 
-    function hasValidXWhenXNumber(num) {
+    function hasValidXWhenXNumber(num, config) {
         return parseInt(num[config.x.key]) >= parseInt(config.x.min)
             && parseInt(num[config.x.key]) <= parseInt(config.x.max);
     }
 
-    function hasValidXWhenXString(num) {
+    function hasValidXWhenXString(num, config) {
         return _.indexOf(valuesOfX, num[config.x.key]) >= config.x.indexOfMin
             && _.indexOf(valuesOfX, num[config.x.key]) <= config.x.indexOfMax;
     }
 
-    function hasValidY(num) {
+    function hasValidY(num, config) {
         return num[config.y.key] >= config.y.min && num[config.y.key] <= config.y.max;
     }
 
 
-    function hasValidAllPropsWhenXNumber(num) {
-        return hasValidTitle(num) && hasValidXWhenXNumber(num) && hasValidY(num);
+    function hasValidAllPropsWhenXNumber(num, config) {
+        return hasValidTitle(num, config) && hasValidXWhenXNumber(num, config) && hasValidY(num, config);
     }
 
-    function hasValidAllPropsWhenXString(num) {
-        return hasValidTitle(num) && hasValidXWhenXString(num) && hasValidY(num);
+    function hasValidAllPropsWhenXString(num, config) {
+        return hasValidTitle(num, config) && hasValidXWhenXString(num, config) && hasValidY(num, config);
     }
 
-    function filter(inputData) {
-        config.x.min = config.x.min === "" ? -Infinity : config.x.min;
-        config.x.max = config.x.max === "" ?  Infinity : config.x.max;
-        config.y.min = config.y.min === "" ? -Infinity : config.y.min;
-        config.y.max = config.y.max === "" ?  Infinity : config.y.max;
-        readValidTitlesArr();
+    function filter(inputData, config) {
+        config.x.min = config.x.min === ("" || null) ? -Infinity : config.x.min;
+        config.x.max = config.x.max === ("" || null) ?  Infinity : config.x.max;
+        config.y.min = config.y.min === ("" || null) ? -Infinity : config.y.min;
+        config.y.max = config.y.max === ("" || null) ? Infinity : config.y.max;
+        readValidTitlesArr(config);
         if (parseInt(valuesOfX[0]) == valuesOfX[0]) {
             var filteredData = _.filter(inputData, function (num) {
-                return hasValidAllPropsWhenXNumber(num);
+                return hasValidAllPropsWhenXNumber(num, config);
             });
         }
         else {
@@ -87,19 +67,19 @@
             config.x.indexOfMax = _.indexOf(valuesOfX, config.x.max);
             config.x.indexOfMax = config.x.indexOfMax === -1 ? Infinity : config.x.indexOfMax;
             var filteredData = _.filter(inputData, function (num) {
-                return hasValidAllPropsWhenXString(num);
+                return hasValidAllPropsWhenXString(num, config);
             });
         }
         return filteredData;
     }
 
-    function fillScope($scope, sb, data) {
+    function fillScope($scope, sb, data, config) {
         $scope.titlesArr = titlesArr;
         $scope.filterConfig = config;
         $scope.filterData = function() {
             var myDataSource = {};
             myDataSource.schema = sb.getDatasource().schema;
-            myDataSource.data = filter(data);
+            myDataSource.data = filter(data, config);
             var event = {
                 type: events.updatedDataSource,
                 data: myDataSource
@@ -115,15 +95,15 @@
         }
     }
 
-    function fillHtmlTemplate(sb, data) {
-        parseDataSource(data);
+    function fillHtmlTemplate(sb, data, config) {
+        parseDataSource(data, config);
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
         if (!$scope.$$phase) {
             $scope.$apply(function() {
-                fillScope($scope, sb, data);
+                fillScope($scope, sb, data, config);
             });
-        } else fillScope($scope, sb, data);
+        } else fillScope($scope, sb, data, config);
     }
 
     function createFilterUIAndData(sb, config) {
@@ -136,13 +116,32 @@
             return;
         }
 
-        fillHtmlTemplate(sb, dataSource.data);
+        fillHtmlTemplate(sb, dataSource.data, config);
         $(element).show();
     }
 
     return {
         name: "filter",
         init: function (sb) {
+            var config = {
+                title: {
+                    key: 'City',               //must take from UI or sandbox
+                    validArr: []
+                },
+                x: {
+                    key: 'Month',               //must take from UI or sandbox
+                    min: null,
+                    max: null,
+                    indexOfMin: null,
+                    indexOfMax: null
+                },
+                y: {
+                    key: 'Temperature',               //must take from UI or sandbox
+                    min: null,
+                    max: null
+                },
+                originalDataSource: {}
+            }
             sb.listen(events.uploadedDataSource, function (dataSource) {
                 config.originalDataSource = dataSource;
             });
