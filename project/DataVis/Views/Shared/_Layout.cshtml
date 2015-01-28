@@ -34,6 +34,7 @@
     <script>
         var application = angular.module('application', ['ui.bootstrap']);
     </script>
+    <script src="/Scripts/angularControllers/modalInputController.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -59,8 +60,8 @@
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     <div class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></div>
-                    <div id="mySelect">
-                        <div class="navbar-form" ng-controller="headerDashboardSelector">
+                    <div id="mySelect" ng-controller="headerController">
+                        <div class="navbar-form">
                             <form class="form-inline">
                                 <div class="form-group">
                                     <label class='control-label'>Current Dashboard: </label>
@@ -98,4 +99,4 @@
         });
     }
 </script>
-<script src="/Scripts/angularControllers/headerDashboardSelector.js"></script>
+<script src="/Scripts/angularControllers/headerController.js"></script>

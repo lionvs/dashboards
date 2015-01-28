@@ -38,13 +38,14 @@ function register(username, password, password2) {
     });
 }
 
-function saveDashboard() {
+function saveDashboard(title,description) {
     user.setHeaders();
 
     var dashboard = {
-        Title: "A U T I S T I K B O Y S",
+        Title: title,
         Config: JSON.stringify(core.getGlobalConfig()),
-        Description: null
+        Description: description,
+        DataSource: JSON.stringify(core.getDatasource())
     }
 
     $.ajax({
@@ -60,4 +61,21 @@ function saveDashboard() {
     }).fail(function (resp) {
         alert(resp.status + ": " + resp.statusText);
     });
+}
+
+function getListDashboards() {
+    var result;
+    user.setHeaders();
+    $.ajax({
+        headers: user.headers,
+        dataType: "json",
+        type: 'GET',
+        url: '/api/dashboard',
+        async: false
+    }).done(function (resp) {
+        result = resp;
+    }).fail(function (resp) {
+        alert(resp.status + ": " + resp.statusText);
+    });
+    return result;
 }
