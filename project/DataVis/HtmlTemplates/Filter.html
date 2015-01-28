@@ -1,11 +1,11 @@
-﻿<label class="rangeBorderLbl">Min X</label>                                  
-<input type="text" class="rangeBorderTxt" ng-model="filterConfig.x.min">      
-<br /><label class="rangeBorderLbl">Max X</label>                             
-<input type="text" class="rangeBorderTxt" ng-model="filterConfig.x.max">      
-<br /><label class="rangeBorderLbl">Min Y</label>                             
-<input type="text" class="rangeBorderTxt" ng-model="filterConfig.y.min">      
-<br /><label class="rangeBorderLbl">Max Y</label>                             
-<input type="text" class="rangeBorderTxt" ng-model="filterConfig.y.max">      
+﻿<span class="rangeBorderLbl">Min X</span>
+<br /><input type="text" class="rangeBorderTxt" ng-model="filterConfig.x.min">
+<br /><span class="rangeBorderLbl">Max X</span>
+<br /><input type="text" class="rangeBorderTxt" ng-model="filterConfig.x.max">
+<br /><span class="rangeBorderLbl">Min Y</span>
+<br /><input type="text" class="rangeBorderTxt" ng-model="filterConfig.y.min">
+<br /><span class="rangeBorderLbl">Max Y</span>
+<br /><input type="text" class="rangeBorderTxt" ng-model="filterConfig.y.max">      
 <div id="filterTableWrapper">
     <div id="filterTableScroll">
         <table>                                
@@ -16,5 +16,5 @@
         </table>                                                              
     </div>                                                                    
 </div>                                                                        
-<br /><input type="button" value="Filter Data" ng-click="filterData()">  
-<br /><input type="button" value="Reset Data" ng-click="resetDataSource()">
+<br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterData()">  
+<br /><input type="button" class="filterBtn" value="Reset Data" ng-click="resetDataSource()">
