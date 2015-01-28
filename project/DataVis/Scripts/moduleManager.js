@@ -28,6 +28,11 @@
             });
             return moduleWithinCurrentElement.module.getConfig();
         },
+        getElements: function() {
+            return _.map(runningModules, function(module) {
+                return module.element;
+            });
+        },
         getGlobalConfig: function() {
             var globalConfig = _.map(runningModules, function (module) {
                 var offset = $(module.element).offset();
