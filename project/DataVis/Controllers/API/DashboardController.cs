@@ -51,6 +51,7 @@ namespace DataVis.Controllers.API
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
                     UserId = HttpContext.Current.User.Identity.GetUserId(),
+                    Description = dashboardModel.Description,
                     DataSource = dashboardModel.DataSource
                 };
                 _dashboardService.Add(dashboard);

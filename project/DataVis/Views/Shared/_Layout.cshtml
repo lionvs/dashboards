@@ -65,7 +65,7 @@
                             <form class="form-inline">
                                 <div class="form-group">
                                     <label class='control-label'>Current Dashboard: </label>
-                                    <select class='form-control header' ng-model='dashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='Update()'></select>
+                                    <select class='form-control header' ng-model='currentDashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='changeCurrentDashboard()'></select>
                                 </div>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
