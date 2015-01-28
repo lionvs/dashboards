@@ -472,4 +472,3 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\obj\Debug\DataVis.csproj.ResolveComReference.cache
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
 C:\Users\byaretc\Desktop\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
-\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll

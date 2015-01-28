@@ -50,15 +50,13 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = HttpContext.Current.User.Identity.GetUserId()
+                    UserId = HttpContext.Current.User.Identity.GetUserId(),
+                    DataSource = dashboardModel.DataSource
                 };
-                if (dashboardModel.Description != null)
-                    dashboard.Description = dashboardModel.Description;
-                var addedDashboard = _dashboardService.Add(dashboard);
-                return new JObject { "id", addedDashboard.Id };
+                _dashboardService.Add(dashboard);
+                return new JObject {{ "success", true }};
             }
-            else return new JObject { "id", 5 };
-
+            else return new JObject {{ "success", false }};
         }
     }
 }
