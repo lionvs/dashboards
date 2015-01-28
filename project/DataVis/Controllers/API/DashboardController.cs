@@ -28,9 +28,9 @@ namespace DataVis.Controllers.API
             {
                 result.Add(new JObject
                 {
-                    {"title", dashboard.Title},
-                    {"description", dashboard.Description},
-                    {"id", dashboard.Id}
+                    {"Title", dashboard.Title},
+                    {"Description", dashboard.Description},
+                    {"Id", dashboard.Id}
                 });
             }
             return result;
@@ -38,7 +38,7 @@ namespace DataVis.Controllers.API
 
         public Dashboard Get(string id)
         {
-            return  _dashboardService.GetById(id);
+            return _dashboardService.GetById(id);
         }
 
         public JObject Post(DashboardModel dashboardModel)
