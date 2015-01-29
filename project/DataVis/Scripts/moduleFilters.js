@@ -1,5 +1,27 @@
 ﻿var moduleFilters = function () {
     
+    function getDefaultConfig() {
+        return {
+            title: {
+                key: null,
+                validArr: []
+            },
+            x: {
+                key: null,
+                min: null,
+                max: null,
+                indexOfMin: null,
+                indexOfMax: null
+            },
+            y: {
+                key: null,
+                min: null,
+                max: null
+            },
+            originalDataSource: {}
+        }
+    }
+
     var titlesArr = [];
     var valuesOfX = [];
 
@@ -29,8 +51,8 @@
     }
 
     function hasValidXWhenXNumber(num, config) {
-        return parseInt(num[config.x.key]) >= parseInt(config.x.min)
-            && parseInt(num[config.x.key]) <= parseInt(config.x.max);
+        return Number(num[config.x.key]) >= Number(config.x.min)
+            && Number(num[config.x.key]) <= Number(config.x.max);
     }
 
     function hasValidXWhenXString(num, config) {
@@ -52,12 +74,12 @@
     }
 
     function filter(inputData, config) {
-        config.x.min = config.x.min === ("" || null) ? -Infinity : config.x.min;
-        config.x.max = config.x.max === ("" || null) ?  Infinity : config.x.max;
-        config.y.min = config.y.min === ("" || null) ? -Infinity : config.y.min;
-        config.y.max = config.y.max === ("" || null) ? Infinity : config.y.max;
+        config.x.min = config.x.min === "" || config.x.min === null ? -Infinity : config.x.min;
+        config.x.max = config.x.max === "" || config.x.max === null ? Infinity : config.x.max;
+        config.y.min = config.y.min === "" || config.y.min === null ? -Infinity : config.y.min;
+        config.y.max = config.y.max === "" || config.y.max === null ? Infinity : config.y.max;
         readValidTitlesArr(config);
-        if (parseInt(valuesOfX[0]) == valuesOfX[0]) {
+        if (Number(valuesOfX[0]) == valuesOfX[0]) {
             var filteredData = _.filter(inputData, function (num) {
                 return hasValidAllPropsWhenXNumber(num, config);
             });
@@ -120,32 +142,24 @@
         $(element).show();
     }
 
+    function changeFilterConfigKeys(filterConfig, chartConfig) {
+        filterConfig.title.key = chartConfig.seriesName;
+        filterConfig.x.key = chartConfig.xAxis;
+        filterConfig.y.key = chartConfig.seriesData;
+    }
+
     return {
         name: "filter",
         init: function (sb) {
-            var config = {
-                title: {
-                    key: 'City',               //must take from UI or sandbox
-                    validArr: []
-                },
-                x: {
-                    key: 'Month',               //must take from UI or sandbox
-                    min: null,
-                    max: null,
-                    indexOfMin: null,
-                    indexOfMax: null
-                },
-                y: {
-                    key: 'Temperature',               //must take from UI or sandbox
-                    min: null,
-                    max: null
-                },
-                originalDataSource: {}
-            }
+            var config = getDefaultConfig();
             sb.listen(events.uploadedDataSource, function (dataSource) {
                 config.originalDataSource = dataSource;
             });
             sb.listen(events.updatedDataSource, function () {
+                createFilterUIAndData(sb, config);
+            });
+            sb.listen(events.updatedChartConfig, function (newConfig) {
+                changeFilterConfigKeys(config, newConfig);
                 createFilterUIAndData(sb, config);
             });
             createFilterUIAndData(sb, config);
