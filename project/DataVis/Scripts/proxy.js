@@ -96,3 +96,42 @@ function getDashboard(id) {
     });
     return result;
 }
+
+function openFile() {
+    user.setHeaders();
+    var formData = new FormData();
+    var opmlFile = $(fileToUpload)[0];
+    var ext = opmlFile.value.substring(opmlFile.value.lastIndexOf('.') + 1);
+    if (ext == "xlsx") {
+        formData.append("opmlFile", opmlFile.files[0]);
+
+        $.ajax({
+            url: '/api/File',
+            type: 'POST',
+            data: formData,
+            async: true,
+            contentType: false,
+            processData: false,
+            headers: user.headers
+        }).done(function (resp) {
+            var myDataSource = {};
+            myDataSource.data = resp;
+            myDataSource.schema = getSchema(myDataSource.data);
+            var event = {
+                type: events.uploadedDataSource,
+                data: myDataSource
+            }
+            sandBox.create().notify(event);
+            event.type = events.updatedDataSource;
+            sandBox.create().notify(event);
+        }).fail(function (resp) {
+            alert(resp.status + ": " + resp.statusText);
+        });
+    } else {
+        alert("chose .xlsx file");
+    }
+};
+
+function getSchema(data) {
+    return _.keys(data[0]);
+}

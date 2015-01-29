@@ -56,10 +56,10 @@
             "bar"
         ];
 
-        config.chartType = chartTypeOptions[0];
-        config.xAxis = schema[0];
-        config.seriesName = schema[1];
-        config.seriesData = schema[2];
+        //config.chartType = chartTypeOptions[0];
+        //config.xAxis = schema[0];
+        //config.seriesName = schema[1];
+        //config.seriesData = schema[2];
 
         $scope.schemaOptions = schema;
         $scope.chartTypeOptions = chartTypeOptions;

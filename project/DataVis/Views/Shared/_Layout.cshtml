@@ -64,6 +64,15 @@
                         <div class="navbar-form">
                             <form class="form-inline">
                                 <div class="form-group">
+                                    <span class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                            Data
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                            <li class="btn-file">Open file <input type="file" id="fileToUpload" onchange="openFile();"></li>
+                                        </ul>
+                                    </span>
                                     <label class='control-label'>Current Dashboard: </label>
                                     <select class='form-control header' ng-model='currentDashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='changeCurrentDashboard()'></select>
                                 </div>
