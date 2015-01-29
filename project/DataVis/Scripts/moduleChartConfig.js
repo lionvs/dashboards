@@ -1,13 +1,30 @@
 ﻿var moduleChartConfig = function () {
 
+    chartTypeOptions = [
+    "line",
+    "scatter",
+    "column",
+    "spline",
+    "area",
+    "areaspline",
+    "bar"
+    ];
+
+    zoomOptions = [
+            "",
+            "x",
+            "y",
+            "x and y"
+        ];
+
     function getDefaultConfig() {
         return {
             title: "Title",
             xAxis: "",
             seriesName: "",
             seriesData: "",
-            chartType: "",
-            zoomType: "",
+            chartType: chartTypeOptions[3],
+            zoomType: zoomOptions[0],
             panning: true,
             panKey: 'shift',
             inverted: false,
@@ -46,33 +63,10 @@
             isFirstDisabled: false
         };
 
-        chartTypeOptions = [
-            "line",
-            "scatter",
-            "column",
-            "spline",
-            "area",
-            "areaspline",
-            "bar"
-        ];
-
-        //config.chartType = chartTypeOptions[0];
-        //config.xAxis = schema[0];
-        //config.seriesName = schema[1];
-        //config.seriesData = schema[2];
-
         $scope.schemaOptions = schema;
         $scope.chartTypeOptions = chartTypeOptions;
         $scope.config = config;
-
-        $scope.zoomOptions = [
-            "",
-            "x",
-            "y",
-            "x and y"
-        ];
-        $scope.zoomSelect = $scope.zoomOptions[0];
-
+        $scope.zoomOptions = zoomOptions;
 
         $scope.chartConfigUpdate = function() {
             var element = sb.getContainer();

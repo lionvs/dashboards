@@ -11,6 +11,5 @@
         core.setDataSource(data);
         var globalConfig = JSON.parse(getDashboard(id)["Config"]);
         core.setGlobalConfig(globalConfig, document.getElementById("dashboard"));
-        var t = l;
     };
 });

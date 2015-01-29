@@ -42,7 +42,7 @@ thead, tbody {
     display: block;
 }
 
-#dataTable {
+.dataTable {
     float: left;
     height: 350px;
 }
@@ -51,7 +51,7 @@ thead, tbody {
     overflow: hidden;
 }
 
-#dataTable tbody {
+.dataTable tbody {
     height: 350px;
     width: auto;
     overflow-y: auto;
@@ -80,7 +80,8 @@ display: block;
 }
 
 .filter{
-    float: right; 
+    float: right;
+    position: absolute; 
     border-width: 2px;
     border-style: ridge; 
     border-radius: 4px;
