@@ -38,24 +38,40 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-thead, tbody {
-    display: block;
+.highChart {
+    position: absolute;
 }
 
-.dataTable {
-    float: left;
-    height: 350px;
+.chartConfig {
+    position: absolute;
 }
+.dataTable {
+    width: 500px;
+    height: 400px;
+    min-width: 100px;
+    min-height: 100px;
+    position: absolute;
+}
+.tableContainer {
+    position: absolute;
+    top: 25px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
 
 #chart {
     overflow: hidden;
 }
 
-.dataTable tbody {
-    height: 350px;
-    width: auto;
-    overflow-y: auto;
-    overflow-x: auto;
+td {
+    padding: 5px;
+    margin: 0px;
+    border: 1px solid gray;
 }
 
 

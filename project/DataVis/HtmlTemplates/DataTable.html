@@ -1,9 +1,11 @@
-﻿<table class="table table-striped" data-height="400">
+﻿<div class="tableContainer">
+    <table class="table table-striped" data-height="400">
 
-    <tr>
-        <th ng-repeat="schemaItem in schema">{{schemaItem}}</th>                   
-    </tr>                                                                          
-    <tr ng-repeat="dataItem in data">
-        <td ng-repeat="schemaItem in schema">{{dataItem[schemaItem]}}</td>         
-    </tr>                                                                          
-</table>
+        <tr>
+            <th ng-repeat="schemaItem in schema">{{schemaItem}}</th>
+        </tr>
+        <tr ng-repeat="dataItem in data">
+            <td ng-repeat="schemaItem in schema">{{dataItem[schemaItem]}}</td>
+        </tr>
+    </table>
+</div>

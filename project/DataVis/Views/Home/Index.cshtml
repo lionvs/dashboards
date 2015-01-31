@@ -2,9 +2,8 @@
     <div id="dashboard">
         <div id="dataTable" class="dataTable"></div>
         <div id="filter" class="filter" align="center"></div>
-        <div id="chart"></div>
+        <div id="chart" class="highChart"></div>
         <div id="chartConfig" class="chartConfig"></div>
-        <div id="uploadData"></div>
     </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="modalInputController">
@@ -46,7 +45,6 @@
     var core = core(sandBox, eventManager, moduleManager);
 
     core.registerModule(moduleUploadData);
-    core.startModule(moduleUploadData.name, document.getElementById("uploadData"));
 
     core.registerModule(moduleDataTable);
     core.startModule(moduleDataTable.name, document.getElementById("dataTable"));
