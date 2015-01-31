@@ -5,6 +5,17 @@
         schema: []
     }
 
+    function createAngularElement(container, classTitle) {
+        var element = angular.element(container);
+        element.append("<div class='" + classTitle + "'></div>");
+        var $injector = element.injector();
+        var addedDiv = angular.element(container.lastChild);
+        var $scope = addedDiv.scope();
+        var $compile = $injector.get('$compile');
+        $compile(addedDiv)($scope);
+        $scope.$apply();
+        return container.lastChild;
+    }
 
     return {
         registerModule: function (module) {
@@ -57,18 +68,10 @@
         setGlobalConfig: function (globalConfig, container) {
             this.stopAllModules();
             container.innerHTML = "";
-            var element = angular.element(container);
             _.each(globalConfig, function(config) {
-                element.append("<div class='" + config.name + "'></div>");
-                var $injector = element.injector();
-                var divs = container.querySelectorAll('div');
-                var addedDiv = angular.element(divs[divs.length - 1]);
-                var $scope = addedDiv.scope();
-                var $compile = $injector.get('$compile');
-                $compile(addedDiv)($scope);
-                $scope.$apply();
-                this.startModule(config.name, container.lastChild,config.position);
-                this.setConfig(container.lastChild, config.config);
+                var element = createAngularElement(container, config.name);
+                this.startModule(config.name, element,config.position);
+                this.setConfig(element, config.config);
             }, this);
         },
         setDataSource: function(newDataSource) {
