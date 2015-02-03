@@ -1,41 +1,39 @@
-﻿var core = function (sandbox, eventManager, moduleManager) {
+﻿var core = function (sandbox, eventManager, widgetManager,toolBox) {
     var registeredModules = {};
     var dataSource = {
         data: [],
         schema: []
     }
 
-    function createAngularElement(container, classTitle) {
-        var element = angular.element(container);
-        element.append("<div class='" + classTitle + "'></div>");
-        var $injector = element.injector();
-        var addedDiv = angular.element(container.lastChild);
-        var $scope = addedDiv.scope();
-        var $compile = $injector.get('$compile');
-        $compile(addedDiv)($scope);
-        $scope.$apply();
-        return container.lastChild;
-    }
+    
 
     return {
-        registerModule: function (module) {
-            registeredModules[module.name] = module;
+        registerWidget: function (widget) {
+            registeredModules[widget.name] = widget;
+            toolBox.addWidget(widget.imgUrl, widget.name);
         },
 
-        startModule: function (moduleName, element,position) {
+        startWidget: function (widgetName, element, position) {
+            if (!registeredModules[widgetName])
+                return;
             var sb = sandBox.create(element);
-            var moduleInstance = registeredModules[moduleName].init(sb);
-            moduleManager.addModule(moduleInstance, element, moduleName,position);
+            var moduleInstance = registeredModules[widgetName].init(sb);
+            widgetManager.addModule(moduleInstance, element, widgetName,position);
         },
 
-        stopModule: function (element) {
-            moduleManager.removeModule(element);
+        startModule:function(module,element) {
+            var sb = sandBox.create(element);
+            module.init(sb);
+        },
+
+        stopWidget: function (element) {
+            widgetManager.removeModule(element);
             eventManager.unRegisterAllEvents(element);
         },
 
-        stopAllModules:function() {
-            _.each(moduleManager.getElements(), function(element) {
-                this.stopModule(element);
+        stopAllWidgets:function() {
+            _.each(widgetManager.getElements(), function(element) {
+                this.stopWidget(element);
             }, this);
         },
         registerEvent: function (eventType, eventFunc, element) {
@@ -57,20 +55,31 @@
         },
 
         setConfig: function (element, config) {
-            moduleManager.setConfig(element, config);
+            widgetManager.setConfig(element, config);
         },
         getConfig: function (element) {
-            return moduleManager.getConfig(element);
+            return widgetManager.getConfig(element);
         },
         getGlobalConfig: function() {
-            return moduleManager.getGlobalConfig();
+            return widgetManager.getGlobalConfig();
+        },
+        createAngularElement: function (container, classTitle) {
+            var element = angular.element(container);
+            element.append("<div class='" + classTitle + "'></div>");
+            var $injector = element.injector();
+            var addedDiv = angular.element(container.lastChild);
+            var $scope = addedDiv.scope();
+            var $compile = $injector.get('$compile');
+            $compile(addedDiv)($scope);
+            $scope.$apply();
+            return container.lastChild;
         },
         setGlobalConfig: function (globalConfig, container) {
-            this.stopAllModules();
+            this.stopAllWidgets();
             container.innerHTML = "";
             _.each(globalConfig, function(config) {
-                var element = createAngularElement(container, config.name);
-                this.startModule(config.name, element,config.position);
+                var element = this.createAngularElement(container, config.name);
+                this.startWidget(config.name, element,config.position);
                 this.setConfig(element, config.config);
             }, this);
         },

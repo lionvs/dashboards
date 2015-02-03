@@ -28,3 +28,13 @@ C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.Data\bin\Debu
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
 C:\Users\mplakhtiy\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll.config
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.xml
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb

@@ -1,9 +1,6 @@
 ﻿<div id="main">
+    <div id="toolBox" class="toolBox"></div>
     <div id="dashboard">
-        <div id="dataTable" class="dataTable"></div>
-        <div id="filter" class="filter" align="center"></div>
-        <div id="chart" class="highChart"></div>
-        <div id="chartConfig" class="chartConfig"></div>
     </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="modalInputController">
@@ -35,27 +32,34 @@
     </div>
     
 
+
 </div>
 <script>
 
+  
     directive.create(application, "dataTable", "/HtmlTemplates/DataTable.html");
     directive.create(application, "filter", "/HtmlTemplates/Filter.html");
     directive.create(application, "chartConfig", "/HtmlTemplates/ChartConfig.html");
+    directive.create(application, "toolBox", "/HtmlTemplates/ToolBox.html");
 
-    var core = core(sandBox, eventManager, moduleManager);
 
-    core.registerModule(moduleUploadData);
+    var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
 
-    core.registerModule(moduleDataTable);
-    core.startModule(moduleDataTable.name, document.getElementById("dataTable"));
+    core.registerWidget(widgetDataTable);
+    core.registerWidget(widgetFilters);
+    core.registerWidget(widgetHighChart);
+    core.registerWidget(widgetChartConfig);
 
-    core.registerModule(moduleFilters);
-    core.startModule(moduleFilters.name, document.getElementById("filter"));
 
-    core.registerModule(moduleHighChart);
-    core.startModule(moduleHighChart.name, document.getElementById("chart"), { top: 300, left: 50});
-
-    core.registerModule(moduleChartConfig);
-    core.startModule(moduleChartConfig.name, document.getElementById("chartConfig"));
-
+    
+    
+    var currentWindowOnload = window.onload;
+    window.onload = function () {
+        if (currentWindowOnload) {
+            currentWindowOnload();
+        }
+        core.startModule(moduleDashBoard, document);
+        core.startModule(moduleDragDrop,document);
+        core.startModule(moduleToolBox, document.getElementById("toolBox"));
+    };
 </script>

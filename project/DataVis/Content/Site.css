@@ -63,11 +63,16 @@ input[type="checkbox"].input-validation-error {
     overflow: auto;
 }
 
-
 #chart {
     overflow: hidden;
 }
 
+
+#toolBox{
+    width:50px;
+    border:solid green 1px;
+    float:left;
+}
 td {
     padding: 5px;
     margin: 0px;
