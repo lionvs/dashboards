@@ -1,9 +1,27 @@
 ﻿var widgetManager = function () {
     var runningModules = [];
+    var draggableHeader = 'widgetHeader';
+    var limitTop = 30;
+    var limitLeft = 0;
     return {
         addModule: function (moduleInstance, element, name, position) {
            
-            $(element).draggable();
+            if (element.getElementsByClassName(draggableHeader)[0]) {
+                $(element).draggable({
+                    handle: "." + draggableHeader,
+                    stop: function (event, ui) {
+                        if (ui.offset.top < limitTop) {
+                            $(this).offset({ top: limitTop + 10 });
+                        }
+                        if (ui.offset.left < limitLeft) {
+                            $(this).offset({ left: limitLeft });
+                        }
+                    }
+                });
+            } 
+            else {
+                $(element).draggable();
+            }
             $(element).offset(position);
             runningModules.push({
                 module: moduleInstance,

@@ -29,6 +29,7 @@
         stopWidget: function (element) {
             widgetManager.removeModule(element);
             eventManager.unRegisterAllEvents(element);
+            $(element).remove();
         },
 
         stopAllWidgets:function() {

@@ -33,15 +33,8 @@
         var dataSource = sb.getDatasource();
         var $ = sb.require('JQuery');
 
-        if (dataSource.data.length < 1) {
-            $(element).hide();
-            return;
-        }
-
         fillHtmlTemplate(sb, dataSource.data, dataSource.schema);
         setResizable(element, config, $);
-        
-        $(element).show();
     }
 
     return {

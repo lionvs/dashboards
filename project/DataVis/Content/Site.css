@@ -50,7 +50,7 @@ input[type="checkbox"].input-validation-error {
     height: 400px;
     min-width: 100px;
     min-height: 100px;
-    position: absolute;
+    position: absolute !important;
 }
 .tableContainer {
     position: absolute;
@@ -152,4 +152,25 @@ select.form-control.header {
 
 select.form-control.modalWindow {
     width: 100%;
+}
+
+.widgetHeader {
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+    background-color: lightblue;
+    cursor: move;
+}
+.widget-header-toolbar {
+    float: right;
+    width: 15px;
+    height: 30px;
+    overflow: visible;
+}
+
+
+.close-btn a {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
 }

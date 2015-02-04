@@ -1,13 +1,22 @@
-﻿<select class="filterDropDown" ng-model="selectorFilterConfig.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
-<div id="filterTableWrapper">
-    <div id="filterTableScroll">
-        <table>
-            <tr ng-repeat="item in validationListOfValues">
-                <td><input type="checkbox" ng-model="item.isValid"></td>
-                <td>{{item.value}}</td>
-            </tr>
-        </table>
+﻿<div class="widgetHeader">
+    {{widgetName}}
+    <div class="widget-header-toolbar">
+        <span class="close-btn"><a href="" ng-click="closeWidget()">X</a></span>
+
     </div>
 </div>
-<br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterDataBySelector()">
 
+<div>
+    <select class="filterDropDown" ng-model="selectorFilterConfig.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
+    <div id="filterTableWrapper">
+        <div id="filterTableScroll">
+            <table>
+                <tr ng-repeat="item in validationListOfValues">
+                    <td><input type="checkbox" ng-model="item.isValid"></td>
+                    <td>{{item.value}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterDataBySelector()">
+</div>

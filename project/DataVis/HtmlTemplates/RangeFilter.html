@@ -1,6 +1,16 @@
-﻿<select class="filterDropDown" ng-model="rangeFilterConfig.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
-<br /><span class="rangeBorderLbl">Min</span>
-<br /><input type="text" class="rangeBorderTxt" ng-model="rangeFilterConfig.min">
-<br /><span class="rangeBorderLbl">Max</span>
-<br /><input type="text" class="rangeBorderTxt" ng-model="rangeFilterConfig.max">
-<br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterDataByRange()">
+﻿<div class="widgetHeader">
+    {{widgetName}}
+    <div class="widget-header-toolbar">
+        <span class="close-btn"><a href="" ng-click="closeWidget()">X</a></span>
+
+    </div>
+</div>
+
+<div>
+    <select class="filterDropDown" ng-model="rangeFilterConfig.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
+    <br /><span class="rangeBorderLbl">Min</span>
+    <br /><input type="text" class="rangeBorderTxt" ng-model="rangeFilterConfig.min">
+    <br /><span class="rangeBorderLbl">Max</span>
+    <br /><input type="text" class="rangeBorderTxt" ng-model="rangeFilterConfig.max">
+    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterDataByRange()">
+</div>

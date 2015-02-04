@@ -61,6 +61,8 @@
         if (currentWindowOnload) {
             currentWindowOnload();
         }
+        core.startWidget("dataTable", core.createAngularElement(document.getElementById("dashboard"), "dataTable"));
+        core.stopAllWidgets();
         core.startModule(moduleDashBoard, document);
         core.startModule(moduleDragDrop,document);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));

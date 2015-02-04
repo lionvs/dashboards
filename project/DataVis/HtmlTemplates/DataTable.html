@@ -1,11 +1,19 @@
-﻿<div class="tableContainer">
-    <table class="table table-striped" data-height="400">
+﻿<div class="widgetHeader">
+    {{widgetName}}
+    <div class="widget-header-toolbar">
+        <span class="close-btn"><a href="" ng-click="closeWidget()">X</a></span>
 
-        <tr>
-            <th ng-repeat="schemaItem in schema">{{schemaItem}}</th>
-        </tr>
-        <tr ng-repeat="dataItem in data">
-            <td ng-repeat="schemaItem in schema">{{dataItem[schemaItem]}}</td>
-        </tr>
-    </table>
+    </div>
+</div>
+
+<div class="tableContainer">
+        <table class="table table-striped" data-height="400">
+
+            <tr>
+                <th ng-repeat="schemaItem in schema">{{schemaItem}}</th>
+            </tr>
+            <tr ng-repeat="dataItem in data">
+                <td ng-repeat="schemaItem in schema">{{dataItem[schemaItem]}}</td>
+            </tr>
+        </table>
 </div>
