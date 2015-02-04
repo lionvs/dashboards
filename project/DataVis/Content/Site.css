@@ -100,8 +100,9 @@ cursor: inherit;
 display: block;
 }
 
-.filter{
-    float: right;
+.filter, .rangeFilter, .selectorFilter {
+    text-align: center;
+    align-items: center;
     position: absolute; 
     border-width: 2px;
     border-style: ridge; 
@@ -130,6 +131,10 @@ display: block;
     border-radius: 4px;
     border-width: 1px;
     border-style: ridge;
+}
+
+.filterDropDown{
+    width: 100px;
 }
 
 #filterTableWrapper {

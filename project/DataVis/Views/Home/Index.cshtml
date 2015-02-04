@@ -39,14 +39,17 @@
   
     directive.create(application, "dataTable", "/HtmlTemplates/DataTable.html");
     directive.create(application, "filter", "/HtmlTemplates/Filter.html");
+    directive.create(application, "rangeFilter", "/HtmlTemplates/RangeFilter.html");
+    directive.create(application, "selectorFilter", "/HtmlTemplates/SelectorFilter.html");
     directive.create(application, "chartConfig", "/HtmlTemplates/ChartConfig.html");
     directive.create(application, "toolBox", "/HtmlTemplates/ToolBox.html");
-
 
     var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
 
     core.registerWidget(widgetDataTable);
     core.registerWidget(widgetFilters);
+    core.registerWidget(widgetRangeFilter);
+    core.registerWidget(widgetSelectorFilter);
     core.registerWidget(widgetHighChart);
     core.registerWidget(widgetChartConfig);
 
