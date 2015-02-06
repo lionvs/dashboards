@@ -1,27 +1,37 @@
-﻿<accordion close-others='oneAtATime'>
-    <accordion-group is-open='status.open'>
-        <accordion-heading>
-            Chart Options 
-        </accordion-heading>
-        <label>Title</label><input type='text' ng-model='config.title' class='form-control' ng-change='chartConfigUpdate()'>
-        <label>Zoom</label><select class='form-control' ng-model='config.zoomType' ng-options='opt as opt for opt in zoomOptions' ng-change='chartConfigUpdate()'></select>
-    </accordion-group>
-    <accordion-group is-open='status.isFirstOpen' is-disabled='status.isFirstDisabled'>
-        <accordion-heading>
-            Data Chart Config 
-        </accordion-heading>
-        <p>
-            <label class='col-sm-2 control-label'>X Axis</label><select class='form-control' ng-model='config.xAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
-        </p>
-        <p>
-            <label class='col-sm-2 control-label'>Series Names</label><select class='form-control' ng-model='config.seriesName' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
-        </p>
-        <hr />
-        <p>
-            <label class='col-sm-2 control-label'>Y Axis</label><select class='form-control' ng-model='config.seriesData' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
-        </p>
-        <p>
-            <label class='col-sm-2 control-label'>Line Type</label><select class='form-control' ng-model='config.chartType' ng-options='opt as opt for opt in chartTypeOptions' ng-change='dataConfigUpdate()'></select>
-        </p>
-    </accordion-group>
-</accordion> 
+﻿<div id="chartModule">
+    <div id="chartArea"></div>
+    <div id="chartConfigArea">
+        <button id="chartConfigButton" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Options</button>
+        <div collapse="isCollapsed">
+            <div class="well">
+                <accordion close-others='oneAtATime' class='chartConfigs'>
+                    <accordion-group is-open='status.open'>
+                        <accordion-heading>
+                            Chart Options
+                        </accordion-heading>
+                        <label>Title</label><input type='text' ng-model='config.title' class='form-control' ng-change='chartConfigUpdate()'>
+                        <label>Zoom</label><select class='form-control' ng-model='config.zoomType' ng-options='opt as opt for opt in zoomOptions' ng-change='dataConfigUpdate()'></select>
+                    </accordion-group>
+                    <accordion-group is-open='status.isFirstOpen' is-disabled='status.isFirstDisabled'>
+                        <accordion-heading>
+                            Data Chart Config
+                        </accordion-heading>
+                        <p>
+                            <label class='col-sm-2 control-label'>X Axis</label><select class='form-control' ng-model='config.xAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                        </p>
+                        <p>
+                            <label class='col-sm-2 control-label'>Series Names</label><select class='form-control' ng-model='config.seriesName' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                        </p>
+                        <hr />
+                        <p>
+                            <label class='col-sm-2 control-label'>Y Axis</label><select class='form-control' ng-model='config.seriesData' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                        </p>
+                        <p>
+                            <label class='col-sm-2 control-label'>Line Type</label><select class='form-control' ng-model='config.chartType' ng-options='opt as opt for opt in chartTypeOptions' ng-change='dataConfigUpdate()'></select>
+                        </p>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+</div>

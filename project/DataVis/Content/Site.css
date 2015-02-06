@@ -39,6 +39,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .highChart {
+    width: 700px;
     position: absolute;
 }
 
@@ -65,7 +66,12 @@ input[type="checkbox"].input-validation-error {
 }
 
 #chart {
+    width: 700px;
     overflow: hidden;
+}
+
+#chartConfigButton {
+    width: 100%;
 }
 
 

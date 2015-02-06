@@ -234,7 +234,6 @@
     <Content Include="Scripts\directive.js" />
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />
-    <Content Include="Scripts\Widgets\widgetChartConfig.js" />
     <Content Include="Scripts\Widgets\widgetDataTable.js" />
     <Content Include="Scripts\Widgets\widgetFilters.js" />
     <Content Include="Scripts\Widgets\widgetHighChart.js" />
