@@ -25,9 +25,17 @@
         }
     }
 
+    function autoScrolling(sb) {
+        var $ =sb.require("JQuery")
+        var element = sb.getContainer();
+        $(window).scroll(function () {
+            $(element).stop().animate({ "marginTop": ($(window).scrollTop()) + "px", "marginLeft": ($(window).scrollLeft()) + "px" }, "slow");
+        });
+    }
     return {
         name: "toolBox",
         init: function (sb) {
+            autoScrolling(sb);
             fillHtmlTemplate(sb);
             dragHandler(sb);
 
