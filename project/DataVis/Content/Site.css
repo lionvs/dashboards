@@ -76,8 +76,7 @@ input[type="checkbox"].input-validation-error {
 
 
 #toolBox{
-    width:50px;
-    border:solid green 1px;
+    width:auto;
     float:left;
 }
 td {

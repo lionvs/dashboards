@@ -1,1 +1,3 @@
-﻿<img ng-repeat="widget in widgets" class="tools" id="{{widget.name}}" src="/Content/Icons/{{widget.imgUrl}}.ico " draggable="true" width="50" height="50" /><!-- -->  
+﻿<ul class="list-group">
+    <li class="list-group-item" ng-repeat="widget in widgets" style="text-align:center"><img class="tools" id="{{widget.name}}" src="/Content/Icons/{{widget.imgUrl}}.ico " draggable="true" width="50" height="50" /> <br> {{widget.imgUrl}} </li>
+</ul> 
