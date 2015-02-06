@@ -50,7 +50,7 @@ input[type="checkbox"].input-validation-error {
     width: 500px;
     height: 400px;
     min-width: 100px;
-    min-height: 100px;
+    min-height: 30px;
     position: absolute !important;
 }
 .tableContainer {
@@ -170,7 +170,7 @@ select.form-control.modalWindow {
 }
 .widget-header-toolbar {
     float: right;
-    width: 30px;
+    width: 45px;
     height: 30px;
     overflow: visible;
 }
