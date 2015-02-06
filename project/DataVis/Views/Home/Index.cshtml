@@ -62,6 +62,7 @@
             currentWindowOnload();
         }
         core.startWidget("dataTable", core.createAngularElement(document.getElementById("dashboard"), "dataTable"));
+        core.startWidget(widgetHighChart.name, core.createAngularElement(document.getElementById("dashboard"), widgetHighChart.name));
         core.stopAllWidgets();
         core.startModule(moduleDashBoard, document);
         core.startModule(moduleDragDrop,document);

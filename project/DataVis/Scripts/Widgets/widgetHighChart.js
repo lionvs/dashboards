@@ -161,6 +161,7 @@
         init: function (sb) {
             var config = getDefaultConfig(sb.getDatasource());
             sb.listen(events.updatedDataSource, function () {
+                config = getDefaultConfig(sb.getDatasource());
                 createWidget(sb, config);
             });
             sb.listen(events.updatedChartConfig, function (newConfig) {
