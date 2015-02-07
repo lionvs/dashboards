@@ -1,5 +1,9 @@
 ﻿var core = function (sandbox, eventManager, widgetManager,toolBox) {
     var registeredModules = {};
+    var originalDataSource = {
+        data: [],
+        schema: []
+    }
     var dataSource = {
         data: [],
         schema: []
@@ -48,11 +52,16 @@
         triggerEvent: function (event) {
             if (event.type === events.updatedDataSource)
                 dataSource = event.data;
+            if (event.type === events.uploadedDataSource)
+                originalDataSource = event.data;
             eventManager.triggerEvent(event);
         },
 
         getDatasource: function () {
             return dataSource;
+        },
+        getOriginalDatasource: function () {
+            return originalDataSource;
         },
 
         setConfig: function (element, config) {

@@ -64,7 +64,8 @@
         core.startWidget(widgetHighChart.name, core.createAngularElement(document.getElementById("dashboard"), widgetHighChart.name));
         core.stopAllWidgets();
         core.startModule(moduleDashBoard, document);
-        core.startModule(moduleDragDrop,document);
+        core.startModule(moduleDragDrop, document);
+        core.startModule(moduleFilterLogic, document);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));
     };
 </script>

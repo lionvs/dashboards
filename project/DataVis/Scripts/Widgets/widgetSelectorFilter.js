@@ -2,6 +2,7 @@
 
     function getDefaultConfig() {
         return {
+            type: "selectorFilter",
             key: null,
             validValues: []
         }
@@ -28,36 +29,23 @@
         });
     }
 
-    function isValid(num, config) {
-        return _.contains(config.validValues, num[config.key]);
-    }
-
-    function filter(inputData, config) {
-        readValidValues(inputData, config);
-        var filteredData = _.filter(inputData, function (num) {
-            return isValid(num, config);
-        });
-        return filteredData;
-    }
 
     function fillScope($scope, sb, data, config) {
-        $scope.selectorFilterConfig = config;
-        $scope.schemaOptions = sb.getDatasource().schema;
-        $scope.validationListOfValues = validationListOfValues;
-        $scope.getListOfValues = function () {
-            getListOfValues(data, config);
-            fillScope($scope, sb, data, config);
-        };
-        $scope.filterDataBySelector = function () {
-            var myDataSource = {};
-            myDataSource.schema = sb.getDatasource().schema;
-            myDataSource.data = filter(data, config);
-            var event = {
-                type: events.updatedDataSource,
-                data: myDataSource
-            }
-            sb.notify(event);
-        };
+            $scope.schemaOptions = sb.getOriginalDatasource().schema;
+            $scope.selectorFilterConfig = config;
+            $scope.filterDataBySelector = function () {
+                readValidValues(data, config);
+                var event = {
+                    type: events.updatedFilterConfig,
+                    data: config
+                }
+                sb.notify(event);
+            };
+            $scope.getListOfValues = function () {
+                getListOfValues(data, config);
+                fillScope($scope, sb, data, config);
+            };   
+            $scope.validationListOfValues = validationListOfValues; 
     }
 
     function fillHtmlTemplate(sb, data, config) {
@@ -69,7 +57,7 @@
 
     function createFilterUIAndData(sb, config) {
         var element = sb.getContainer();
-        var dataSource = sb.getDatasource();
+        var dataSource = sb.getOriginalDatasource();
         var $ = sb.require('JQuery');
 
         if (dataSource.data.length < 1) {
@@ -85,7 +73,7 @@
         name: "selectorFilter",
         init: function (sb) {
             var config = getDefaultConfig();
-            sb.listen(events.updatedDataSource, function () {
+            sb.listen(events.uploadedDataSource, function () {
                 createFilterUIAndData(sb, config);
             });
             createFilterUIAndData(sb, config);

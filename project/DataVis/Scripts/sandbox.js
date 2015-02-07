@@ -21,6 +21,9 @@
             getDatasource: function () {
                 return core.getDatasource();
             },
+            getOriginalDatasource: function () {
+                return core.getOriginalDatasource();
+            },
             require: function (library) {
                 return libraries[library];
             }
