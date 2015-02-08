@@ -41,7 +41,7 @@ namespace DataVis.Controllers.API
             return _dashboardService.GetById(id);
         }
 
-        public JObject Post(DashboardModel dashboardModel)
+        public IHttpActionResult Post(DashboardModel dashboardModel)
         {
             if (ModelState.IsValid)
             {
@@ -55,9 +55,9 @@ namespace DataVis.Controllers.API
                     DataSource = dashboardModel.DataSource
                 };
                 _dashboardService.Add(dashboard);
-                return new JObject {{ "success", true }};
+                return Ok();
             }
-            else return new JObject {{ "success", false }};
+            else return BadRequest();
         }
 
         public IHttpActionResult Delete(string id)
@@ -73,20 +73,17 @@ namespace DataVis.Controllers.API
             }
         }
 
-        public IHttpActionResult Put(Dashboard dashboard)
+        public IHttpActionResult Put(string id, DashboardModel dashboard)
         {
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _dashboardService.Update(dashboard);
-                    return Ok();
-                }
-                catch
-                {
-                    return BadRequest();
-                }
+                var currDashboard = _dashboardService.GetById(id);
+                currDashboard.Config = dashboard.Config;
+                currDashboard.DataSource = dashboard.DataSource;
+                currDashboard.Title = dashboard.Title;
+                currDashboard.Description = dashboard.Description;
+                _dashboardService.Update(currDashboard);
+                return Ok();
             }
             else return BadRequest();
         }

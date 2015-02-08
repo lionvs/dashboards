@@ -470,7 +470,6 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\bin\System.Web.Http.WebHost.xml
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\project\DataVis\obj\Debug\DataVis.csproj.ResolveComReference.cache
-D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
 E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis\bin\DataVis.BusinessLogic.dll
 E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis\bin\DataVis.Data.dll
 E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis\bin\Microsoft.AspNet.Identity.Core.dll

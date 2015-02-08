@@ -6,7 +6,7 @@
 
     $scope.changeCurrentDashboard = function () {
         $scope.currentDashboardObject = _.filter(storedDashboards, function (dashboard) {
-            return (dashboard["Title"] === $scope.currentDashboard)
+            return (dashboard["Title"] === $scope.currentDashboard);
         })[0];
         if ($scope.currentDashboard === "") {
             $scope.saveEditDashboardButton = "Save";
@@ -21,7 +21,7 @@
 
     $scope.deleteDashboard = function () {
         var id = _.filter(storedDashboards, function (dashboard) {
-            return (dashboard["Title"] === $scope.currentDashboard)
+            return (dashboard["Title"] === $scope.currentDashboard);
         })[0]["Id"];
         deleteDashboard(id);
         $timeout(function () {

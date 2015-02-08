@@ -81,7 +81,7 @@
                                     <select class='form-control header' ng-model='currentDashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='changeCurrentDashboard()'></select>
                                 </div>
 
-                                <button type="button" class="btn btn-primary btn-sm" ng-click="saveEditDashboard()">
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="saveEditDashboard()" value="Save">
                                     {{saveEditDashboardButton}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" ng-click="deleteDashboard()" ng-show="showDeleteButton">

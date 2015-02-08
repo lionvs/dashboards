@@ -11,7 +11,7 @@
             $rootScope.$broadcast("newDashboard");
             $scope.closeModal();
         } else {
-            editDashboard($scope.inputDashboardName, $scope.inputDashboardDescription);
+            editDashboard(getCurrentDashboard["Id"], $scope.inputDashboardName, $scope.inputDashboardDescription);
             $rootScope.$broadcast("newDashboard");
             $scope.closeModal();
         }

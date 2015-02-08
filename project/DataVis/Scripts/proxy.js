@@ -105,13 +105,13 @@ function deleteDashboard(id) {
         url: '/api/dashboard/' + id,
         async: false
     }).done(function () {
-        alert("ZBS");
+        alert("done");
     }).fail(function (resp) {
         alert(resp.status + ": " + resp.statusText);
     });
 }
 
-function editDashboard(title, description) {
+function editDashboard(id, title, description) {
     var dashboard = {
         Title: title,
         Config: JSON.stringify(core.getGlobalConfig()),
@@ -121,7 +121,7 @@ function editDashboard(title, description) {
     $.ajax({
         headers: user.headers,
         type: 'PUT',
-        url: '/api/dashboard',
+        url: '/api/dashboard/' +id,
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(dashboard)
     }).done(function () {
@@ -137,7 +137,7 @@ function openFile() {
     var opmlFile = $(fileToUpload)[0];
     var ext = opmlFile.value.substring(opmlFile.value.lastIndexOf('.') + 1);
     if (ext == "xlsx") {
-        formData.append("opmlFile", opmlFile.files[0]);
+        formData.append(opmlFile, opmlFile.files[0]);
 
         $.ajax({
             url: '/api/File',
@@ -158,6 +158,7 @@ function openFile() {
             sandBox.create().notify(event);
             event.type = events.updatedDataSource;
             sandBox.create().notify(event);
+            alert("done");
         }).fail(function (resp) {
             alert(resp.status + ": " + resp.statusText);
         });
