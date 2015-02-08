@@ -40,8 +40,8 @@
             dragHandler(sb);
 
         },
-        addWidget:function(imgUrl, name) {
-            widgets.push({ imgUrl: imgUrl, name: name });
+        addWidget:function(imgUrl, name,title) {
+            widgets.push({ imgUrl: imgUrl, name: name ,title: title});
         }
     }
 }();

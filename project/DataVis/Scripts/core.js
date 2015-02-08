@@ -14,7 +14,7 @@
     return {
         registerWidget: function (widget) {
             registeredModules[widget.name] = widget;
-            toolBox.addWidget(widget.imgUrl, widget.name);
+            toolBox.addWidget(widget.imgUrl, widget.name,widget.title);
         },
 
         startWidget: function (widgetName, element, position) {

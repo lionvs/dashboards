@@ -180,7 +180,8 @@
                 }
             }
         },
-        imgUrl: "Chart"
+        imgUrl: "Chart",
+        title: "chart"
     }
 }();
 

@@ -76,6 +76,7 @@
                 }
             }
         },
-        imgUrl: "SelectorFilter"
+        imgUrl: "SelectorFilter",
+        title: "selector filter"
     }
 }();

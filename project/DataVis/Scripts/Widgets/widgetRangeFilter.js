@@ -75,6 +75,7 @@
                 }
             }
         },
-        imgUrl: "RangeFilter"
+        imgUrl: "RangeFilter",
+        title: "range filter"
     }
 }();

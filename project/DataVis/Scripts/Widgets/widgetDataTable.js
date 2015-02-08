@@ -58,7 +58,8 @@
                 }
             }
         },
-        imgUrl: "DataTable"
+        imgUrl: "DataTable",
+        title: "This is table for showing data that is currently in use"
     }
 }();
 
