@@ -16,6 +16,7 @@
     <script src="/Scripts/Libraries/modernizr-2.6.2.js"></script>
     <script src="/Scripts/Libraries/bootstrap.js"></script>
     <script src="/Scripts/Libraries/respond.js"></script>
+    <script src="/Scripts/Libraries/notify.js"></script>
     <script src="/Scripts/events.js"></script>
     <script src="/Scripts/sandbox.js"></script>
     <script src="/Scripts/core.js"></script>
@@ -110,7 +111,7 @@
             sessionStorage.removeItem(user.tokenKey);
             location.reload();
         }).fail(function (resp) {
-            alert(resp.status + ": " + resp.statusText);
+            $.notify(resp.status + ": " + resp.statusText);
         });
     }
 </script>

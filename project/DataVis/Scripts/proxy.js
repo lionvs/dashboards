@@ -15,7 +15,7 @@
         sessionStorage.setItem("username", data.userName);
         window.location.href = '/home/index';
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
 }
 
@@ -34,7 +34,7 @@ function register(username, password, password2) {
     }).done(function () {
         login(data.UserName, data.Password);
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
 }
 
@@ -56,10 +56,10 @@ function saveDashboard(title, description) {
         data: JSON.stringify(dashboard)
     }).done(function (resp) {
         if (resp.success === true)
-            alert("done");
-        else alert("error");
+            $.notify("done");
+        else $.notify("error");
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
 }
 
@@ -75,7 +75,7 @@ function getListDashboards() {
     }).done(function (resp) {
         result = resp;
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
     return result;
 }
@@ -92,7 +92,7 @@ function getDashboard(id) {
     }).done(function (resp) {
         result = resp;
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
     return result;
 }
@@ -105,9 +105,9 @@ function deleteDashboard(id) {
         url: '/api/dashboard/' + id,
         async: false
     }).done(function () {
-        alert("done");
+        $.notify("done");
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
 }
 
@@ -125,9 +125,9 @@ function editDashboard(id, title, description) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(dashboard)
     }).done(function () {
-        alert("done");
+        $.notify("done");
     }).fail(function (resp) {
-        alert(resp.status + ": " + resp.statusText);
+        $.notify(resp.status + ": " + resp.statusText);
     });
 }
 
@@ -158,12 +158,12 @@ function openFile() {
             sandBox.create().notify(event);
             event.type = events.updatedDataSource;
             sandBox.create().notify(event);
-            alert("done");
+            $.notify("done");
         }).fail(function (resp) {
-            alert(resp.status + ": " + resp.statusText);
+            $.notify(resp.status + ": " + resp.statusText);
         });
     } else {
-        alert("chose .xlsx file");
+        $.notify("chose .xlsx file");
     }
 };
 
