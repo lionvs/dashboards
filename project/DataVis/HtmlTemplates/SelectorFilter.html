@@ -11,12 +11,12 @@
     <div id="filterTableWrapper">
         <div id="filterTableScroll">
             <table>
-                <tr ng-repeat="item in validationListOfValues">
+                <tr ng-repeat="item in selectorFilterConfig.validationListOfValues">
                     <td><input type="checkbox" ng-model="item.isValid"></td>
                     <td>{{item.value}}</td>
                 </tr>
             </table>
         </div>
     </div>
-    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="filterDataBySelector()">
+    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="sendFilterConfig()">
 </div>

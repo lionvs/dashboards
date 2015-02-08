@@ -106,7 +106,7 @@ cursor: inherit;
 display: block;
 }
 
-.filter, .rangeFilter, .selectorFilter {
+.rangeFilter, .selectorFilter {
     text-align: center;
     align-items: center;
     position: absolute; 

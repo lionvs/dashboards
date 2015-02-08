@@ -4,37 +4,26 @@
         return {
             type: "selectorFilter",
             key: null,
+            validationListOfValues: [],
             validValues: []
         }
     }
 
     var listOfValues = [];
-    var validationListOfValues = [];
 
     function getListOfValues(data, config) {
         listOfValues = _.uniq(_.map(data, function (num) {
             return num[config.key];
         }));
-        validationListOfValues = _.map(listOfValues, function (num) {
+        config.validationListOfValues = _.map(listOfValues, function (num) {
             return { value: num, isValid: true };
         });
     }
 
-    function readValidValues(data, config) {
-        var validValues = _.filter(validationListOfValues, function (num) {
-            return num.isValid;
-        });
-        config.validValues = _.map(validValues, function (num) {
-            return num.value;
-        });
-    }
-
-
     function fillScope($scope, sb, data, config) {
             $scope.schemaOptions = sb.getOriginalDatasource().schema;
             $scope.selectorFilterConfig = config;
-            $scope.filterDataBySelector = function () {
-                readValidValues(data, config);
+            $scope.sendFilterConfig = function () {
                 var event = {
                     type: events.updatedFilterConfig,
                     data: config
@@ -45,7 +34,6 @@
                 getListOfValues(data, config);
                 fillScope($scope, sb, data, config);
             };   
-            $scope.validationListOfValues = validationListOfValues; 
     }
 
     function fillHtmlTemplate(sb, data, config) {

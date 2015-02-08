@@ -1,5 +1,14 @@
 ﻿var moduleFilterLogic = function () {
 
+    function readValidValuesForSelector(config) {
+        var validValues = _.filter(config.validationListOfValues, function (num) {
+            return num.isValid;
+        });
+        config.validValues = _.map(validValues, function (num) {
+            return num.value;
+        });
+    }
+
     function isValid(num, config) {
         return _.contains(config.validValues, num[config.key]);
     }
@@ -35,6 +44,7 @@
     }
 
     function filterBySelector(inputData, config) {
+        readValidValuesForSelector(config);
         var filteredData = _.filter(inputData, function (num) {
             return isValid(num, config);
         });
@@ -54,9 +64,20 @@
     return {
         name: "filterLogic",
         init: function (sb) {
-            sb.listen(events.updatedFilterConfig, function (newConfig) {
+            sb.listen(events.updatedFilterConfig, function () {
+                var globalConfig = core.getGlobalConfig();
+                var filterConfigs = _.filter(globalConfig, function (num) {
+                    return (num.name === "selectorFilter" || num.name === "rangeFilter");
+                });
                 var inputData = sb.getOriginalDatasource().data;
-                var filteredDataSource = filter(inputData, newConfig, sb);
+                var filteredDataSource = {
+                    data: [],
+                    schema: []
+                }
+                filteredDataSource.data = inputData;
+                _.each(filterConfigs, function (num) {
+                    filteredDataSource = filter(filteredDataSource.data, num.config, sb);
+                });
                 var event = {
                     type: events.updatedDataSource,
                     data: filteredDataSource

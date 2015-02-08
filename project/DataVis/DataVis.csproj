@@ -218,7 +218,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
-    <Content Include="HtmlTemplates\Filter.html" />
     <Content Include="HtmlTemplates\RangeFilter.html" />
     <Content Include="HtmlTemplates\SelectorFilter.html" />
     <Content Include="HtmlTemplates\ToolBox.html" />
@@ -235,7 +234,6 @@
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />
     <Content Include="Scripts\Widgets\widgetDataTable.js" />
-    <Content Include="Scripts\Widgets\widgetFilters.js" />
     <Content Include="Scripts\Widgets\widgetHighChart.js" />
     <Content Include="Scripts\sandbox.js" />
     <Content Include="Scripts\Libraries\bootstrap.js" />

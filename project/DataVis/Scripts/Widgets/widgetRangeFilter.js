@@ -26,7 +26,7 @@
         $scope.getListOfValues = function () {
             getListOfValues(data, config);
         };
-        $scope.filterDataByRange = function () {
+        $scope.sendFilterConfig = function () {
             var event = {
                 type: events.updatedFilterConfig,
                 data: config
