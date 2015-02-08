@@ -21,18 +21,20 @@
     }
 
     function fillScope($scope, sb, data, config) {
-        $scope.rangeFilterConfig = config;
-        $scope.schemaOptions = sb.getOriginalDatasource().schema;
-        $scope.getListOfValues = function () {
-            getListOfValues(data, config);
-        };
-        $scope.sendFilterConfig = function () {
-            var event = {
-                type: events.updatedFilterConfig,
-                data: config
-            }
-            sb.notify(event);
-        };
+        $scope.$apply(function () {
+            $scope.rangeFilterConfig = config;
+            $scope.schemaOptions = sb.getOriginalDatasource().schema;
+            $scope.getListOfValues = function () {
+                getListOfValues(data, config);
+            };
+            $scope.sendFilterConfig = function () {
+                var event = {
+                    type: events.updatedFilterConfig,
+                    data: config
+                }
+                sb.notify(event);
+            };
+        });
     }
 
     function fillHtmlTemplate(sb, data, config) {

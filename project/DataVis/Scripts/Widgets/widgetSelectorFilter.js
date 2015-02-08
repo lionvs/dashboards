@@ -21,6 +21,7 @@
     }
 
     function fillScope($scope, sb, data, config) {
+        $scope.$apply(function () {
             $scope.schemaOptions = sb.getOriginalDatasource().schema;
             $scope.selectorFilterConfig = config;
             $scope.sendFilterConfig = function () {
@@ -32,8 +33,8 @@
             };
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
-                fillScope($scope, sb, data, config);
-            };   
+            };
+        });
     }
 
     function fillHtmlTemplate(sb, data, config) {
