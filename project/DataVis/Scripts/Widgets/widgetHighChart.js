@@ -48,8 +48,26 @@
                     pointPadding: 0.2,
                     borderWidth: 0
                 }
-            }
+            },
+            width: '250px',
+            height: '400px'
         }
+    }
+
+    function setResizable(element, config, $) {
+        $(element).width(config.width).height(config.height);
+        var chartElement = $(element).children("#chartModule").children("#chartArea");
+        $(element).resizable({
+            resize: function (e, ui) {
+                config.width = ui.size.width;
+                config.height = ui.size.height;
+                $(chartElement).highcharts().setSize(
+                    element.offsetWidth,
+                    element.offsetHeight -30,
+                    false
+                );
+            }
+        });
     }
 
     function fillHtmlTemplate(sb, data, config) {
@@ -150,10 +168,12 @@
             $(element).hide();
         else
             $(element).show();
-
+        setResizable(element, config, $);
         fillHtmlTemplate(sb, dataSource, config);
         var chartElement = $(element).children("#chartModule").children("#chartArea");
         drawChart(chartElement, dataSource, config);
+
+        
     }
 
     return {
