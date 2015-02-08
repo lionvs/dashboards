@@ -97,6 +97,40 @@ function getDashboard(id) {
     return result;
 }
 
+function deleteDashboard(id) {
+    user.setHeaders();
+    $.ajax({
+        headers: user.headers,
+        type: 'DELETE',
+        url: '/api/dashboard/' + id,
+        async: false
+    }).done(function () {
+        alert("ZBS");
+    }).fail(function (resp) {
+        alert(resp.status + ": " + resp.statusText);
+    });
+}
+
+function editDashboard(title, description) {
+    var dashboard = {
+        Title: title,
+        Config: JSON.stringify(core.getGlobalConfig()),
+        Description: description,
+        DataSource: JSON.stringify(core.getDatasource())
+    }
+    $.ajax({
+        headers: user.headers,
+        type: 'PUT',
+        url: '/api/dashboard',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dashboard)
+    }).done(function () {
+        alert("done");
+    }).fail(function (resp) {
+        alert(resp.status + ": " + resp.statusText);
+    });
+}
+
 function openFile() {
     user.setHeaders();
     var formData = new FormData();

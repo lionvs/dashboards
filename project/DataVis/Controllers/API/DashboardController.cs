@@ -59,5 +59,36 @@ namespace DataVis.Controllers.API
             }
             else return new JObject {{ "success", false }};
         }
+
+        public IHttpActionResult Delete(string id)
+        {
+            try
+            {
+                _dashboardService.Delete(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
+        public IHttpActionResult Put(Dashboard dashboard)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _dashboardService.Update(dashboard);
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
+            }
+            else return BadRequest();
+        }
     }
 }

@@ -218,6 +218,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
+    <Content Include="HtmlTemplates\ModalWindow.html" />
     <Content Include="HtmlTemplates\RangeFilter.html" />
     <Content Include="HtmlTemplates\SelectorFilter.html" />
     <Content Include="HtmlTemplates\ToolBox.html" />

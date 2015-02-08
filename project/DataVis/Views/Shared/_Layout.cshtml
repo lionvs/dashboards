@@ -38,6 +38,7 @@
         var application = angular.module('application', ['ui.bootstrap']);
     </script>
     <script src="/Scripts/angularControllers/modalInputController.js"></script>
+    <script src="/Scripts/angularControllers/headerController.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -80,8 +81,11 @@
                                     <select class='form-control header' ng-model='currentDashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='changeCurrentDashboard()'></select>
                                 </div>
 
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-                                    Save
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="saveEditDashboard()">
+                                    {{saveEditDashboardButton}}
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="deleteDashboard()" ng-show="showDeleteButton">
+                                    Delete
                                 </button>
                             </form>
                         </div>
@@ -110,4 +114,3 @@
         });
     }
 </script>
-<script src="/Scripts/angularControllers/headerController.js"></script>

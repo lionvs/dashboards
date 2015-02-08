@@ -1,0 +1,21 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title"> dashboard</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" class="form-control" ng-model="inputDashboardName">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea class="form-control" ng-model="inputDashboardDescription"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" aria-hidden="true" ng-click="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="saveDashboard()">Save</button>
+    </div>
+</div>
