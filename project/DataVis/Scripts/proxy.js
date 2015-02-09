@@ -54,10 +54,8 @@ function saveDashboard(title, description) {
         url: '/api/Dashboard',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(dashboard)
-    }).done(function (resp) {
-        if (resp.success === true)
+    }).done(function () {
             $.notify("done");
-        else $.notify("error");
     }).fail(function (resp) {
         $.notify(resp.status + ": " + resp.statusText);
     });
