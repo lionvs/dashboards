@@ -36,7 +36,7 @@
         },
         setConfig: function (element, config) {
             var moduleWithinCurrentElement = _.find(runningModules, function (obj) {
-                return obj.element === element;
+                return obj.element === element[0];
             });
             if (!moduleWithinCurrentElement)
                 return;

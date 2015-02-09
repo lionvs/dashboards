@@ -37,9 +37,7 @@
         },
 
         stopAllWidgets:function() {
-            _.each(widgetManager.getElements(), function(element) {
-                this.stopWidget(element);
-            }, this);
+            _.each(widgetManager.getElements(), this.stopWidget);
         },
         registerEvent: function (eventType, eventFunc, element) {
             eventManager.registerEvent(eventType, eventFunc, element);
