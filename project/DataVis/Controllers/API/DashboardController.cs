@@ -62,15 +62,10 @@ namespace DataVis.Controllers.API
 
         public IHttpActionResult Delete(string id)
         {
-            try
-            {
-                _dashboardService.Delete(id);
-                return Ok();
-            }
-            catch (Exception e)
-            {
+            if (HttpContext.Current.User.Identity.GetUserId() != _dashboardService.GetById(id).UserId)
                 return BadRequest();
-            }
+            _dashboardService.Delete(id);
+            return Ok();
         }
 
         public IHttpActionResult Put(string id, DashboardModel dashboard)
