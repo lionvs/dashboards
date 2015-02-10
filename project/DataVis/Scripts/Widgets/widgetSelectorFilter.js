@@ -38,7 +38,6 @@
     }
 
     function fillHtmlTemplate(sb, data, config) {
-        getListOfValues(data, config);
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
         fillScope($scope, sb, data, config);
