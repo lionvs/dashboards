@@ -40,7 +40,7 @@ input[type="checkbox"].input-validation-error {
 
 .highChart {
     width: 700px;
-    position: absolute;
+    position: absolute !important;
 }
 
 .chartConfig {
@@ -186,12 +186,13 @@ select.form-control.modalWindow {
     color: black;
 }
 
-.overlay{
+.overlay {
     background: black;
     opacity: .9;
-    position:fixed;
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    z-index:1090;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1090;
+}

@@ -180,12 +180,11 @@
         name: "highChart",
         init: function (sb) {
             var config = getDefaultConfig(sb.getDatasource());
-            sb.listen(events.updatedDataSource, function () {
+            sb.listen(events.uploadedDataSource, function () {
                 config = getDefaultConfig(sb.getDatasource());
                 createWidget(sb, config);
             });
-            sb.listen(events.updatedChartConfig, function (newConfig) {
-                config = newConfig;
+            sb.listen(events.updatedDataSource, function () {
                 createWidget(sb, config);
             });
             createWidget(sb, config);

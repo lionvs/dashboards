@@ -9,7 +9,13 @@
         schema: []
     }
 
-    
+    eventManager.registerEvent(events.uploadedDataSource, function (data) {
+        originalDataSource = data;
+    }, document);
+
+    eventManager.registerEvent(events.updatedDataSource, function (data) {
+        dataSource = data;
+    }, document);
 
     return {
         registerWidget: function (widget) {
@@ -48,10 +54,6 @@
         },
 
         triggerEvent: function (event) {
-            if (event.type === events.updatedDataSource)
-                dataSource = event.data;
-            if (event.type === events.uploadedDataSource)
-                originalDataSource = event.data;
             eventManager.triggerEvent(event);
         },
 
@@ -71,29 +73,16 @@
         getGlobalConfig: function() {
             return widgetManager.getGlobalConfig();
         },
-        createAngularElement: function (container, classTitle) {
-            var element = angular.element(container);
-            element.append("<div class='" + classTitle + "'></div>");
-            var $injector = element.injector();
-            var addedDiv = angular.element(container.lastChild);
-            var $scope = addedDiv.scope();
-            var $compile = $injector.get('$compile');
-            $compile(addedDiv)($scope);
-            $scope.$apply();
-            return container.lastChild;
-        },
-        setGlobalConfig: function (globalConfig, container) {
+        setGlobalConfig: function (globalConfig, container,newDataSource) {
             this.stopAllWidgets();
+            dataSource = newDataSource;
             container.innerHTML = "";
             _.each(globalConfig, function(config) {
-                var element = this.createAngularElement(container, config.name);
+                var element = angularHelper.createElement(container, config.name);
                 this.startWidget(config.name, element,config.position);
                 this.setConfig(element, config.config);
             }, this);
         },
-        setDataSource: function(newDataSource) {
-            dataSource = newDataSource;
-        }
     }
 }
 

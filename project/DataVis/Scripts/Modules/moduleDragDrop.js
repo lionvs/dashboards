@@ -1,4 +1,4 @@
-﻿var moduleDragDrop = function (){
+﻿var moduleDragDrop = function (elementDashboard){
 
     function handleDragStart(eventData){
         moduleDragDrop.dragWidgetName = eventData.target.id;
@@ -40,7 +40,7 @@
             top: posy,
             left:posx
         }
-        core.startWidget(moduleDragDrop.dragWidgetName, core.createAngularElement(document.getElementById("dashboard"), moduleDragDrop.dragWidgetName),position);
+        core.startWidget(moduleDragDrop.dragWidgetName, angularHelper.createElement(elementDashboard, moduleDragDrop.dragWidgetName), position);
     }
     return {
         name: "dragDrop",
@@ -56,4 +56,4 @@
             });
         }
     }
-}();
+};

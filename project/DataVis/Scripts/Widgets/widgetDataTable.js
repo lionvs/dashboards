@@ -10,11 +10,11 @@
     function fillHtmlTemplate(sb, data, schema) {
         var angular = sb.require('angular');
         var $scope = angular.element(sb.getContainer()).scope();
-        $scope.$apply(function () {
+        _.defer(function() {
             $scope.schema = schema;
             $scope.data = data;
+            $scope.$digest();
         });
-
     }
 
     function setResizable(element, config, $) {

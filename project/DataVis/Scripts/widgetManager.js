@@ -3,26 +3,35 @@
     var draggableHeader = 'widgetHeader';
     var limitTop = 30;
     var limitLeft = 0;
+
+    function setDraggable(element) {
+        if (!element.getElementsByClassName(draggableHeader)[0]) {
+            $(element).draggable();
+            return;
+        }
+        $(element).draggable({
+            handle: "." + draggableHeader,
+            stop: function(event, ui) {
+                if (ui.offset.top < limitTop) {
+                    $(this).offset({ top: limitTop + 10 });
+                }
+                if (ui.offset.left < limitLeft) {
+                    $(this).offset({ left: limitLeft });
+                }
+            }
+        });
+    }
+
+    function setPosition(element, position) {
+        $(element).offset(position);
+    }
+
     return {
         addModule: function (moduleInstance, element, name, position) {
-           
-            if (element.getElementsByClassName(draggableHeader)[0]) {
-                $(element).draggable({
-                    handle: "." + draggableHeader,
-                    stop: function (event, ui) {
-                        if (ui.offset.top < limitTop) {
-                            $(this).offset({ top: limitTop + 10 });
-                        }
-                        if (ui.offset.left < limitLeft) {
-                            $(this).offset({ left: limitLeft });
-                        }
-                    }
-                });
-            } 
-            else {
-                $(element).draggable();
-            }
-            $(element).offset(position);
+
+            setDraggable(element);
+            setPosition(element, position);
+            
             runningModules.push({
                 module: moduleInstance,
                 element: element,
@@ -31,12 +40,14 @@
         },
         removeModule: function (element) {
             runningModules = _.filter(runningModules, function (obj) {
+                if(element[0])
+                    return obj.element !== element[0];
                 return obj.element !== element;
             });
         },
         setConfig: function (element, config) {
             var moduleWithinCurrentElement = _.find(runningModules, function (obj) {
-                return obj.element === element[0];
+                return obj.element === element;
             });
             if (!moduleWithinCurrentElement)
                 return;

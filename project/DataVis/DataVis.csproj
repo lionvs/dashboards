@@ -224,6 +224,7 @@
     <Content Include="HtmlTemplates\ToolBox.html" />
     <Content Include="Scripts\angularControllers\headerController.js" />
     <Content Include="Scripts\angularControllers\modalInputController.js" />
+    <Content Include="Scripts\angularHelper.js" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\Libraries\notify.js" />
     <Content Include="Scripts\Modules\moduleDragDrop.js" />
