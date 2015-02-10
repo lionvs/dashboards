@@ -45,7 +45,10 @@ function saveDashboard(title, description) {
         Title: title,
         Config: JSON.stringify(core.getGlobalConfig()),
         Description: description,
-        DataSource: JSON.stringify(core.getDatasource())
+        DataSource: JSON.stringify({
+            Copy: core.getDatasource(),
+            Original: core.getOriginalDatasource()
+        })
     }
 
     $.ajax({
@@ -114,7 +117,10 @@ function editDashboard(id, title, description) {
         Title: title,
         Config: JSON.stringify(core.getGlobalConfig()),
         Description: description,
-        DataSource: JSON.stringify(core.getDatasource())
+        DataSource: JSON.stringify({
+            Copy: core.getDatasource(),
+            Original: core.getOriginalDatasource()
+        })
     }
     $.ajax({
         headers: user.headers,

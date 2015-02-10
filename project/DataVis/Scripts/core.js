@@ -63,7 +63,8 @@
         },
         setGlobalConfig: function (globalConfig, container,newDataSource) {
             this.stopAllWidgets();
-            dataSource = newDataSource;
+            dataSource = newDataSource.Copy;
+            originalDataSource = newDataSource.Original;
             container.innerHTML = "";
             _.each(globalConfig, function(config) {
                 var element = angularHelper.createElement(container, config.name);
