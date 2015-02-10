@@ -1,5 +1,5 @@
 ﻿var core = function (sandbox, eventManager, widgetManager,toolBox) {
-    var registeredModules = {};
+    var registeredWidgets = {};
     var originalDataSource = {
         data: [],
         schema: []
@@ -19,20 +19,20 @@
 
     return {
         registerWidget: function (widget) {
-            registeredModules[widget.name] = widget;
+            registeredWidgets[widget.name] = widget;
             toolBox.addWidget(widget.imgUrl, widget.name,widget.title);
         },
 
         startWidget: function (widgetName, element, position) {
-            if (!registeredModules[widgetName])
+            if (!registeredWidgets[widgetName])
                 return;
-            var sb = sandBox.create(element);
-            var moduleInstance = registeredModules[widgetName].init(sb);
+            var sb = sandBox.create(element, eventManager);
+            var moduleInstance = registeredWidgets[widgetName].init(sb);
             widgetManager.addModule(moduleInstance, element, widgetName,position);
         },
 
         startModule:function(module,element) {
-            var sb = sandBox.create(element);
+            var sb = sandBox.create(element, eventManager);
             module.init(sb);
         },
 
@@ -45,18 +45,6 @@
         stopAllWidgets:function() {
             _.each(widgetManager.getElements(), this.stopWidget);
         },
-        registerEvent: function (eventType, eventFunc, element) {
-            eventManager.registerEvent(eventType, eventFunc, element);
-        },
-
-        unRegisterEvent: function (eventType, element) {
-            eventManager.unRegisterEvent(eventType, element);
-        },
-
-        triggerEvent: function (event) {
-            eventManager.triggerEvent(event);
-        },
-
         getDatasource: function () {
             return dataSource;
         },

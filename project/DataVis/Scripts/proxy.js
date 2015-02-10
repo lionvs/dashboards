@@ -153,9 +153,9 @@ function openFile() {
                 type: events.uploadedDataSource,
                 data: myDataSource
             }
-            sandBox.create().notify(event);
+            eventManager.triggerEvent(event);
             event.type = events.updatedDataSource;
-            sandBox.create().notify(event);
+            eventManager.triggerEvent(event);
             $.notify("done");
         }).fail(function (resp) {
             $.notify(resp.status + ": " + resp.statusText);

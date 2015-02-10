@@ -1,5 +1,5 @@
 ﻿var sandBox = {
-    create: function (element) {
+    create: function (element,eventManager) {
         var libraries = {
             JQuery: $,
             angular: angular
@@ -10,13 +10,13 @@
             },
 
             notify: function (event) {
-                core.triggerEvent(event);
+                eventManager.triggerEvent(event);
             },
             listen: function (eventType, func) {
-                core.registerEvent(eventType, func, element);
+                eventManager.registerEvent(eventType, func, element);
             },
             stopListen: function (eventType) {
-                core.unRegisterEvent(eventType, element);
+                eventManager.unRegisterEvent(eventType, element);
             },
             getDatasource: function () {
                 return core.getDatasource();
