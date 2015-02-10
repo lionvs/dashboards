@@ -132,7 +132,7 @@ function editDashboard(id, title, description) {
 function openFile() {
     user.setHeaders();
     var formData = new FormData();
-    var opmlFile = $(fileToUpload)[0];
+    var opmlFile = $("#fileToUpload")[0];
     var ext = opmlFile.value.substring(opmlFile.value.lastIndexOf('.') + 1);
     if (ext == "xlsx") {
         formData.append(opmlFile, opmlFile.files[0]);

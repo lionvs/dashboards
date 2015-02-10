@@ -24,6 +24,7 @@
             return (dashboard["Title"] === $scope.currentDashboard);
         })[0]["Id"];
         deleteDashboard(id);
+        cleanDashboard();
         $timeout(function () {
             setTitles($scope);
         }, 3000);
@@ -60,7 +61,7 @@ function setDashboard(storedDashboards, $scope) {
 }
 
 function cleanDashboard(parameters) {
-
+    core.stopAllWidgets();
 }
 
 function setTitles($scope) {
