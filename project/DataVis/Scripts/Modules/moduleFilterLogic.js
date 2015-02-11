@@ -52,13 +52,12 @@
     }
 
     function filter(inputData, config, sb) {
-        var filteredDataSource = {};
+        var filteredData;
         if (config.type === "rangeFilter")
-            filteredDataSource.data = filterByRange(inputData, config);
+            filteredData = filterByRange(inputData, config);
         if (config.type === "selectorFilter")
-            filteredDataSource.data = filterBySelector(inputData, config);
-        filteredDataSource.schema = sb.getOriginalDatasource().schema;
-        return filteredDataSource;
+            filteredData = filterBySelector(inputData, config);
+        return filteredData;
     }
 
     return {
@@ -78,7 +77,7 @@
                 filteredDataSource.data = inputData;
                 filteredDataSource.schema = inputSchema;
                 _.each(filterConfigs, function (num) {
-                    filteredDataSource = filter(filteredDataSource.data, num.config, sb);
+                    filteredDataSource.data = filter(filteredDataSource.data, num.config, sb);
                 });
                 var event = {
                     type: events.updatedDataSource,
