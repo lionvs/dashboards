@@ -38,10 +38,9 @@
             autoScrolling(sb);
             fillHtmlTemplate(sb);
             dragHandler(sb);
-
+            sb.listen(events.registerWidgetRequest, function (data) {
+                widgets.push({ imgUrl: data.imgUrl, name: data.name, title: data.title });
+            });
         },
-        addWidget:function(imgUrl, name,title) {
-            widgets.push({ imgUrl: imgUrl, name: name ,title: title});
-        }
     }
 }();

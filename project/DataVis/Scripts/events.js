@@ -7,4 +7,5 @@
     drop: 'drop',
     dragEnd: 'dragEnd',
     dragOver: 'dragOver',
+    registerWidgetRequest: 'registerWidgetRequest',
 }

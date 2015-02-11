@@ -12,26 +12,26 @@
     directive.create(application, "toolBox", "/HtmlTemplates/ToolBox.html");
 
     var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
-
-    core.registerWidget(widgetDataTable);
-    core.registerWidget(widgetRangeFilter);
-    core.registerWidget(widgetSelectorFilter);
-    core.registerWidget(widgetHighChart);
-
-
-    
     
     var currentWindowOnload = window.onload;
     window.onload = function () {
         if (currentWindowOnload) {
             currentWindowOnload();
         }
-        core.startWidget(widgetDataTable.name, angularHelper.createElement(document.getElementById("dashboard"), widgetDataTable.name));
-        core.startWidget(widgetHighChart.name, angularHelper.createElement(document.getElementById("dashboard"), widgetHighChart.name));
-        core.stopAllWidgets();
         core.startModule(moduleDashBoard, document);
         core.startModule(moduleDragDrop(document.getElementById("dashboard")), document);
         core.startModule(moduleFilterLogic, document);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));
+
+        core.registerWidget(widgetDataTable);
+        core.registerWidget(widgetRangeFilter);
+        core.registerWidget(widgetSelectorFilter);
+        core.registerWidget(widgetHighChart);
+
+        core.startWidget(widgetDataTable.name, angularHelper.createElement(document.getElementById("dashboard"), widgetDataTable.name));
+        core.startWidget(widgetHighChart.name, angularHelper.createElement(document.getElementById("dashboard"), widgetHighChart.name));
+        core.stopAllWidgets();
     };
+
+    
 </script>

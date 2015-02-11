@@ -20,7 +20,14 @@
     return {
         registerWidget: function (widget) {
             registeredWidgets[widget.name] = widget;
-            toolBox.addWidget(widget.imgUrl, widget.name,widget.title);
+            eventManager.triggerEvent({
+                type: events.registerWidgetRequest,
+                data: {
+                    imgUrl: widget.imgUrl,
+                    name: widget.name,
+                    title: widget.title
+                }
+            })
         },
 
         startWidget: function (widgetName, element, position) {
