@@ -5,11 +5,11 @@
 </div>
 <script>
     
-    directive.create(application, "dataTable", "/HtmlTemplates/DataTable.html");
-    directive.create(application, "rangeFilter", "/HtmlTemplates/RangeFilter.html");
-    directive.create(application, "selectorFilter", "/HtmlTemplates/SelectorFilter.html");
-    directive.create(application, "highChart", "/HtmlTemplates/ChartConfig.html");
-    directive.create(application, "toolBox", "/HtmlTemplates/ToolBox.html");
+    directive.create(application, widgetDataTable.name, "/HtmlTemplates/DataTable.html");
+    directive.create(application, widgetRangeFilter.name, "/HtmlTemplates/RangeFilter.html");
+    directive.create(application, widgetSelectorFilter.name, "/HtmlTemplates/SelectorFilter.html");
+    directive.create(application, widgetHighChart.name, "/HtmlTemplates/ChartConfig.html");
+    directive.create(application, moduleToolBox.name, "/HtmlTemplates/ToolBox.html");
 
     var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
     
@@ -19,8 +19,8 @@
             currentWindowOnload();
         }
         core.startModule(moduleDashBoard, document);
-        core.startModule(moduleDragDrop(document.getElementById("dashboard")), document);
-        core.startModule(moduleFilterLogic, document);
+        core.startModule(moduleDragDrop(document.getElementById("dashboard")));
+        core.startModule(moduleFilterLogic);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));
 
         core.registerWidget(widgetDataTable);

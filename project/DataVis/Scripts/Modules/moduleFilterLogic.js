@@ -70,11 +70,13 @@
                     return (num.name === "selectorFilter" || num.name === "rangeFilter");
                 });
                 var inputData = sb.getOriginalDatasource().data;
+                var inputSchema = sb.getOriginalDatasource().schema;
                 var filteredDataSource = {
                     data: [],
                     schema: []
                 }
                 filteredDataSource.data = inputData;
+                filteredDataSource.schema = inputSchema;
                 _.each(filterConfigs, function (num) {
                     filteredDataSource = filter(filteredDataSource.data, num.config, sb);
                 });
