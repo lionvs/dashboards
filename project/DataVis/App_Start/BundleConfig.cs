@@ -22,6 +22,21 @@ namespace DataVis
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                      "~/Scripts/*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/libraries").Include(
+                     "~/Scripts/Libraries/*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/modules").Include(
+                     "~/Scripts/Modules/*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/widgets").Include(
+                    "~/Scripts/Widgets/*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularControllers").Include(
+                    "~/Scripts/angularControllers/*.js"));
         }
     }
 }

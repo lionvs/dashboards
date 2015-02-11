@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.Net 134</title>
-    <link href="/Content/bootstrap.css" rel="stylesheet" />
-    <link href="/Content/site.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -13,34 +11,18 @@
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="/Scripts/Libraries/modernizr-2.6.2.js"></script>
-    <script src="/Scripts/Libraries/bootstrap.js"></script>
-    <script src="/Scripts/Libraries/respond.js"></script>
-    <script src="/Scripts/Libraries/notify.js"></script>
-    <script src="/Scripts/events.js"></script>
-    <script src="/Scripts/eventManager.js"></script>
-    <script src="/Scripts/sandbox.js"></script>
-    <script src="/Scripts/core.js"></script>
-    <script src="/Scripts/angularHelper.js"></script>
-    <script src="/Scripts/Widgets/widgetHighChart.js"></script>
-    <script src="/Scripts/Widgets/widgetDataTable.js"></script>
-    <script src="/Scripts/Modules/moduleToolBox.js"></script>
-    <script src="/Scripts/Modules/moduleDashboard.js"></script>
-    <script src="/Scripts/Modules/moduledragDrop.js"></script>
-    <script src="/Scripts/widgetManager.js"></script>
-    <script src="/Scripts/directive.js"></script>
-    <script src="/Scripts/Widgets/widgetRangeFilter.js"></script>
-    <script src="/Scripts/Widgets/widgetSelectorFilter.js"></script>
-    <script src="/Scripts/user.js"></script>
-    <script src="/Scripts/proxy.js"></script>
-    <script src="/Scripts/Modules/moduleFilterLogic.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/libraries")
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/widgets")
+    @Scripts.Render("~/bundles/modules")
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
     <script>
         var application = angular.module('application', ['ui.bootstrap']);
     </script>
-    <script src="/Scripts/angularControllers/modalInputController.js"></script>
-    <script src="/Scripts/angularControllers/headerController.js"></script>
+    @Scripts.Render("~/bundles/angularControllers")
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
