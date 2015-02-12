@@ -1,11 +1,11 @@
 ﻿application.controller("headerController", function ($scope, $modal, $timeout) {
     $scope.saveEditDashboardButton = "Save";
     $scope.currentDashboard = "";
-    var storedDashboards = getListDashboards();
+    $scope.storedDashboards = getListDashboards();
     setTitles($scope);
 
     $scope.changeCurrentDashboard = function () {
-        $scope.currentDashboardObject = _.filter(storedDashboards, function (dashboard) {
+        $scope.currentDashboardObject = _.filter($scope.storedDashboards, function (dashboard) {
             return (dashboard["Title"] === $scope.currentDashboard);
         })[0];
         if ($scope.currentDashboard === "") {
@@ -15,19 +15,20 @@
         } else {
             $scope.saveEditDashboardButton = "Edit";
             $scope.showDeleteButton = true;
-            setDashboard(storedDashboards, $scope);
+            setDashboard($scope.storedDashboards, $scope);
         }
     };
 
     $scope.deleteDashboard = function () {
-        var id = _.filter(storedDashboards, function (dashboard) {
+        var id = _.filter($scope.storedDashboards, function (dashboard) {
             return (dashboard["Title"] === $scope.currentDashboard);
         })[0]["Id"];
         deleteDashboard(id);
         cleanDashboard();
         $timeout(function () {
+            $scope.currentDashboard === "";
             setTitles($scope);
-        }, 3000);
+        }, 2000);
     }
 
     $scope.saveEditDashboard = function () {
@@ -45,16 +46,25 @@
         });
     };
 
-    $scope.$on("newDashboard", function () {
+    $scope.$on("newDashboard", function (event, args) {
+        $scope.currentDashboard = args.changedTitle;
+        $scope.saveEditDashboardButton = "Edit";
+        $scope.showDeleteButton = true;
+
         $timeout(function () {
             setTitles($scope);
-        }, 3000);
+            $scope.currentDashboardObject = _.filter($scope.storedDashboards, function (dashboard) {
+                return (dashboard["Title"] === args.changedTitle);
+            })[0];
+        }, 2000);
     }
     );
 });
 
 function setDashboard(storedDashboards, $scope) {
-    var id = _.filter(storedDashboards, function (dashboard) { return (dashboard["Title"] === $scope.currentDashboard) })[0]["Id"];
+    var id = _.filter(storedDashboards, function (dashboard) {
+        return (dashboard["Title"] === $scope.currentDashboard)
+    })[0]["Id"];
     var data = JSON.parse(getDashboard(id)["DataSource"]);
     var globalConfig = JSON.parse(getDashboard(id)["Config"]);
     core.setGlobalConfig(globalConfig, document.getElementById("dashboard"), data);
@@ -65,8 +75,8 @@ function cleanDashboard(parameters) {
 }
 
 function setTitles($scope) {
-    var storedDashboards = getListDashboards();
-    var titles = _.map(storedDashboards, function (dashboard) {
+    $scope.storedDashboards = getListDashboards();
+    var titles = _.map($scope.storedDashboards, function (dashboard) {
         return dashboard["Title"];
     });
     titles.push("");
