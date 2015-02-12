@@ -1,0 +1,120 @@
+﻿<html>
+<head>
+    <script src="/Scripts/Libraries/bootstrap.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css">
+    <title>api documentation</title>
+</head>
+<body class="container body-content">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">Account</div>
+        <div class="panel-body">
+            <div class="alert alert-success" role="alert">
+                <h5><b>POST api/Account/Register</b></h5>
+                <p><i>register new user </i></p>
+                <p>
+                    request body model:<br /><h6>
+                        var user = {   <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp; UserName: “user”,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp; Password: “pass”,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp; ConfirmPassword: “pass”<br />
+                        }
+                    </h6>
+                </p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>POST api/Account/Logout</b></h5>
+                <p><i>log out current user</i></p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>POST /Token</b></h5>
+                <p><i>login user</i></p>
+                <p>
+                    request body model:<br /><h6>
+                        var loginData = {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  grant_type: 'password',<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  username: "login",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  password: password"<br />
+                        };
+
+                    </h6>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Dashboards (Require authorization)</div>
+        <div class="panel-body">
+            <div class="alert alert-success" role="alert">
+                <h5><b>POST /api/dashboard</b></h5>
+                <p><i>Save dashboard in database</i></p>
+                <p>
+                    request body model:<br /><h6>
+                        var dashboard = {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Title: title,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Config: config,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Description: description,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  DataSource: {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copy: copy,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Original: original<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  }<br />
+                        }
+
+                    </h6>
+                </p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>GET /api/dashboard/{id}</b></h5>
+                <p><i>Returns dashboard by id</i></p>
+                <p>response : dashboard object</p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>GET /api/dashboard</b></h5>
+                <p><i>Returns all users dashboards</i></p>
+                <p>
+                    response : list of object
+                    <h6>
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Title : "title",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Description: "desc",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Id: "id"<br />
+                        }
+                    </h6>
+                </p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>DELETE /api/datashboard/{id}</b></h5>
+                <p><i>delete dashboard from database</i></p>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h5><b>PUT /api/datashboard/{id}</b></h5>
+                <p><i>edit dashboard by id</i></p>
+                <p>
+                    request body model:<br /><h6>
+                        var dashboard = {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Title: title,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Config: config,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Description: description,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  DataSource: {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copy: copy,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Original: original<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  }<br />
+                        }
+
+                    </h6>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parse xlsx. files (Require authorization)</div>
+        <div class="panel-body">
+            <div class="alert alert-success" role="alert">
+                <h5><b>POST /api/file</b></h5>
+                <p><i>Open xls file</i></p>
+                <p>Return type: dataSource object</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

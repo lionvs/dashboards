@@ -200,6 +200,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apiDocumentation.html" />
     <Content Include="App_Data\dashboard.mdf" />
     <Content Include="App_Data\dashboard_log.ldf">
       <DependentUpon>dashboard.mdf</DependentUpon>

@@ -564,3 +564,4 @@ C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\D
 C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\Debug\DataVis.dll
 C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\Debug\DataVis.pdb
 E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
