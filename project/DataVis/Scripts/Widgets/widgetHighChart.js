@@ -56,7 +56,7 @@
 
     function setResizable(element, config, $) {
         $(element).width(config.width).height(config.height);
-        var chartElement = $(element).children("#chartModule").children("#chartArea");
+        var chartElement = $(element).children("#chartArea");
         $(element).resizable({
             resize: function (e, ui) {
                 config.width = ui.size.width;
@@ -83,11 +83,11 @@
         $scope.zoomOptions = zoomOptions;
 
         $scope.chartConfigUpdate = function () {
-            chartElement = $(element).children("#chartModule").children("#chartArea");
+            chartElement = $(element).children("#chartArea");
             $(chartElement).highcharts().setTitle({ text: config.title });
         };
         $scope.dataConfigUpdate = function () {
-            chartElement = $(element).children("#chartModule").children("#chartArea");
+            chartElement = $(element).children("#chartArea");
             drawChart(chartElement, data, config);
         };
 
@@ -170,7 +170,7 @@
             $(element).show();
         setResizable(element, config, $);
         fillHtmlTemplate(sb, dataSource, config);
-        var chartElement = $(element).children("#chartModule").children("#chartArea");
+        var chartElement = $(element).children("#chartArea");
         drawChart(chartElement, dataSource, config);
 
         

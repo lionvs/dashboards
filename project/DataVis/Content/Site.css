@@ -106,7 +106,7 @@ cursor: inherit;
 display: block;
 }
 
-.rangeFilter, .selectorFilter {
+.rangeFilter {
     text-align: center;
     align-items: center;
     position: absolute; 
@@ -115,6 +115,16 @@ display: block;
     border-radius: 4px;
     padding: 1px;
     width: 110px;
+}
+.selectorFilter {
+     text-align: center;
+    align-items: center;
+    position: absolute; 
+    border-width: 2px;
+    border-style: ridge; 
+    border-radius: 4px;
+    padding: 1px;
+    width: 150px;
 }
 
 .filterBtn{
@@ -147,8 +157,8 @@ display: block;
   position: relative;
 }
 #filterTableScroll {
-  height: 100px;
-  width: 100px;
+  height: 170px;
+  width: 140px;
   overflow: auto; 
 }
 
