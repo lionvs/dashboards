@@ -35,7 +35,13 @@
         else {
             config.indexOfMin = _.indexOf(config.listOfValues, config.min);
             config.indexOfMax = _.indexOf(config.listOfValues, config.max);
-            config.indexOfMax = config.indexOfMax === -1 ? Infinity : config.indexOfMax;
+            if (config.indexOfMax === -1) {
+                config.indexOfMax = Infinity;
+                config.max = Infinity;
+            }
+            if (config.indexOfMin === -1) {
+                config.min = -Infinity;
+            }
             var filteredData = _.filter(inputData, function (num) {
                 return isValidWhenString(num, config);
             });
@@ -66,7 +72,7 @@
             sb.listen(events.updatedFilterConfig, function () {
                 var globalConfig = core.getGlobalConfig();
                 var filterConfigs = _.filter(globalConfig, function (num) {
-                    return (num.name === "selectorFilter" || num.name === "rangeFilter");
+                    return (num.name === "selectorFilter" || num.name === "rangeFilter") && num.config.key !== null;
                 });
                 var inputData = sb.getOriginalDatasource().data;
                 var inputSchema = sb.getOriginalDatasource().schema;
