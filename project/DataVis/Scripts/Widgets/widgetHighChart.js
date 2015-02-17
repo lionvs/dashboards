@@ -70,11 +70,11 @@
         });
     }
 
-    function fillHtmlTemplate(sb, data, config) {
+    function fillHtmlTemplate(sandbox, data, config) {
         var schema = data.schema;
-        var angular = sb.require('angular');
-        var $scope = angular.element(sb.getContainer()).scope();
-        var element = angular.element(sb.getContainer());
+        var angular = sandbox.require('angular');
+        var $scope = angular.element(sandbox.getContainer()).scope();
+        var element = angular.element(sandbox.getContainer());
         var chartElement;
         $scope.isCollapsed = false;
         $scope.schemaOptions = schema;
@@ -160,16 +160,16 @@
         });
     }
 
-    function createWidget(sb, config) {
-        var element = sb.getContainer();
-        var dataSource = sb.getDatasource();
+    function createWidget(sandbox, config) {
+        var element = sandbox.getContainer();
+        var dataSource = sandbox.getDatasource();
 
         if (dataSource.data.length < 1)
             $(element).hide();
         else
             $(element).show();
         setResizable(element, config, $);
-        fillHtmlTemplate(sb, dataSource, config);
+        fillHtmlTemplate(sandbox, dataSource, config);
         var chartElement = $(element).children("#chartArea");
         drawChart(chartElement, dataSource, config);
 
@@ -178,21 +178,21 @@
 
     return {
         name: "highChart",
-        init: function (sb) {
-            var config = getDefaultConfig(sb.getDatasource());
-            sb.listen(events.uploadedDataSource, function () {
-                config = getDefaultConfig(sb.getDatasource());
-                createWidget(sb, config);
+        init: function (sandbox) {
+            var config = getDefaultConfig(sandbox.getDatasource());
+            sandbox.listen(events.uploadedDataSource, function () {
+                config = getDefaultConfig(sandbox.getDatasource());
+                createWidget(sandbox, config);
             });
-            sb.listen(events.updatedDataSource, function () {
-                createWidget(sb, config);
+            sandbox.listen(events.updatedDataSource, function () {
+                createWidget(sandbox, config);
             });
-            createWidget(sb, config);
+            createWidget(sandbox, config);
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    createWidget(sb, config);
+                    createWidget(sandbox, config);
                 },
                 getConfig: function () {
                     return config;

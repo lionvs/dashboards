@@ -33,14 +33,14 @@
         startWidget: function (widgetName, element, position) {
             if (!registeredWidgets[widgetName])
                 return;
-            var sb = sandBox.create(element, eventManager);
-            var moduleInstance = registeredWidgets[widgetName].init(sb);
+            var sandbox = sandBox.create(element, eventManager);
+            var moduleInstance = registeredWidgets[widgetName].init(sandbox);
             widgetManager.addModule(moduleInstance, element, widgetName,position);
         },
 
         startModule:function(module,element) {
-            var sb = sandBox.create(element, eventManager);
-            module.init(sb);
+            var sandbox = sandBox.create(element, eventManager);
+            module.init(sandbox);
         },
 
         stopWidget: function (element) {

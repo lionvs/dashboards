@@ -44,14 +44,14 @@
     }
     return {
         name: "dragDrop",
-        init: function(sb) {
-            sb.listen(events.dragStart, function (event) {
+        init: function(sandbox) {
+            sandbox.listen(events.dragStart, function (event) {
                 handleDragStart(event);
             });
-            sb.listen(events.drop, function (event) {
+            sandbox.listen(events.drop, function (event) {
                 handleDrop(event);
             });
-            sb.listen(events.dragOver, function (event) {
+            sandbox.listen(events.dragOver, function (event) {
                 handleDragOver(event);
             });
         }

@@ -20,16 +20,16 @@
         });
     }
 
-    function fillScope($scope, sb, data, config) {
+    function fillScope($scope, sandbox, data, config) {
         $scope.$apply(function () {
-            $scope.schemaOptions = sb.getOriginalDatasource().schema;
+            $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
             $scope.selectorFilterConfig = config;
             $scope.sendFilterConfig = function () {
                 var event = {
                     type: events.updatedFilterConfig,
                     data: config
                 }
-                sb.notify(event);
+                sandbox.notify(event);
             };
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
@@ -37,39 +37,39 @@
         });
     }
 
-    function fillHtmlTemplate(sb, data, config) {
-        var angular = sb.require('angular');
-        var $scope = angular.element(sb.getContainer()).scope();
-        fillScope($scope, sb, data, config);
+    function fillHtmlTemplate(sandbox, data, config) {
+        var angular = sandbox.require('angular');
+        var $scope = angular.element(sandbox.getContainer()).scope();
+        fillScope($scope, sandbox, data, config);
     }
 
-    function createFilterUIAndData(sb, config) {
-        var element = sb.getContainer();
-        var dataSource = sb.getOriginalDatasource();
-        var $ = sb.require('JQuery');
+    function createFilterUIAndData(sandbox, config) {
+        var element = sandbox.getContainer();
+        var dataSource = sandbox.getOriginalDatasource();
+        var $ = sandbox.require('JQuery');
 
         if (dataSource.data.length < 1) {
             $(element).hide();
             return;
         }
 
-        fillHtmlTemplate(sb, dataSource.data, config);
+        fillHtmlTemplate(sandbox, dataSource.data, config);
         $(element).show();
     }
 
     return {
         name: "selectorFilter",
-        init: function (sb) {
+        init: function (sandbox) {
             var config = getDefaultConfig();
-            sb.listen(events.uploadedDataSource, function () {
-                createFilterUIAndData(sb, config);
+            sandbox.listen(events.uploadedDataSource, function () {
+                createFilterUIAndData(sandbox, config);
             });
-            createFilterUIAndData(sb, config);
+            createFilterUIAndData(sandbox, config);
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    createFilterUIAndData(sb, config);
+                    createFilterUIAndData(sandbox, config);
                 },
                 getConfig: function () {
                     return config;

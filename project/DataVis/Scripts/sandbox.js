@@ -24,6 +24,9 @@
             getOriginalDatasource: function () {
                 return core.getOriginalDatasource();
             },
+            getGlobalConfig: function () {
+                return core.getGlobalConfig();
+            },
             require: function (library) {
                 return libraries[library];
             }

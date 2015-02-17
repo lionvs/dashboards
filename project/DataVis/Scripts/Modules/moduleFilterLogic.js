@@ -57,7 +57,7 @@
         return filteredData;
     }
 
-    function filter(inputData, config, sb) {
+    function filter(inputData, config, sandbox) {
         var filteredData;
         if (config.type === "rangeFilter")
             filteredData = filterByRange(inputData, config);
@@ -68,14 +68,14 @@
 
     return {
         name: "filterLogic",
-        init: function (sb) {
-            sb.listen(events.updatedFilterConfig, function () {
-                var globalConfig = core.getGlobalConfig();
+        init: function (sandbox) {
+            sandbox.listen(events.updatedFilterConfig, function () {
+                var globalConfig = sandbox.getGlobalConfig();
                 var filterConfigs = _.filter(globalConfig, function (num) {
                     return (num.name === "selectorFilter" || num.name === "rangeFilter") && num.config.key !== null;
                 });
-                var inputData = sb.getOriginalDatasource().data;
-                var inputSchema = sb.getOriginalDatasource().schema;
+                var inputData = sandbox.getOriginalDatasource().data;
+                var inputSchema = sandbox.getOriginalDatasource().schema;
                 var filteredDataSource = {
                     data: [],
                     schema: []
@@ -83,13 +83,13 @@
                 filteredDataSource.data = inputData;
                 filteredDataSource.schema = inputSchema;
                 _.each(filterConfigs, function (num) {
-                    filteredDataSource.data = filter(filteredDataSource.data, num.config, sb);
+                    filteredDataSource.data = filter(filteredDataSource.data, num.config, sandbox);
                 });
                 var event = {
                     type: events.updatedDataSource,
                     data: filteredDataSource
                 }
-                sb.notify(event);
+                sandbox.notify(event);
             });
         }
     }

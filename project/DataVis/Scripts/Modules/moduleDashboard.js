@@ -1,31 +1,31 @@
 ﻿var moduleDashBoard = function () {
 
 
-    function dragHandler(sb) {
-        var element = sb.getContainer();
+    function dragHandler(sandbox) {
+        var element = sandbox.getContainer();
         element.ondragover = function (event) {
-            sb.notify(
+            sandbox.notify(
                 {
                     type: events.dragOver,
                     data: event
                 });
         }
         element.ondragleave = function (event) {
-            sb.notify(
+            sandbox.notify(
                 {
                     type: events.dragLeave,
                     data: event
                 });
         }
         element.ondragenter = function (event) {
-            sb.notify(
+            sandbox.notify(
                 {
                     type: events.dragEnter,
                     data: event
                 });
         }
         element.ondrop = function (event) {
-            sb.notify(
+            sandbox.notify(
                 {
                     type: events.drop,
                     data: event
@@ -34,8 +34,8 @@
     }
     return {
         name: "dashBoard",
-        init: function(sb) {
-            dragHandler(sb);
+        init: function(sandbox) {
+            dragHandler(sandbox);
         }
     }
 }();

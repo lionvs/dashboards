@@ -7,9 +7,9 @@
         }
     }
 
-    function fillHtmlTemplate(sb, data, schema) {
-        var angular = sb.require('angular');
-        var $scope = angular.element(sb.getContainer()).scope();
+    function fillHtmlTemplate(sandbox, data, schema) {
+        var angular = sandbox.require('angular');
+        var $scope = angular.element(sandbox.getContainer()).scope();
         _.defer(function() {
             $scope.schema = schema;
             $scope.data = data;
@@ -28,30 +28,30 @@
         });
     }
 
-    function createDataTable(sb, config) {
-        var element = sb.getContainer();
-        var dataSource = sb.getDatasource();
-        var $ = sb.require('JQuery');
+    function createDataTable(sandbox, config) {
+        var element = sandbox.getContainer();
+        var dataSource = sandbox.getDatasource();
+        var $ = sandbox.require('JQuery');
 
-        fillHtmlTemplate(sb, dataSource.data, dataSource.schema);
+        fillHtmlTemplate(sandbox, dataSource.data, dataSource.schema);
         setResizable(element, config, $);
     }
 
     return {
         name: "dataTable",
-        init: function (sb) {
+        init: function (sandbox) {
             var config = getDefaultConfig();
 
             
-            createDataTable(sb, config);
-            sb.listen(events.updatedDataSource, function () {
-                createDataTable(sb, config);
+            createDataTable(sandbox, config);
+            sandbox.listen(events.updatedDataSource, function () {
+                createDataTable(sandbox, config);
             });
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    createDataTable(sb, config);
+                    createDataTable(sandbox, config);
                 },
                 getConfig: function () {
                     return config;
