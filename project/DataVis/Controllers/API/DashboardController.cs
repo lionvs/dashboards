@@ -57,7 +57,7 @@ namespace DataVis.Controllers.API
                 _dashboardService.Add(dashboard);
                 return Ok();
             }
-            else return BadRequest();
+            return BadRequest();
         }
 
         public IHttpActionResult Delete(string id)
@@ -80,7 +80,7 @@ namespace DataVis.Controllers.API
                 _dashboardService.Update(currDashboard);
                 return Ok();
             }
-            else return BadRequest();
+            return BadRequest();
         }
     }
 }

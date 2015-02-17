@@ -18,16 +18,23 @@ namespace DataVis.Logic
             {
                 var obj = new JObject();
                 for (int i = 1; i <= data.GetLength(1); i++)
-                {
-                    double value;
-                    if (!Double.TryParse(data[j, i].ToString(), out value))
-                        obj.Add(titleArray[i - 1], data[j, i].ToString());
-                    else
-                        obj.Add(titleArray[i - 1], value);
-                }
+                    obj.Add(titleArray[i - 1], GetValue(data[j, i]));
                 result.Add(obj);
             }
             return result;
+        }
+
+        private dynamic GetValue(object o)
+        {
+            if (o == null)
+                return null;
+            double dValue;
+            int iValue;
+            if (Double.TryParse(o.ToString(), out dValue))
+                return dValue;
+            if (Int32.TryParse(o.ToString(), out iValue))
+                return iValue;
+            return o.ToString();
         }
     }
 }

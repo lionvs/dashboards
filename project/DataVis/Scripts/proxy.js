@@ -38,6 +38,19 @@ function register(username, password, password2) {
     });
 }
 
+function logOut() {
+    $.ajax({
+        headers: user.headers,
+        type: 'POST',
+        url: '/api/Account/Logout'
+    }).done(function () {
+        sessionStorage.removeItem(user.tokenKey);
+        location.reload();
+    }).fail(function (resp) {
+        $.notify(resp.status + ": " + resp.statusText);
+    });
+}
+
 function saveDashboard(title, description) {
     user.setHeaders();
 
