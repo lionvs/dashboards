@@ -230,7 +230,7 @@
     <Content Include="Scripts\Libraries\notify.js" />
     <Content Include="Scripts\Modules\moduleDragDrop.js" />
     <Content Include="Scripts\Modules\moduleDashboard.js" />
-    <Content Include="Scripts\Modules\moduleFilterLogic.js" />
+    <Content Include="Scripts\Modules\moduleFiltering.js" />
     <Content Include="Scripts\Modules\moduleToolBox.js" />
     <Content Include="Scripts\proxy.js" />
     <Content Include="Scripts\widgetManager.js" />

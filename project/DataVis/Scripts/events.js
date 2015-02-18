@@ -2,10 +2,12 @@
     uploadedDataSource: 'uploadedDataSource',
     updatedDataSource: 'updatedDataSource',
     updatedChartConfig: 'updatedChartConfig',
-    updatedFilterConfig: 'updatedFilterConfig',
+    requireFiltering: 'requireFiltering',
     dragStart: 'dragStart',
     drop: 'drop',
     dragEnd: 'dragEnd',
     dragOver: 'dragOver',
     registerWidgetRequest: 'registerWidgetRequest',
+    requireListOfFilters: 'requireListOfFilters',
+    sendFilterSettings: 'sendFilterSettings'
 }

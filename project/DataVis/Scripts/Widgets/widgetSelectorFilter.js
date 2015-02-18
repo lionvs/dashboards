@@ -2,17 +2,15 @@
 
     function getDefaultConfig() {
         return {
-            type: "selectorFilter",
             key: null,
             validationListOfValues: [],
-            validValues: []
+            validValues: [],
+            isActiveNow: true
         }
     }
 
-    var listOfValues = [];
-
     function getListOfValues(data, config) {
-        listOfValues = _.uniq(_.map(data, function (num) {
+        var listOfValues = _.uniq(_.map(data, function (num) {
             return num[config.key];
         }));
         config.validationListOfValues = _.map(listOfValues, function (num) {
@@ -20,13 +18,35 @@
         });
     }
 
+    function readValidValues(config) {
+        var validValues = _.filter(config.validationListOfValues, function (num) {
+            return num.isValid;
+        });
+        config.validValues = _.map(validValues, function (num) {
+            return num.value;
+        });
+    }
+
+    function isValid(num, config) {
+        return _.contains(config.validValues, num[config.key]);
+    }
+
+    function filter(inputData, config) {
+        if (config.key === null) return inputData;
+        readValidValues(config);
+        var filteredData = _.filter(inputData, function (num) {
+            return isValid(num, config);
+        });
+        return filteredData;
+    }
+
     function fillScope($scope, sandbox, data, config) {
         $scope.$apply(function () {
             $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
-            $scope.selectorFilterConfig = config;
-            $scope.sendFilterConfig = function () {
+            $scope.config = config;
+            $scope.requireFiltering = function () {
                 var event = {
-                    type: events.updatedFilterConfig,
+                    type: events.requireFiltering,
                     data: config
                 }
                 sandbox.notify(event);
@@ -43,7 +63,7 @@
         fillScope($scope, sandbox, data, config);
     }
 
-    function createFilterUIAndData(sandbox, config) {
+    function createFilterUI(sandbox, config) {
         var element = sandbox.getContainer();
         var dataSource = sandbox.getOriginalDatasource();
         var $ = sandbox.require('JQuery');
@@ -62,14 +82,29 @@
         init: function (sandbox) {
             var config = getDefaultConfig();
             sandbox.listen(events.uploadedDataSource, function () {
-                createFilterUIAndData(sandbox, config);
+                createFilterUI(sandbox, config);
             });
-            createFilterUIAndData(sandbox, config);
+            createFilterUI(sandbox, config);
+            sandbox.listen(events.requireListOfFilters, function () {
+                if (config.isActiveNow) {
+                    var event = {
+                        type: events.sendFilterSettings,
+                        data:
+                            {
+                                config: config,
+                                filter: function (inputData, config) {
+                                    return filter(inputData, config);
+                                }
+                            }
+                    }
+                    sandbox.notify(event);
+                }
+            });
 
             return {
                 setConfig: function (newConfig) {
                     config = newConfig;
-                    createFilterUIAndData(sandbox, config);
+                    createFilterUI(sandbox, config);
                 },
                 getConfig: function () {
                     return config;

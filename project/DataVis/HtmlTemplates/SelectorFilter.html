@@ -1,22 +1,21 @@
 ﻿<div class="widgetHeader">
     {{widgetName}}
     <div class="widget-header-toolbar">
-        <span class="close-btn"><a href="" ng-click="closeWidget();sendFilterConfig()">X</a></span>
-
+        <span class="close-btn"><a href="" ng-click="closeWidget();config.isActiveNow=false;requireFiltering()">X</a></span>
     </div>
 </div>
 
 <div>
-    <select class="filterDropDown" ng-model="selectorFilterConfig.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
+    <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
     <div id="filterTableWrapper">
         <div id="filterTableScroll">
             <table>
-                <tr ng-repeat="item in selectorFilterConfig.validationListOfValues">
+                <tr ng-repeat="item in config.validationListOfValues">
                     <td><input type="checkbox" ng-model="item.isValid"></td>
                     <td>{{item.value}}</td>
                 </tr>
             </table>
         </div>
     </div>
-    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="sendFilterConfig()">
+    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="requireFiltering()">
 </div>
