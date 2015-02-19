@@ -30,10 +30,10 @@ namespace DataVis.Logic
                 return null;
             double dValue;
             int iValue;
-            if (Double.TryParse(o.ToString(), out dValue))
-                return dValue;
             if (Int32.TryParse(o.ToString(), out iValue))
                 return iValue;
+            if (Double.TryParse(o.ToString(), out dValue))
+                return dValue;
             return o.ToString();
         }
     }
