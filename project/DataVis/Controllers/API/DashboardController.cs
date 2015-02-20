@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 using DataVis.BusinessLogic.Services.Interfaces;
@@ -22,18 +23,11 @@ namespace DataVis.Controllers.API
 
         public List<JObject> Get()
         {
-            var result = new List<JObject>();
             var dashboards = _dashboardService.GetByUserId(HttpContext.Current.User.Identity.GetUserId());
-            foreach (var dashboard in dashboards)
+            return dashboards.Select(dashboard => new JObject
             {
-                result.Add(new JObject
-                {
-                    {"Title", dashboard.Title},
-                    {"Description", dashboard.Description},
-                    {"Id", dashboard.Id}
-                });
-            }
-            return result;
+                {"Title", dashboard.Title}, {"Description", dashboard.Description}, {"Id", dashboard.Id}
+            }).ToList();
         }
 
         public Dashboard Get(string id)

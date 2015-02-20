@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataVis.Data", "DataVis.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataVis.BusinessLogic", "DataVis.BusinessLogic\DataVis.BusinessLogic.csproj", "{590ADBE7-19CB-40FE-A81F-210175611DCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{03A13929-BC2C-4C67-A520-D7A0EE3B9B99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{590ADBE7-19CB-40FE-A81F-210175611DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590ADBE7-19CB-40FE-A81F-210175611DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590ADBE7-19CB-40FE-A81F-210175611DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A13929-BC2C-4C67-A520-D7A0EE3B9B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A13929-BC2C-4C67-A520-D7A0EE3B9B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A13929-BC2C-4C67-A520-D7A0EE3B9B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A13929-BC2C-4C67-A520-D7A0EE3B9B99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
