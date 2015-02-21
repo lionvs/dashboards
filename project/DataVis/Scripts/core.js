@@ -1,4 +1,4 @@
-﻿var core = function (sandbox, eventManager, widgetManager,toolBox) {
+﻿var core = function (sandbox, eventManager, widgetManager) {
     var registeredWidgets = {};
     var originalDataSource = {
         data: [],

@@ -1,0 +1,6 @@
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.dll.config
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.pdb
