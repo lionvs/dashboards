@@ -82,3 +82,15 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\b
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll.config
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.BusinessLogic.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\DataVis.Data.pdb
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.BusinessLogic\obj\Debug\DataVis.BusinessLogic.pdb

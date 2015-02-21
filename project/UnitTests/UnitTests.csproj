@@ -66,6 +66,8 @@
     <Compile Include="Tests\Controllers\DashboardControllerTest.cs" />
     <Compile Include="Tests\Logic\DataParserTests.cs" />
     <Compile Include="Tests\BaseTests.cs" />
+    <Compile Include="Tests\Logic\XslParserTests.cs" />
+    <Compile Include="Tests\TestHelper.cs" />
     <Compile Include="Tests\TFactory.cs" />
   </ItemGroup>
   <ItemGroup>

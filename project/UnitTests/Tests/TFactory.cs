@@ -13,5 +13,10 @@ namespace UnitTests.Tests
         {
             return new DataParser();
         }
+
+        public IXlsParser CreateXlsParser()
+        {
+            return new XlsParser();
+        }
     }
 }

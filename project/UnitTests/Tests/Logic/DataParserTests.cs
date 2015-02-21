@@ -5,7 +5,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
-using CollectionAssert = NUnit.Framework.CollectionAssert;
 
 namespace UnitTests.Tests.Logic
 {
@@ -17,7 +16,7 @@ namespace UnitTests.Tests.Logic
         {
             IDataParser dataParser = Factory.CreateDataParser();
             var privateObject = new PrivateObject(dataParser);
-            var result = privateObject.Invoke("GetValue", new object[] {'0'});
+            var result = privateObject.Invoke("GetValue", new object[] { '0' });
 
             Assert.AreEqual(0, result);
         }
@@ -27,7 +26,7 @@ namespace UnitTests.Tests.Logic
         {
             IDataParser dataParser = Factory.CreateDataParser();
             var privateObject = new PrivateObject(dataParser);
-            var result = privateObject.Invoke("GetValue", new object[] {"1.1"});
+            var result = privateObject.Invoke("GetValue", new object[] { "1.1" });
 
             Assert.AreEqual(1.1, result);
         }
@@ -37,7 +36,7 @@ namespace UnitTests.Tests.Logic
         {
             IDataParser dataParser = Factory.CreateDataParser();
             var privateObject = new PrivateObject(dataParser);
-            var result = privateObject.Invoke("GetValue", new object[] {"Lviv"});
+            var result = privateObject.Invoke("GetValue", new object[] { "Lviv" });
 
             Assert.AreEqual("Lviv", result);
         }
@@ -45,22 +44,11 @@ namespace UnitTests.Tests.Logic
         [Test]
         public void GetJson_FullData()
         {
-            IDataParser dataParser = Factory.CreateDataParser();
-
-
-            var data = new object[,]
+            var inputData = new object[,]
             {
                 {"City", "Month", "Temperature", "Rainfall"},
                 {"Lviv", "Feb", "20", "200"}
             };
-            object[,] comInteropArray = Array.CreateInstance(
-                typeof (object),
-                new[] {data.GetLength(0), data.GetLength(1)},
-                new[] {1, 1}) as object[,];
-            for (int i = 0; i < data.GetLength(0); i++)
-                for (int j = 0; j < data.GetLength(1); j++)
-                    comInteropArray[i + 1, j + 1] = data[i, j];
-
             IList<JObject> expected = new List<JObject>()
             {
                 JObject.Parse(@"{
@@ -71,36 +59,22 @@ namespace UnitTests.Tests.Logic
                 }")
             };
 
+            IDataParser dataParser = Factory.CreateDataParser();
+            object[,] comInteropArray = TestHelper.CreateArrayWithStartingIndex1(inputData);
             var result = dataParser.GetJson(comInteropArray);
 
-
-            Assert.AreEqual(expected.Count, result.Count);
-            for (int i = 0; i < result.Count; i++)
-            {
-                Assert.AreEqual(JToken.DeepEquals(expected[i], result[i]), true);
-            }
+            AssertListsJobjects(expected, result);
         }
 
         [Test]
         public void GetJson_DataWithNulls()
         {
-            IDataParser dataParser = Factory.CreateDataParser();
-
-
-            var data = new object[,]
+            var inputData = new object[,]
             {
                 {"City", "Month", "Temperature", "Rainfall"},
                 {null, "Feb", "20", null},
-                {"Lviv","Jun",null,"200"}
+                {"Lviv", "Jun", null, "200"}
             };
-            object[,] comInteropArray = Array.CreateInstance(
-                typeof(object),
-                new[] { data.GetLength(0), data.GetLength(1) },
-                new[] { 1, 1 }) as object[,];
-            for (int i = 0; i < data.GetLength(0); i++)
-                for (int j = 0; j < data.GetLength(1); j++)
-                    comInteropArray[i + 1, j + 1] = data[i, j];
-
             IList<JObject> expected = new List<JObject>()
             {
                 JObject.Parse(@"{
@@ -117,13 +91,20 @@ namespace UnitTests.Tests.Logic
                 }")
             };
 
+            IDataParser dataParser = Factory.CreateDataParser();
+            object[,] comInteropArray = TestHelper.CreateArrayWithStartingIndex1(inputData);
             var result = dataParser.GetJson(comInteropArray);
 
+            AssertListsJobjects(expected, result);
+        }
 
-            Assert.AreEqual(expected.Count, result.Count);
+        private void AssertListsJobjects(IList<JObject> expected, IList<JObject> result,
+            string message = "Lists of jobjects are different")
+        {
+            Assert.AreEqual(expected.Count, result.Count, message);
             for (int i = 0; i < result.Count; i++)
             {
-                Assert.AreEqual(JToken.DeepEquals(expected[i], result[i]), true);
+                Assert.AreEqual(JToken.DeepEquals(expected[i], result[i]), true, message);
             }
         }
     }
