@@ -563,7 +563,6 @@ C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\D
 C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\Debug\DataVis.csproj.ResolveComReference.cache
 C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\Debug\DataVis.dll
 C:\Users\Богдан\Desktop\GitHubProject\ITA-dashboards\project\DataVis\obj\Debug\DataVis.pdb
-E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
 D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis\obj\Debug\Interop.Microsoft.Office.Core.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis\bin\DataVis.dll.config
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis\bin\DataVis.dll

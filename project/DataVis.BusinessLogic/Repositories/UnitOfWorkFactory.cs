@@ -2,7 +2,7 @@
 {
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
-        public IUnitOfWork CreateUnitOfWork()
+        public virtual IUnitOfWork CreateUnitOfWork()
         {
             return new UnitOfWork();
         }
