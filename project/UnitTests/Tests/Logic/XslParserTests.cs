@@ -1,8 +1,4 @@
-﻿using System;
-using System.Web;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
-using Assert = NUnit.Framework.Assert;
+﻿using NUnit.Framework;
 
 namespace UnitTests.Tests.Logic
 {

@@ -1,21 +1,17 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FakeItEasy;
-using NUnit;
+﻿using DataVis.BusinessLogic.Repositories;
 using DataVis.BusinessLogic.Services;
 using DataVis.BusinessLogic.Services.Interfaces;
-using DataVis.BusinessLogic.Repositories;
 using DataVis.Data.Models;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+using FakeItEasy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests.Tests.Services
 {
     [TestClass]
     public class DashboardServiceTest
     {
-        UnitOfWorkFactory fakeUnitOfWorkFaktory = A.Fake<UnitOfWorkFactory>();
-        IUnitOfWork fakeUnitOfWork = A.Fake<IUnitOfWork>();
+        readonly UnitOfWorkFactory fakeUnitOfWorkFaktory = A.Fake<UnitOfWorkFactory>();
+        readonly IUnitOfWork fakeUnitOfWork = A.Fake<IUnitOfWork>();
         
         [TestMethod]
         public void Add_CorrectDashboard()

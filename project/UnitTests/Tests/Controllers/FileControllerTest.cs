@@ -1,13 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FakeItEasy;
-using NUnit;
-using DataVis.Logic;
-using DataVis.Controllers.API;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Web.Http;
-using System.Web;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests.Tests.Controllers
 {
