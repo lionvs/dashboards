@@ -8,9 +8,9 @@ namespace DataVis.BusinessLogic.Services
 {
     public class DashboardService : IDashboardService
     {
-        private readonly UnitOfWorkFactory _factory;
+        private readonly IUnitOfWorkFactory _factory;
 
-        public DashboardService(UnitOfWorkFactory factory)
+        public DashboardService(IUnitOfWorkFactory factory)
         {
             _factory = factory;
         }

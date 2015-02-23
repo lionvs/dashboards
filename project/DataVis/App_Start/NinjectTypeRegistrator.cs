@@ -1,4 +1,5 @@
-﻿using DataVis.BusinessLogic.Services;
+﻿using DataVis.BusinessLogic.Repositories;
+using DataVis.BusinessLogic.Services;
 using DataVis.BusinessLogic.Services.Interfaces;
 using DataVis.Logic;
 using Ninject;
@@ -12,6 +13,7 @@ namespace DataVis
             kernel.Bind<IXlsParser>().To<XlsParser>();
             kernel.Bind<IDataParser>().To<DataParser>();
             kernel.Bind<IDashboardService>().To<DashboardService>();
+            kernel.Bind<IUnitOfWorkFactory>().To<UnitOfWorkFactory>();
         }
     }
 }
