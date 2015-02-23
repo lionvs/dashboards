@@ -48,3 +48,13 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\p
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll.config
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\DataVis.Data.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.xml
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.xml
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb

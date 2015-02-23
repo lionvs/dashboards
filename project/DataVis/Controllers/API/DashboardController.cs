@@ -23,7 +23,7 @@ namespace DataVis.Controllers.API
 
         public List<JObject> Get()
         {
-            var dashboards = _dashboardService.GetByUserId(HttpContext.Current.User.Identity.GetUserId());
+            var dashboards = _dashboardService.GetByUserId(GetCurrentUserId());
             return dashboards.Select(dashboard => new JObject
             {
                 {"Title", dashboard.Title}, {"Description", dashboard.Description}, {"Id", dashboard.Id}
@@ -44,7 +44,7 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = HttpContext.Current.User.Identity.GetUserId(),
+                    UserId = GetCurrentUserId(),
                     Description = dashboardModel.Description,
                     DataSource = dashboardModel.DataSource
                 };
@@ -56,7 +56,7 @@ namespace DataVis.Controllers.API
 
         public IHttpActionResult Delete(string id)
         {
-            if (HttpContext.Current.User.Identity.GetUserId() != _dashboardService.GetById(id).UserId)
+            if (GetCurrentUserId() != _dashboardService.GetById(id).UserId)
                 return BadRequest();
             _dashboardService.Delete(id);
             return Ok();
@@ -75,6 +75,11 @@ namespace DataVis.Controllers.API
                 return Ok();
             }
             return BadRequest();
+        }
+
+        private string GetCurrentUserId()
+        {
+            return HttpContext.Current.User.Identity.GetUserId();
         }
     }
 }

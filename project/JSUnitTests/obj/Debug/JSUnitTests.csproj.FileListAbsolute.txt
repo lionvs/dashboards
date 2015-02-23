@@ -10,3 +10,9 @@ E:\DataVis_gitHubProject\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.pdb
 E:\DataVis_gitHubProject\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.csprojResolveAssemblyReference.cache
 E:\DataVis_gitHubProject\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.dll
 E:\DataVis_gitHubProject\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.dll.config
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\bin\JSUnitTests.pdb
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.csprojResolveAssemblyReference.cache
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.dll
+\\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\JSUnitTests\obj\Debug\JSUnitTests.pdb
