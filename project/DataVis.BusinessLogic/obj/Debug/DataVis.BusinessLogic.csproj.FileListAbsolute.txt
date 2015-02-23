@@ -100,3 +100,9 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\ITA-dashboards\ITA-dashboards\p
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.xml
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.xml
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\github\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.xml
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.dll
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.dll
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.dll
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.xml
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.xml
+E:\DataVis_gitHubProject\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.xml

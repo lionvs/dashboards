@@ -1,7 +1,9 @@
 ﻿<div class="widgetHeader">
     {{widgetName}}
     <div class="widget-header-toolbar">
-        <span class="close-btn"><a href="" ng-click="closeWidget();config.isActiveNow=false;requireFiltering()">X</a></span>
+        <span class="close-btn"><a href="" onclick="this.parentNode.parentNode.parentNode.style.opacity = '0.4'" ng-click="deactivateWidget();requireFiltering()" ng-show="config.isActiveNow">D</a></span>
+        <span class="close-btn"><a href="" onclick="this.parentNode.parentNode.parentNode.style.opacity = '1'" ng-click="activateWidget();requireFiltering()" ng-show="!config.isActiveNow">A</a></span>
+        <span class="close-btn"><a href="" ng-click="closeWidget();deactivateWidget();requireFiltering()">X</a></span>
     </div>
 </div>
 

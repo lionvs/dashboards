@@ -8,7 +8,7 @@
             indexOfMin: null,
             indexOfMax: null,
             listOfValues: [],
-            isActiveNow:true
+            isActiveNow: true
         }
     }
 
@@ -68,6 +68,12 @@
                     data: config
                 }
                 sandbox.notify(event);
+            };
+            $scope.deactivateWidget = function () {
+                config.isActiveNow = false;
+            };
+            $scope.activateWidget = function () {
+                config.isActiveNow = true;
             };
         });
     }

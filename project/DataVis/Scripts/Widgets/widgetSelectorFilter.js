@@ -9,6 +9,7 @@
         }
     }
 
+
     function getListOfValues(data, config) {
         var listOfValues = _.uniq(_.map(data, function (num) {
             return num[config.key];
@@ -53,6 +54,12 @@
             };
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
+            };
+            $scope.deactivateWidget = function () {
+                config.isActiveNow = false;
+            };
+            $scope.activateWidget = function () {
+                config.isActiveNow = true;
             };
         });
     }
