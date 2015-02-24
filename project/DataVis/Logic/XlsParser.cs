@@ -35,7 +35,11 @@ namespace DataVis.Logic
             {
                 var row = new List<object>();
                 for (var i = 0; i < item.ItemArray.Count(); i++)
-                    row.Add(item.ItemArray[i]);
+                {
+                    var value = (item.ItemArray[i] == DBNull.Value) ? null : item.ItemArray[i];
+                    row.Add(value);
+                }
+
                 result.Add(row);
             }
             return result;
