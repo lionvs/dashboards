@@ -26,7 +26,7 @@
     }
 
     function autoScrolling(sandbox) {
-        var $ =sandbox.require("JQuery")
+        var $ = sandbox.require("JQuery");
         var element = sandbox.getContainer();
         $(window).scroll(function () {
             $(element).stop().animate({ "marginTop": ($(window).scrollTop()) + "px", "marginLeft": ($(window).scrollLeft()) + "px" }, "slow");

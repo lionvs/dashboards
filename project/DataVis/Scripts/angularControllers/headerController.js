@@ -1,7 +1,7 @@
 ﻿application.controller("headerController", function ($scope, $modal, $timeout) {
     $scope.saveEditDashboardButton = "Save";
     $scope.currentDashboard = "";
-    $scope.storedDashboards = getListDashboards();
+    $scope.storedDashboards = proxy.getListDashboards();
     setTitles($scope);
 
     $scope.changeCurrentDashboard = function () {
@@ -23,7 +23,7 @@
         var id = _.filter($scope.storedDashboards, function (dashboard) {
             return (dashboard["Title"] === $scope.currentDashboard);
         })[0]["Id"];
-        deleteDashboard(id);
+        proxy.deleteDashboard(id);
         cleanDashboard();
         $timeout(function () {
             $scope.currentDashboard === "";
@@ -65,8 +65,9 @@ function setDashboard(storedDashboards, $scope) {
     var id = _.filter(storedDashboards, function (dashboard) {
         return (dashboard["Title"] === $scope.currentDashboard)
     })[0]["Id"];
-    var data = JSON.parse(getDashboard(id)["DataSource"]);
-    var globalConfig = JSON.parse(getDashboard(id)["Config"]);
+    var dashboard = proxy.getDashboard(id);
+    var data = JSON.parse(dashboard["DataSource"]);
+    var globalConfig = JSON.parse(dashboard["Config"]);
     core.setGlobalConfig(globalConfig, document.getElementById("dashboard"), data);
 }
 
@@ -75,7 +76,7 @@ function cleanDashboard(parameters) {
 }
 
 function setTitles($scope) {
-    $scope.storedDashboards = getListDashboards();
+    $scope.storedDashboards = proxy.getListDashboards();
     var titles = _.map($scope.storedDashboards, function (dashboard) {
         return dashboard["Title"];
     });

@@ -1,6 +1,5 @@
 ﻿var directive = function() {
 
-    
         var widgetFocused = false;
         var zIndexOfElement = 0;
 

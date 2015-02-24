@@ -1,10 +1,10 @@
 ﻿<div id="main">
-    <div class="overlay" id="overlay" style="display:none;"></div>
+    <div class="overlay" id="overlay" style="display: none;"></div>
     <div id="toolBox" class="toolBox"></div>
     <div id="dashboard"></div>
 </div>
+
 <script>
-    
     directive.create(application, widgetDataTable.name, "/HtmlTemplates/DataTable.html");
     directive.create(application, widgetRangeFilter.name, "/HtmlTemplates/RangeFilter.html");
     directive.create(application, widgetSelectorFilter.name, "/HtmlTemplates/SelectorFilter.html");
@@ -32,6 +32,4 @@
         core.startWidget(widgetHighChart.name, angularHelper.createElement(document.getElementById("dashboard"), widgetHighChart.name));
         core.stopAllWidgets();
     };
-
-    
 </script>

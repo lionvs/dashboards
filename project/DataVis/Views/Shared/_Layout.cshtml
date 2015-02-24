@@ -35,7 +35,7 @@
                 @{
                     if (HttpContext.Current.User.Identity.IsAuthenticated)
                     {
-                        <a class="btn btn-default" onclick=logOut()>Log Out</a>
+                        <a class="btn btn-default" onclick=proxy.logOut()>Log Out</a>
                     }
                     else
                     {
@@ -58,7 +58,7 @@
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                            <li class="btn-file">Open file <input type="file" id="fileToUpload" onchange="openFile()"></li>
+                                            <li class="btn-file">Open file <input type="file" id="fileToUpload" onchange="proxy.openFile()"></li>
                                         </ul>
                                     </span>
                                     <label class='control-label'>Current Dashboard: </label>

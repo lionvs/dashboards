@@ -9,11 +9,12 @@
 
     $scope.saveDashboard = function () {
         if (getCurrentTitle === "") {
-            saveDashboard($scope.inputDashboardName, $scope.inputDashboardDescription);
+            proxy.saveDashboard($scope.inputDashboardName, $scope.inputDashboardDescription);
             $rootScope.$broadcast("newDashboard", { changedTitle: $scope.inputDashboardName });
             $scope.closeModal();
-        } else {
-            editDashboard(getCurrentDashboard["Id"], $scope.inputDashboardName, $scope.inputDashboardDescription);
+        }
+        else {
+            proxy.editDashboard(getCurrentDashboard["Id"], $scope.inputDashboardName, $scope.inputDashboardDescription);
             $rootScope.$broadcast("newDashboard", { changedTitle: $scope.inputDashboardName });
             $scope.closeModal();
         }

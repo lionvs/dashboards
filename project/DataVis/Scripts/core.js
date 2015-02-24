@@ -27,7 +27,7 @@
                     name: widget.name,
                     title: widget.title
                 }
-            })
+            });
         },
 
         startWidget: function (widgetName, element, position) {
@@ -78,7 +78,7 @@
                 this.startWidget(config.name, element,config.position);
                 this.setConfig(element, config.config);
             }, this);
-        },
+        }
     }
 }
 
