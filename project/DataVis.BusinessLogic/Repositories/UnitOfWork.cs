@@ -3,7 +3,7 @@ using DataVis.Data.Models;
 
 namespace DataVis.BusinessLogic.Repositories
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly DashboardContext _context = new DashboardContext();
 

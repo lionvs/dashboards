@@ -1,22 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Web.Http.Results;
-using DataVis.BusinessLogic.Services.Interfaces;
+﻿using DataVis.BusinessLogic.Services.Interfaces;
 using DataVis.Controllers.API;
 using DataVis.Data.Models;
-using DataVis.Models;
 using FakeItEasy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Assert = NUnit.Framework.Assert;
-
-//using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace UnitTests.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class DashboardControllerTest
     {
-        public IDashboardService fakeDashboardService = A.Fake<IDashboardService>();
+       private readonly IDashboardService _fakeDashboardService = A.Fake<IDashboardService>();
 
         //[Test]
         //public void Get_EmptyList()
@@ -43,26 +36,26 @@ namespace UnitTests.Tests.Controllers
         [Test]
         public void GetById_Null()
         {
-            var myController = new DashboardController(fakeDashboardService);
+            var myController = new DashboardController(_fakeDashboardService);
             var dashboard = new Dashboard();
             string id = null;
 
-            A.CallTo(() => fakeDashboardService.GetById(id)).Returns(dashboard);
+            A.CallTo(() => _fakeDashboardService.GetById(id)).Returns(dashboard);
             var result = myController.Get(id);
-            A.CallTo(() => fakeDashboardService.GetById(id)).MustHaveHappened();
+            A.CallTo(() => _fakeDashboardService.GetById(id)).MustHaveHappened();
             Assert.AreEqual(dashboard, result);
         }
 
         [Test]
         public void GetById_NotNull()
         {
-            var myController = new DashboardController(fakeDashboardService);
+            var myController = new DashboardController(_fakeDashboardService);
             var dashboard = new Dashboard();
             var id = "1";
 
-            A.CallTo(() => fakeDashboardService.GetById(id)).Returns(dashboard);
+            A.CallTo(() => _fakeDashboardService.GetById(id)).Returns(dashboard);
             var result = myController.Get(id);
-            A.CallTo(() => fakeDashboardService.GetById(id)).MustHaveHappened();
+            A.CallTo(() => _fakeDashboardService.GetById(id)).MustHaveHappened();
             Assert.AreEqual(dashboard, result);
         }
 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using DataVis.Data.Models;
 
-
 namespace DataVis.BusinessLogic.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class

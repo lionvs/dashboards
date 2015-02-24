@@ -1,4 +1,7 @@
-﻿using DataVis.Logic;
+﻿using DataVis.BusinessLogic.Repositories;
+using DataVis.BusinessLogic.Services;
+using DataVis.BusinessLogic.Services.Interfaces;
+using DataVis.Logic;
 
 namespace UnitTests.Tests
 {
@@ -12,6 +15,11 @@ namespace UnitTests.Tests
         public IXlsParser CreateXlsParser()
         {
             return new XlsParser();
+        }
+
+        public IDashboardService CreateDashboardService(IUnitOfWorkFactory unitOfWorkFactory)
+        {
+            return new DashboardService(unitOfWorkFactory);
         }
     }
 }

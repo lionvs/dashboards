@@ -68,8 +68,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Controllers\DashboardControllerTest.cs" />
-    <Compile Include="Tests\Controllers\FileControllerTest.cs" />
-    <Compile Include="Tests\Controllers\AccountControllerTest.cs" />
     <Compile Include="Tests\Logic\DataParserTests.cs" />
     <Compile Include="Tests\BaseTests.cs" />
     <Compile Include="Tests\Logic\XslParserTests.cs" />
