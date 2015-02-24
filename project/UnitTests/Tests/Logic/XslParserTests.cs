@@ -12,6 +12,7 @@ namespace UnitTests.Tests.Logic
         const string filePathDataWithNulls = @"TemperatureDataWithNulls";
 
         [Test]
+        [Ignore]
         public void Parse_FullData()
         {
             var expected = new List<List<object>>();
@@ -26,6 +27,7 @@ namespace UnitTests.Tests.Logic
         }
 
         [Test]
+        [Ignore]
         public void Parse_DataWithNulls()
         {
             var expected = new List<List<object>>();

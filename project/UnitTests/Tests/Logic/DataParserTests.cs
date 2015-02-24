@@ -27,7 +27,7 @@ namespace UnitTests.Tests.Logic
             var privateObject = new PrivateObject(dataParser);
             var result = privateObject.Invoke("GetValue", new object[] { "1.1" });
 
-            Assert.AreEqual(1.1, result);
+            Assert.AreEqual("1.1", result);
         }
 
         [Test]
