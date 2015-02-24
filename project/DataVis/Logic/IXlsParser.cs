@@ -1,7 +1,9 @@
-﻿namespace DataVis.Logic
+﻿using System.Collections.Generic;
+
+namespace DataVis.Logic
 {
     public interface IXlsParser
     {
-        object[,] Parse(string filename);
+        List<List<object>> Parse(string filename);
     }
 }

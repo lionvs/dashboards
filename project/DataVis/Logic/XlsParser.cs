@@ -1,27 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
-using System.Runtime.InteropServices;
-using Microsoft.Office.Interop.Excel;
+using System.Linq;
 
 namespace DataVis.Logic
 {
     public class XlsParser : IXlsParser
     {
-        public object[,] Parse(string filename)
+        public List<List<object>> Parse(string filename)
         {
-            var xlApp = new Application();
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Storage\" + filename + ".xlsx");
-            var xlWorkbook = xlApp.Workbooks.Open(filePath, 0, true, 5, "", "", true, XlPlatform.xlWindows,
-                "\t", false, false, 0, true, 1, 0);
-            var xlWorksheet = (_Worksheet)xlWorkbook.Sheets[1];
-            var xlRange = xlWorksheet.UsedRange;
-            object[,] data = xlRange.Value2;
+            var fileFullName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Storage\" + filename + ".xlsx");
+            var connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileFullName + ";Extended Properties=\"Excel 12.0;IMEX=1;HDR=NO;TypeGuessRows=0;ImportMixedTypes=Text\"";
 
-            xlApp.Quit();
-            Marshal.ReleaseComObject(xlApp);
-            GC.Collect();
+            var adapter = new OleDbDataAdapter();
+            var conn = new OleDbConnection(connectionString);
+            conn.Open();
 
-            return data;
+            DataTable excelSheets = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables,
+                new object[] { null, null, null, "TABLE" });
+
+            const int workSheetNumber = 0;
+            string spreadSheetName = excelSheets.Rows[workSheetNumber]["TABLE_NAME"].ToString();
+
+            string strQuery = "select * from [" + spreadSheetName + "] ";
+            adapter.SelectCommand = new OleDbCommand(strQuery, conn);
+            var dsExcel = new DataSet();
+            adapter.Fill(dsExcel);
+            conn.Close();
+            var result = new List<List<object>>();
+            var listDataRow = dsExcel.Tables[0].Rows.Cast<DataRow>().ToList();
+            foreach (var item in listDataRow)
+            {
+                var row = new List<object>();
+                for (var i = 0; i < item.ItemArray.Count(); i++)
+                    row.Add(item.ItemArray[i]);
+                result.Add(row);
+            }
+            return result;
         }
     }
 }

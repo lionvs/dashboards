@@ -6,19 +6,19 @@ namespace DataVis.Logic
 {
     public class DataParser : IDataParser
     {
-        public List<JObject> GetJson(object[,] data)
+        public List<JObject> GetJson(List<List<object>> data)
         {
             var result = new List<JObject>();
 
-            var titleArray = new string[data.GetLength(1)];
-            for (int i = 1; i <= data.GetLength(1); i++)
-                titleArray[i - 1] = data[1, i].ToString();
+            var titleArray = new string[data[0].Count];
+            for (int i = 0; i < data[0].Count; i++)
+                titleArray[i] = data[0][i].ToString();
 
-            for (int j = 2; j <= data.GetLength(0); j++)
+            for (int j = 1; j < data.Count; j++)
             {
                 var obj = new JObject();
-                for (int i = 1; i <= data.GetLength(1); i++)
-                    obj.Add(titleArray[i - 1], GetValue(data[j, i]));
+                for (int i = 0; i < data[1].Count; i++)
+                    obj.Add(titleArray[i], GetValue(data[j][i]));
                 result.Add(obj);
             }
             return result;

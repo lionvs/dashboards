@@ -5,6 +5,6 @@ namespace DataVis.Logic
 {
     public interface IDataParser
     {
-        List<JObject> GetJson(object[,] data);
+        List<JObject> GetJson(List<List<object>> data );
     }
 }
