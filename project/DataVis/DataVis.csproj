@@ -291,9 +291,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\DataTable.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
