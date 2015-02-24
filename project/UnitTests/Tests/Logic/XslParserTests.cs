@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace UnitTests.Tests.Logic
 {
@@ -12,14 +14,11 @@ namespace UnitTests.Tests.Logic
         [Test]
         public void Parse_FullData()
         {
-            var expected = new object[,]
-            {
-                {"Month", "City", "Temperature", "Rainfall"},
-                {"Jan", "Lviv", -4, 200},
-                {"Feb", "Lviv", -3, 250}
-            };
+            var expected = new List<List<object>>();
+            expected.Add(new List<object>(new object[]{ "Month", "City", "Temperature", "Rainfall"}));
+            expected.Add(new List<object>(new object[] { "Jan", "Lviv", "-4", "200" }));
+            expected.Add(new List<object>(new object[] { "Feb", "Lviv", "-3", "250" }));
 
-            expected = TestHelper.CreateArrayWithStartingIndex1(expected);
             var xlsParser = Factory.CreateXlsParser();
             var result = xlsParser.Parse(filePathFullData);
 
@@ -29,14 +28,11 @@ namespace UnitTests.Tests.Logic
         [Test]
         public void Parse_DataWithNulls()
         {
-            var expected = new object[,]
-            {
-                {"Month", "City", "Temperature", "Rainfall"},
-                {"Jan", null, -4, 200},
-                {"Feb", "Lviv", -3, null}
-            };
+            var expected = new List<List<object>>();
+            expected.Add(new List<object>(new object[] { "Month", "City", "Temperature", "Rainfall" }));
+            expected.Add(new List<object>(new object[] { "Jan", DBNull.Value, "-4", "200" }));
+            expected.Add(new List<object>(new object[] { "Feb", "Lviv", "-3", DBNull.Value }));
 
-            expected = TestHelper.CreateArrayWithStartingIndex1(expected);
             var xlsParser = Factory.CreateXlsParser();
             var result = xlsParser.Parse(filePathDataWithNulls);
 

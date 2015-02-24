@@ -43,11 +43,10 @@ namespace UnitTests.Tests.Logic
         [Test]
         public void GetJson_FullData()
         {
-            var inputData = new object[,]
-            {
-                {"City", "Month", "Temperature", "Rainfall"},
-                {"Lviv", "Feb", "20", "200"}
-            };
+            var inputData = new List<List<object>>();
+            inputData.Add(new List<object>(new object[] { "City", "Month", "Temperature", "Rainfall" }));
+            inputData.Add(new List<object>(new object[] { "Lviv", "Feb", "20", "200" }));
+
             IList<JObject> expected = new List<JObject>()
             {
                 JObject.Parse(@"{
@@ -59,8 +58,8 @@ namespace UnitTests.Tests.Logic
             };
 
             IDataParser dataParser = Factory.CreateDataParser();
-            object[,] comInteropArray = TestHelper.CreateArrayWithStartingIndex1(inputData);
-            var result = dataParser.GetJson(comInteropArray);
+           // object[,] comInteropArray = TestHelper.CreateArrayWithStartingIndex1(inputData);
+            var result = dataParser.GetJson(inputData);
 
             AssertListsJobjects(expected, result);
         }
@@ -68,12 +67,11 @@ namespace UnitTests.Tests.Logic
         [Test]
         public void GetJson_DataWithNulls()
         {
-            var inputData = new object[,]
-            {
-                {"City", "Month", "Temperature", "Rainfall"},
-                {null, "Feb", "20", null},
-                {"Lviv", "Jun", null, "200"}
-            };
+            var inputData = new List<List<object>>();
+            inputData.Add(new List<object>(new object[] { "City", "Month", "Temperature", "Rainfall" }));
+            inputData.Add(new List<object>(new object[] { null, "Feb", "20", null }));
+            inputData.Add(new List<object>(new object[] { "Lviv", "Jun", null, "200" }));
+            
             IList<JObject> expected = new List<JObject>()
             {
                 JObject.Parse(@"{
@@ -91,8 +89,7 @@ namespace UnitTests.Tests.Logic
             };
 
             IDataParser dataParser = Factory.CreateDataParser();
-            object[,] comInteropArray = TestHelper.CreateArrayWithStartingIndex1(inputData);
-            var result = dataParser.GetJson(comInteropArray);
+            var result = dataParser.GetJson(inputData);
 
             AssertListsJobjects(expected, result);
         }

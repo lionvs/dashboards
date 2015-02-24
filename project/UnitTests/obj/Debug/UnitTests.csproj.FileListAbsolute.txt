@@ -234,3 +234,5 @@ E:\DataVis_gitHubProject\ITA-dashboards\project\UnitTests\bin\Debug\FakeItEasy.x
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\UnitTests\bin\Debug\UnitTests.dll.config
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\UnitTests\bin\Debug\FakeItEasy.dll
 \\fstrain\Homes\Lv-134.Net\vkulyktc\Documents\GitHub\ITA-dashboards\project\UnitTests\bin\Debug\FakeItEasy.xml
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\UnitTests\bin\Debug\FakeItEasy.dll
+C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\UnitTests\bin\Debug\FakeItEasy.xml
