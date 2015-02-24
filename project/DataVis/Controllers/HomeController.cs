@@ -4,10 +4,9 @@ namespace DataVis.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public ActionResult Index()
         {
-            return View();
+            return User.Identity.IsAuthenticated ? View() : View("GetStarted");
         }
 
         public ActionResult Register()

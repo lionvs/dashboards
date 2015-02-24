@@ -216,6 +216,7 @@
     <Content Include="Content\Icons\Filters.ico" />
     <Content Include="Content\Icons\RangeFilter.ico" />
     <Content Include="Content\Icons\SelectorFilter.ico" />
+    <Content Include="Content\Images\Vitalii.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
@@ -314,7 +315,9 @@
   <ItemGroup>
     <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Home\GetStarted.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
