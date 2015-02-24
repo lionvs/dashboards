@@ -112,3 +112,9 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\b
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.xml
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.dll
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Web.Http.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\System.Net.Http.Formatting.xml
+D:\Vitalik\SoftServe\GitHubRep\ITA-dashboards\project\DataVis.BusinessLogic\bin\Debug\Newtonsoft.Json.xml
