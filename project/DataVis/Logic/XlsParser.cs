@@ -39,7 +39,6 @@ namespace DataVis.Logic
                     var value = (item.ItemArray[i] == DBNull.Value) ? null : item.ItemArray[i];
                     row.Add(value);
                 }
-
                 result.Add(row);
             }
             return result;
