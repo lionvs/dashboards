@@ -213,6 +213,7 @@
     <Content Include="Content\Icons\chart.ico" />
     <Content Include="Content\Icons\dataTable.ico" />
     <Content Include="Content\Icons\Filters.ico" />
+    <Content Include="Content\Icons\progressBar.ico" />
     <Content Include="Content\Icons\RangeFilter.ico" />
     <Content Include="Content\Icons\SelectorFilter.ico" />
     <Content Include="Content\Images\Nazar.jpg" />

@@ -12,7 +12,9 @@
         },
         unRegisterEvent: function (eventType, element) {
             registeredEvents[eventType] = _.filter(registeredEvents[eventType], function (obj) {
-                return obj.idElement != element;
+                if (element[0])
+                    return obj.idElement !== element[0];
+                return obj.idElement !== element;
             });
         },
         triggerEvent: function (event) {

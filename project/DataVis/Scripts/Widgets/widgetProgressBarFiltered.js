@@ -13,17 +13,11 @@
 
     function countPercentWithKey(key, listOfValuesCurrent, listOfValuesOriginal) {
         var numberCurrent = (_.filter(listOfValuesCurrent,function (item) { return item === key; })).length;
-
         var numberOriginal = (_.filter(listOfValuesOriginal, function (item) { return item === key; })).length;
-
-        return 100 - ((numberCurrent * 100) / numberOriginal);
+        return countPercent(numberCurrent, numberOriginal);
     }
 
-    function countPercent(listOfValuesCurrent, listOfValuesOriginal) {
-        var numberCurrent = listOfValuesCurrent.length;
-
-        var numberOriginal = listOfValuesOriginal.length;
-
+    function countPercent(numberCurrent, numberOriginal) {
         return 100 - ((numberCurrent * 100) / numberOriginal);
     }
 
@@ -42,7 +36,7 @@
         var uniqueListOfValues = _.uniq(listOfValuesOriginal);
 
         if (config.key === schemaItemForEverything) {
-            var percent = countPercent(listOfValuesCurrent, listOfValuesOriginal);
+            var percent = countPercent(listOfValuesCurrent.length, listOfValuesOriginal.length);
             config.listProgressBars = [{ name: schemaItemForEverything, percent: percent, style: { 'width': percent + '%' } }];
             return;
         }
@@ -107,7 +101,7 @@
                 }
             }
         },
-        imgUrl: "DataTable",
+        imgUrl: "progressBar",
         title: "This progress bar shows how many percent of specific data has been filtered"
 }
 }();

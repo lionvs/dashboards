@@ -27,14 +27,22 @@
         core.startModule(moduleFiltering);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));
 
-        core.registerWidget(widgetDataTable);
-        core.registerWidget(widgetRangeFilter);
-        core.registerWidget(widgetSelectorFilter);
-        core.registerWidget(widgetHighChart);
-        core.registerWidget(widgetProgressBarFiltered);
+        var widgets = [widgetDataTable, widgetRangeFilter, widgetSelectorFilter, widgetHighChart, widgetProgressBarFiltered];
 
-        core.startWidget(widgetDataTable.name, angularHelper.createElement(document.getElementById("dashboard"), widgetDataTable.name));
-        core.startWidget(widgetHighChart.name, angularHelper.createElement(document.getElementById("dashboard"), widgetHighChart.name));
-        core.stopAllWidgets();
+        registerWidgets(core, widgets);
+
+        seedMethod(core, widgets, document.getElementById("dashboard"));
+        
     };
+
+    function registerWidgets(core, widgets) {
+        widgets.forEach(core.registerWidget);
+    }
+
+    function seedMethod(core, widgets, dashboard) {
+        widgets.forEach(function(widget) {
+            core.startWidget(widget.name, angularHelper.createElement(dashboard, widget.name));
+        });
+        core.stopAllWidgets();
+    }
 </script>

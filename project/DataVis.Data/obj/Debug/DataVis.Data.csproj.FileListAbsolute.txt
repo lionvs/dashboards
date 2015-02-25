@@ -65,6 +65,5 @@ C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\bin\Debug\
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.xml
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.csprojResolveAssemblyReference.cache
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.dll
 C:\Users\Volodya\Documents\GitHub\ITA-dashboards\project\DataVis.Data\obj\Debug\DataVis.Data.pdb
