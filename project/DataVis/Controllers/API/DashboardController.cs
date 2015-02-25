@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -21,18 +20,19 @@ namespace DataVis.Controllers.API
             _dashboardService = dashboardService;
         }
 
-        public List<JObject> Get()
+        public IHttpActionResult Get()
         {
             var dashboards = _dashboardService.GetByUserId(GetCurrentUserId());
-            return dashboards.Select(dashboard => new JObject
+            var result =  dashboards.Select(dashboard => new JObject
             {
                 {"Title", dashboard.Title}, {"Description", dashboard.Description}, {"Id", dashboard.Id}
             }).ToList();
+            return Ok(result);
         }
 
-        public Dashboard Get(string id)
+        public IHttpActionResult Get(string id)
         {
-            return _dashboardService.GetById(id);
+            return Ok(_dashboardService.GetById(id));
         }
 
         public IHttpActionResult Post(DashboardModel dashboardModel)
