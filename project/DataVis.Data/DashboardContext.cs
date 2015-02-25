@@ -6,7 +6,7 @@ namespace DataVis.Data
     public class DashboardContext : DbContext
     {
         public DashboardContext()
-            : base("Name=DashboardContext")
+            : base("Name=DefaultConnection")
         {
         }
 
