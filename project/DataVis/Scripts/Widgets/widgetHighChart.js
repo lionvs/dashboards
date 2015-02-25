@@ -49,7 +49,7 @@
                     borderWidth: 0
                 }
             },
-            width: '250px',
+            width: '700px',
             height: '400px'
         }
     }

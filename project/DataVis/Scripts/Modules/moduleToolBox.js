@@ -11,7 +11,6 @@
         });
     }
 
-    
     function dragHandler(sandbox) {
         var element = sandbox.getContainer();
         for (var i = 0; i < element.childElementCount; i++) {

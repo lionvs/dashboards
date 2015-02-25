@@ -1,7 +1,8 @@
 ﻿var moduleDragDrop = function (elementDashboard){
 
-    function handleDragStart(eventData){
-        moduleDragDrop.dragWidgetName = eventData.target.id;
+    function handleDragStart(eventData) {
+        var a = eventData;
+        moduleDragDrop.dragWidgetName = eventData.target.firstElementChild.id;
     }
     function handleDragEnd(event) {
     }
