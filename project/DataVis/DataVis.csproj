@@ -222,6 +222,7 @@
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\Libraries\angular.js" />
     <Content Include="Scripts\Libraries\notify.js" />
+    <Content Include="Scripts\Libraries\ui-bootstrap-tpls-0.12.0.js" />
     <Content Include="Scripts\Modules\moduleDragDrop.js" />
     <Content Include="Scripts\Modules\moduleDashboard.js" />
     <Content Include="Scripts\Modules\moduleFiltering.js" />
