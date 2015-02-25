@@ -28,7 +28,7 @@
         $timeout(function () {
             $scope.currentDashboard === "";
             setTitles($scope);
-        }, 2000);
+        }, 3000);
     }
 
     $scope.saveEditDashboard = function () {
@@ -53,10 +53,11 @@
 
         $timeout(function () {
             setTitles($scope);
-            $scope.currentDashboardObject = _.filter($scope.storedDashboards, function (dashboard) {
+            $scope.currentDashboardObject = _.filter($scope.storedDashboards,
+                function (dashboard) {
                 return (dashboard["Title"] === args.changedTitle);
             })[0];
-        }, 2000);
+        }, 3000);
     }
     );
 });
