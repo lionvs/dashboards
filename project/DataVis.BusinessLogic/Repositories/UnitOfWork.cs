@@ -1,4 +1,5 @@
 ﻿using System;
+using DataVis.Data;
 using DataVis.Data.Models;
 
 namespace DataVis.BusinessLogic.Repositories

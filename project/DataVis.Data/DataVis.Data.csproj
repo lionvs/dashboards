@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Dashboard.cs" />
-    <Compile Include="Models\DashboardContext.cs" />
-    <Compile Include="Models\Mapping\DashboardMap.cs" />
+    <Compile Include="DashboardContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
