@@ -133,6 +133,7 @@
                 }
             }
         },
+        displayedName: "Range filter",
         imgUrl: "RangeFilter",
         title: "range filter"
     }

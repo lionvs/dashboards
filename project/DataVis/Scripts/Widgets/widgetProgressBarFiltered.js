@@ -101,6 +101,7 @@
                 }
             }
         },
+        displayedName: "Data status",
         imgUrl: "progressBar",
         title: "This progress bar shows how many percent of specific data has been filtered"
 }

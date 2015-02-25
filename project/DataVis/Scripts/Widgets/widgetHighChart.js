@@ -63,7 +63,7 @@
                 config.height = ui.size.height;
                 $(chartElement).highcharts().setSize(
                     element.offsetWidth,
-                    element.offsetHeight -30,
+                    element.offsetHeight - 30,
                     false
                 );
             }
@@ -173,7 +173,7 @@
         var chartElement = $(element).children("#chartArea");
         drawChart(chartElement, dataSource, config);
 
-        
+
     }
 
     return {
@@ -199,6 +199,7 @@
                 }
             }
         },
+        displayedName: "Chart",
         imgUrl: "Chart",
         title: "chart"
     }

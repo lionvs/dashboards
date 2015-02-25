@@ -24,6 +24,7 @@
                 type: events.registerWidgetRequest,
                 data: {
                     imgUrl: widget.imgUrl,
+                    displayedName : widget.displayedName,
                     name: widget.name,
                     title: widget.title
                 }

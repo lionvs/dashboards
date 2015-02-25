@@ -1,3 +1,6 @@
 ﻿<ul class="list-group" style="position:absolute">
-    <li class="list-group-item" ng-repeat="widget in widgets" style="text-align:center"><img class="tools" id="{{widget.name}}" title="{{widget.title}}" src="/Content/Icons/{{widget.imgUrl}}.ico " draggable="true" width="50" height="50" /> <br> {{widget.imgUrl}} </li>
+    <li class="list-group-item" ng-repeat="widget in widgets">
+        <img class="tools" id="{{widget.name}}" title="{{widget.title}}" src="/Content/Icons/{{widget.imgUrl}}.ico " draggable="true" width="30" height="30" />
+        &nbsp; {{widget.displayedName}}
+    </li>
 </ul> 

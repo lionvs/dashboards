@@ -1,9 +1,9 @@
-﻿<div id="main">
-    <div class="overlay" id="overlay" style="display: none;"></div>
-    <div id="toolBox" class="toolBox"></div>
-    <div id="dashboard"></div>
-    <div width=200px>
-        
+﻿<div id="toolBox" class="toolBox"></div>
+
+<div class="container body-content">
+    <div id="main">
+        <div class="overlay" id="overlay" style="display: none;"></div>
+        <div id="dashboard"></div>
     </div>
 </div>
 
@@ -15,8 +15,8 @@
     directive.create(application, moduleToolBox.name, "/HtmlTemplates/ToolBox.html");
     directive.create(application, widgetProgressBarFiltered.name, "/HtmlTemplates/ProgressBarFiltered.html");
 
-    var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
-    
+    var core = core(sandBox, eventManager, widgetManager, moduleToolBox);
+
     var currentWindowOnload = window.onload;
     window.onload = function () {
         if (currentWindowOnload) {
@@ -32,7 +32,7 @@
         registerWidgets(core, widgets);
 
         seedMethod(core, widgets, document.getElementById("dashboard"));
-        
+
     };
 
     function registerWidgets(core, widgets) {
@@ -40,7 +40,7 @@
     }
 
     function seedMethod(core, widgets, dashboard) {
-        widgets.forEach(function(widget) {
+        widgets.forEach(function (widget) {
             core.startWidget(widget.name, angularHelper.createElement(dashboard, widget.name));
         });
         core.stopAllWidgets();

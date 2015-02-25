@@ -118,6 +118,7 @@
                 }
             }
         },
+        displayedName: "Selector filter",
         imgUrl: "SelectorFilter",
         title: "selector filter"
     }
