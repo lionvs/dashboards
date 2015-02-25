@@ -215,6 +215,7 @@
     <Content Include="Content\Icons\Filters.ico" />
     <Content Include="Content\Icons\RangeFilter.ico" />
     <Content Include="Content\Icons\SelectorFilter.ico" />
+    <Content Include="Content\Images\Nazar.jpg" />
     <Content Include="Content\Images\Vitalii.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -291,9 +292,6 @@
       <Project>{36e296c9-4259-4e54-8059-5b6c6fd4bc4e}</Project>
       <Name>DataVis.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DataTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\PageNotFound.cshtml" />
