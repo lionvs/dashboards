@@ -7,7 +7,6 @@
         var $scope = addedDiv.scope();
         var $compile = $injector.get('$compile');
         $compile(addedDiv)($scope);
-        $scope.$apply();
         return container.lastChild;
     }
 }

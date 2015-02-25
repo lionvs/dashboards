@@ -18,6 +18,7 @@
                         Chart Options
                     </accordion-heading>
                     <label>Title</label><input type='text' ng-model='config.title' class='form-control' ng-change='chartConfigUpdate()'>
+                    <label>Theme</label><select class='form-control' ng-model='config.themeType' ng-options='opt as opt for opt in themeOptions' ng-change='dataConfigUpdate()'></select>
                     <label>Zoom</label><select class='form-control' ng-model='config.zoomType' ng-options='opt as opt for opt in zoomOptions' ng-change='dataConfigUpdate()'></select>
                 </accordion-group>
                 <accordion-group is-open='status.isFirstOpen' is-disabled='status.isFirstDisabled'>
