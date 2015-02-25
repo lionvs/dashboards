@@ -190,8 +190,9 @@
                 }
             }
         },
+        displayedName: "Chart",
         imgUrl: "Chart",
-        title: "chart"
+        title: "This is chart"
     }
 
     function defaultChart(element, datasource, configChart) {

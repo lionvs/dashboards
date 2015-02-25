@@ -6,9 +6,12 @@
     function fillHtmlTemplate(sandbox) {
             var angular = sandbox.require('angular');
             var $scope = angular.element(sandbox.getContainer()).scope();
-            $scope.$apply(function() {
+            var myElement = angular.element(sandbox.getContainer());
+            var $injector = myElement.injector();
+            var $timeout = $injector.get('$timeout');
+            $timeout(function () {
                 $scope.widgets = widgets;
-        });
+            },0);
     }
 
     function dragHandler(sandbox) {
