@@ -14,7 +14,10 @@
         var listOfValues = _.uniq(_.map(data, function (num) {
             return num[config.key];
         }));
-        config.validationListOfValues = _.map(listOfValues, function (num) {
+        var sortedListOfValues = _.sortBy(listOfValues, function (num) {
+            return Number(num);
+        });
+        config.validationListOfValues = _.map(sortedListOfValues, function (num) {
             return { value: num, isValid: true };
         });
     }
