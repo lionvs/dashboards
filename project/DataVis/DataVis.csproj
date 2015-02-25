@@ -201,10 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apiDocumentation.html" />
-    <Content Include="App_Data\database.mdf" />
-    <Content Include="App_Data\database_log.ldf">
-      <DependentUpon>database.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Icons\chart.ico" />
     <Content Include="Content\Icons\dataTable.ico" />
@@ -293,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\GetStarted.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
