@@ -220,6 +220,7 @@
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
     <Content Include="HtmlTemplates\ModalWindow.html" />
+    <Content Include="HtmlTemplates\ProgressBarFiltered.html" />
     <Content Include="HtmlTemplates\RangeFilter.html" />
     <Content Include="HtmlTemplates\SelectorFilter.html" />
     <Content Include="HtmlTemplates\ToolBox.html" />
@@ -245,6 +246,7 @@
     <Content Include="Scripts\Libraries\respond.js" />
     <Content Include="Scripts\user.js" />
     <Content Include="HtmlTemplates\DataTable.html" />
+    <Content Include="Scripts\Widgets\widgetProgressBarFiltered.js" />
     <Content Include="Scripts\Widgets\widgetRangeFilter.js" />
     <Content Include="Scripts\Widgets\widgetSelectorFilter.js" />
     <Content Include="Web.config" />

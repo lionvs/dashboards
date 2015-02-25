@@ -2,6 +2,9 @@
     <div class="overlay" id="overlay" style="display: none;"></div>
     <div id="toolBox" class="toolBox"></div>
     <div id="dashboard"></div>
+    <div width=200px>
+        
+    </div>
 </div>
 
 <script>
@@ -10,6 +13,7 @@
     directive.create(application, widgetSelectorFilter.name, "/HtmlTemplates/SelectorFilter.html");
     directive.create(application, widgetHighChart.name, "/HtmlTemplates/ChartConfig.html");
     directive.create(application, moduleToolBox.name, "/HtmlTemplates/ToolBox.html");
+    directive.create(application, widgetProgressBarFiltered.name, "/HtmlTemplates/ProgressBarFiltered.html");
 
     var core = core(sandBox, eventManager, widgetManager,moduleToolBox);
     
@@ -27,6 +31,7 @@
         core.registerWidget(widgetRangeFilter);
         core.registerWidget(widgetSelectorFilter);
         core.registerWidget(widgetHighChart);
+        core.registerWidget(widgetProgressBarFiltered);
 
         core.startWidget(widgetDataTable.name, angularHelper.createElement(document.getElementById("dashboard"), widgetDataTable.name));
         core.startWidget(widgetHighChart.name, angularHelper.createElement(document.getElementById("dashboard"), widgetHighChart.name));

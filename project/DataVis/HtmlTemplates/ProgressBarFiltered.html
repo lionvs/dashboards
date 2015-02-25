@@ -1,0 +1,20 @@
+﻿<div class="widgetHeader">
+    {{widgetName}}
+    <div class="widget-header-toolbar">
+        <span class="focus-btn"><a href="" ng-click="focusWidget()">0</a></span>
+        <span class="close-btn"><a href="" ng-click="collapseWidget()">^</a></span>
+        <span class="close-btn"><a href="" ng-click="closeWidget()">X</a></span>
+    </div>
+</div>
+
+<div class="progressBarFilteredContainer">
+    <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="createListProgressBars()"></select>
+    <ol style="list-style: none outside none; padding-left:0px">
+        <li ng-repeat="listItem in config.listProgressBars">
+            <div class="info">{{listItem.name}} / {{listItem.percent}}%</div>
+            <div class="progress">
+                <div ng-style="listItem.style" class="progress-bar progress-bar-danger"></div>
+            </div>
+        </li>
+    </ol>
+</div>
