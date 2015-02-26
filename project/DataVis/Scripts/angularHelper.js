@@ -11,7 +11,6 @@
     },
 
     getTimeout: function(element) {
-        var $scope = angular.element(element).scope();
         var myElement = angular.element(element);
         var $injector = myElement.injector();
         return $injector.get('$timeout');
