@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Http;
 using DataVis.Logic;
-using Newtonsoft.Json.Linq;
 
 namespace DataVis.Controllers.API
 {
@@ -20,7 +18,7 @@ namespace DataVis.Controllers.API
             this._dataParser = dataParser;
         }
 
-        public List<JObject> Post()
+        public IHttpActionResult Post()
         {
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count == 0)
@@ -31,7 +29,7 @@ namespace DataVis.Controllers.API
             postedFile.SaveAs(filePath);
             var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
             File.Delete(filePath);
-            return result;
+            return Ok(result);
         }
     }
 }
