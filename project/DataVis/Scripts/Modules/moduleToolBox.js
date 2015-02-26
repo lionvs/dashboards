@@ -9,9 +9,9 @@
             var myElement = angular.element(sandbox.getContainer());
             var $injector = myElement.injector();
             var $timeout = $injector.get('$timeout');
-            $timeout(function () {
+            $scope.$evalAsync(function ($scope) {
                 $scope.widgets = widgets;
-            },0);
+            });
     }
 
     function dragHandler(sandbox) {
