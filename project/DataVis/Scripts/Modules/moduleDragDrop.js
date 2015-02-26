@@ -40,7 +40,12 @@
             top: posy,
             left:posx
         }
-        core.startWidget(moduleDragDrop.dragWidgetName, angularHelper.createElement(elementDashboard, moduleDragDrop.dragWidgetName), position);
+
+        var element = angularHelper.createElement(elementDashboard, moduleDragDrop.dragWidgetName);
+        var $timeout = angularHelper.getTimeout(element);
+        $timeout(function() {
+            core.startWidget(moduleDragDrop.dragWidgetName, element, position);
+        });
     }
     return {
         name: "dragDrop",
