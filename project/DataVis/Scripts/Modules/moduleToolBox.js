@@ -9,22 +9,25 @@
             var myElement = angular.element(sandbox.getContainer());
             var $injector = myElement.injector();
             var $timeout = $injector.get('$timeout');
-            $scope.$evalAsync(function ($scope) {
+            $timeout(function () {
                 $scope.widgets = widgets;
             });
     }
 
     function dragHandler(sandbox) {
         var element = sandbox.getContainer();
-        for (var i = 0; i < element.childElementCount; i++) {
-            element.children[i].ondragstart = function (event) {
-                sandbox.notify(
+        var $timeout = angularHelper.getTimeout(element);
+        $timeout(function() {
+            for (var i = 0; i < element.childElementCount; i++) {
+                element.children[i].ondragstart = function(event) {
+                    sandbox.notify(
                     {
                         type: events.dragStart,
                         data: event
                     });
+                }
             }
-        }
+        });
     }
 
     function autoScrolling(sandbox) {
