@@ -6,18 +6,16 @@
     function fillHtmlTemplate(sandbox) {
             var angular = sandbox.require('angular');
             var $scope = angular.element(sandbox.getContainer()).scope();
-            var myElement = angular.element(sandbox.getContainer());
-            var $injector = myElement.injector();
-            var $timeout = $injector.get('$timeout');
-            $timeout(function () {
+            $scope.$evalAsync(function () {
                 $scope.widgets = widgets;
             });
     }
 
     function dragHandler(sandbox) {
         var element = sandbox.getContainer();
-        var $timeout = angularHelper.getTimeout(element);
-        $timeout(function() {
+        var angular = sandbox.require('angular');
+        var $scope = angular.element(sandbox.getContainer()).scope();
+        $scope.$evalAsync(function () {
             for (var i = 0; i < element.childElementCount; i++) {
                 element.children[i].ondragstart = function(event) {
                     sandbox.notify(
