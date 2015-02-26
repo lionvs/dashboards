@@ -31,6 +31,9 @@ namespace DataVis.Controllers.API
             var filePath = HttpContext.Current.Server.MapPath("~/Storage/" + fileName + ".xlsx");
             try
             {
+
+                DirectoryInfo di = Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Storage/"));
+
                 postedFile.SaveAs(filePath);
                 var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
                 File.Delete(filePath);
