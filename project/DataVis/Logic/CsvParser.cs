@@ -9,7 +9,8 @@ namespace DataVis.Logic
     {
         public List<List<object>> Parse(string filename)
         {
-            var fileFullName = HttpContext.Current.Server.MapPath("~/Storage/" + filename + ".csv");
+            const string fileType = ".csv";
+            var fileFullName = HttpContext.Current.Server.MapPath("~/Storage/" + filename + fileType);
             var result = new List<List<object>>();
             using (var sr = new StreamReader(fileFullName))
             {

@@ -11,7 +11,8 @@ namespace DataVis.Logic
     {
         public List<List<object>> Parse(string filename)
         {
-            var fileFullName = HttpContext.Current.Server.MapPath("~/Storage/" + filename + ".xlsx");
+            const string fileType = ".xlsx";
+            var fileFullName = HttpContext.Current.Server.MapPath("~/Storage/" + filename + fileType);
             var connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileFullName + ";Extended Properties=\"Excel 12.0;IMEX=1;HDR=NO;TypeGuessRows=0;ImportMixedTypes=Text\"";
 
             var adapter = new OleDbDataAdapter();
