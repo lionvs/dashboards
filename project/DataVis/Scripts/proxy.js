@@ -167,17 +167,23 @@
                 processData: false,
                 headers: user.headers
             }).done(function (resp) {
-                var myDataSource = {};
-                myDataSource.data = resp;
-                myDataSource.schema = proxy.getSchema(myDataSource.data);
-                var event = {
-                    type: events.uploadedDataSource,
-                    data: myDataSource
+                if (resp.Message != null) {
+                    $.notify(resp.Message);
                 }
-                eventManager.triggerEvent(event);
-                event.type = events.updatedDataSource;
-                eventManager.triggerEvent(event);
-                $.notify("done");
+                else
+                {
+                    var myDataSource = {};
+                    myDataSource.data = resp.Data;
+                    myDataSource.schema = proxy.getSchema(myDataSource.data);
+                    var event = {
+                        type: events.uploadedDataSource,
+                        data: myDataSource
+                    }
+                    eventManager.triggerEvent(event);
+                    event.type = events.updatedDataSource;
+                    eventManager.triggerEvent(event);
+                    $.notify("done");
+                }
             }).fail(function (resp) {
                 $.notify(resp.status + ": " + resp.statusText);
             });

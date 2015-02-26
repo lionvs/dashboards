@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.UI.WebControls;
 using DataVis.Logic;
 
 namespace DataVis.Controllers.API
@@ -26,10 +29,17 @@ namespace DataVis.Controllers.API
             var postedFile = httpRequest.Files[0];
             var fileName = Guid.NewGuid().ToString("n");
             var filePath = HttpContext.Current.Server.MapPath("~/Storage/" + fileName + ".xlsx");
-            postedFile.SaveAs(filePath);
-            var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
-            File.Delete(filePath);
-            return Ok(result);
+            try
+            {
+                postedFile.SaveAs(filePath);
+                var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
+                File.Delete(filePath);
+                return Ok(new { Data = result, Message = (string)null });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Message = e.Message });
+            }
         }
     }
 }
