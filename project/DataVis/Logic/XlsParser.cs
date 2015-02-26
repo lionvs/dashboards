@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.IO;
 using System.Linq;
+using System.Web;
 
 namespace DataVis.Logic
 {
@@ -11,7 +11,7 @@ namespace DataVis.Logic
     {
         public List<List<object>> Parse(string filename)
         {
-            var fileFullName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Storage\" + filename + ".xlsx");
+            var fileFullName = HttpContext.Current.Server.MapPath( "~/Storage/" + filename + ".xlsx");
             var connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileFullName + ";Extended Properties=\"Excel 12.0;IMEX=1;HDR=NO;TypeGuessRows=0;ImportMixedTypes=Text\"";
 
             var adapter = new OleDbDataAdapter();

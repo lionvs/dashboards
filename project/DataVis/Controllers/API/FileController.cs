@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
-using System.Web.UI.WebControls;
 using DataVis.Logic;
 
 namespace DataVis.Controllers.API
