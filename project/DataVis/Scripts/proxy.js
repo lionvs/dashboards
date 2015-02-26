@@ -28,6 +28,11 @@
             ConfirmPassword: $("#registerConfirmPassword").val()
         };
 
+        if (data.Password !== data.ConfirmPassword) {
+            $.notify("Password does not match the confirm password", "error");
+            return;
+        }
+
         $.ajax({
             type: 'POST',
             url: '/api/Account/Register',

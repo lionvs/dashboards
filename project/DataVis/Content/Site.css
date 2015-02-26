@@ -132,25 +132,21 @@ td {
     }
 
 .rangeFilter {
-    text-align: center;
-    align-items: center;
     position: absolute;
     border-width: 2px;
     border-style: ridge;
     border-radius: 4px;
     padding: 1px;
-    width: 110px;
+    background-color: rgba(232, 215, 215, 0.10);
 }
 
 .selectorFilter {
-    text-align: center;
-    align-items: center;
     position: absolute;
     border-width: 2px;
     border-style: ridge;
     border-radius: 4px;
     padding: 1px;
-    width: 150px;
+    background-color: rgba(232, 215, 215, 0.10);
 }
 
 .filterBtn {
@@ -175,9 +171,6 @@ td {
     border-style: ridge;
 }
 
-.filterDropDown {
-    width: 100px;
-}
 
 #filterTableWrapper {
     position: relative;
@@ -185,7 +178,6 @@ td {
 
 #filterTableScroll {
     height: 170px;
-    width: 140px;
     overflow: auto;
 }
 
@@ -201,7 +193,7 @@ select.form-control.modalWindow {
     width: 100%;
     height: 25px;
     overflow: hidden;
-    background-color: lightblue;
+    background-color: red;
     cursor: move;
 }
 
