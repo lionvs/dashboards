@@ -47,17 +47,14 @@
         });
     }
 
-    function fillHtmlTemplate(sandbox, data, schema,config) {
+    function fillHtmlTemplate(sandbox, data, schema, config) {
         var angular = sandbox.require('angular');
         var $scope = angular.element(sandbox.getContainer()).scope();
-        _.defer(function () {
-            $scope.schemaOptions = [schemaItemForEverything].concat(sandbox.getOriginalDatasource().schema);
-            $scope.config = config;
-            $scope.createListProgressBars = function () {
-                createListProgressBars(sandbox, config);
-            };
-            $scope.$digest();
-        });
+        $scope.schemaOptions = [schemaItemForEverything].concat(sandbox.getOriginalDatasource().schema);
+        $scope.config = config;
+        $scope.createListProgressBars = function () {
+            createListProgressBars(sandbox, config);
+        };
     }
 
     function setResizable(element, config, $) {

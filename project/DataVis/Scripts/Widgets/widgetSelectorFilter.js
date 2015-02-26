@@ -45,26 +45,24 @@
     }
 
     function fillScope($scope, sandbox, data, config) {
-        $scope.$apply(function () {
-            $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
-            $scope.config = config;
-            $scope.requireFiltering = function () {
-                var event = {
-                    type: events.requireFiltering,
-                    data: config
-                }
-                sandbox.notify(event);
-            };
-            $scope.getListOfValues = function () {
-                getListOfValues(data, config);
-            };
-            $scope.deactivateWidget = function () {
-                config.isActiveNow = false;
-            };
-            $scope.activateWidget = function () {
-                config.isActiveNow = true;
-            };
-        });
+        $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
+        $scope.config = config;
+        $scope.requireFiltering = function () {
+            var event = {
+                type: events.requireFiltering,
+                data: config
+            }
+            sandbox.notify(event);
+        };
+        $scope.getListOfValues = function () {
+            getListOfValues(data, config);
+        };
+        $scope.deactivateWidget = function () {
+            config.isActiveNow = false;
+        };
+        $scope.activateWidget = function () {
+            config.isActiveNow = true;
+        };
     }
 
     function fillHtmlTemplate(sandbox, data, config) {
