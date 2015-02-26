@@ -29,19 +29,19 @@ namespace DataVis.Controllers.API
                 postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1);
             var fileName = Guid.NewGuid().ToString("n");
             var filePath = HttpContext.Current.Server.MapPath(String.Format("~/Storage/{0}.{1}", fileName, fileType));
-            //try
-            //{
+            try
+            {
                 Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Storage/"));
                 postedFile.SaveAs(filePath);
                 var parser = ParserFactory.GetFileParser(fileType);
                 var result = _dataParser.GetJson(parser.Parse(fileName));
                 File.Delete(filePath);
                 return Ok(new { Data = result, Message = (string)null });
-            //}
-            //catch (Exception e)
-            //{
-            //    return Ok(new { Message = e.Message });
-            //}
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Message = e.Message });
+            }
         }
     }
 }
