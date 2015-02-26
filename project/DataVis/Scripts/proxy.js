@@ -155,7 +155,7 @@
         var formData = new FormData();
         var opmlFile = $("#fileToUpload")[0];
         var ext = opmlFile.value.substring(opmlFile.value.lastIndexOf('.') + 1);
-        if (ext === "xlsx") {
+        if (ext === "xlsx" || ext === "csv") {
             formData.append(opmlFile, opmlFile.files[0]);
 
             $.ajax({
@@ -170,8 +170,7 @@
                 if (resp.Message != null) {
                     $.notify(resp.Message);
                 }
-                else
-                {
+                else {
                     var myDataSource = {};
                     myDataSource.data = resp.Data;
                     myDataSource.schema = proxy.getSchema(myDataSource.data);
@@ -188,7 +187,7 @@
                 $.notify(resp.status + ": " + resp.statusText);
             });
         } else {
-            $.notify("chose .xlsx file");
+            $.notify("chose .xlsx or .csv file");
         }
     },
 

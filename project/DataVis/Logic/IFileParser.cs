@@ -2,7 +2,7 @@
 
 namespace DataVis.Logic
 {
-    public interface IXlsParser
+    public interface IFileParser
     {
         List<List<object>> Parse(string filename);
     }

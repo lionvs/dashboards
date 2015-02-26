@@ -10,7 +10,7 @@ namespace DataVis
     {
         public static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IXlsParser>().To<XlsParser>();
+            kernel.Bind<IFileParser>().To<XlsParser>();
             kernel.Bind<IDataParser>().To<DataParser>();
             kernel.Bind<IDashboardService>().To<DashboardService>();
             kernel.Bind<IUnitOfWorkFactory>().To<UnitOfWorkFactory>();

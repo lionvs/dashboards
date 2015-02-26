@@ -12,13 +12,11 @@ namespace DataVis.Controllers.API
     [Authorize]
     public class FileController : ApiController
     {
-        private readonly IXlsParser _xlsParser;
         private readonly IDataParser _dataParser;
 
-        public FileController(IXlsParser xlsParser, IDataParser dataParser)
+        public FileController(IDataParser dataParser)
         {
-            this._xlsParser = xlsParser;
-            this._dataParser = dataParser;
+            _dataParser = dataParser;
         }
 
         public IHttpActionResult Post()
@@ -27,22 +25,23 @@ namespace DataVis.Controllers.API
             if (httpRequest.Files.Count == 0)
                 return null;
             var postedFile = httpRequest.Files[0];
+            var fileType = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1,
+                postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1);
             var fileName = Guid.NewGuid().ToString("n");
-            var filePath = HttpContext.Current.Server.MapPath("~/Storage/" + fileName + ".xlsx");
-            try
-            {
-
-                DirectoryInfo di = Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Storage/"));
-
+            var filePath = HttpContext.Current.Server.MapPath(String.Format("~/Storage/{0}.{1}", fileName, fileType));
+            //try
+            //{
+                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Storage/"));
                 postedFile.SaveAs(filePath);
-                var result = _dataParser.GetJson(_xlsParser.Parse(fileName));
+                var parser = ParserFactory.GetFileParser(fileType);
+                var result = _dataParser.GetJson(parser.Parse(fileName));
                 File.Delete(filePath);
                 return Ok(new { Data = result, Message = (string)null });
-            }
-            catch (Exception e)
-            {
-                return Ok(new { Message = e.Message });
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    return Ok(new { Message = e.Message });
+            //}
         }
     }
 }

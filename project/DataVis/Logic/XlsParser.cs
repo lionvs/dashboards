@@ -7,7 +7,7 @@ using System.Web;
 
 namespace DataVis.Logic
 {
-    public class XlsParser : IXlsParser
+    public class XlsParser : IFileParser
     {
         public List<List<object>> Parse(string filename)
         {

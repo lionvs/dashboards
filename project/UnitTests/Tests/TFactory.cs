@@ -12,7 +12,7 @@ namespace UnitTests.Tests
             return new DataParser();
         }
 
-        public IXlsParser CreateXlsParser()
+        public IFileParser CreateXlsParser()
         {
             return new XlsParser();
         }

@@ -17,7 +17,7 @@ namespace DataVis.Logic
             for (int j = 1; j < data.Count; j++)
             {
                 var obj = new JObject();
-                for (int i = 0; i < data[1].Count; i++)
+                for (int i = 0; i < data[0].Count; i++)
                     obj.Add(titleArray[i], GetValue(data[j][i]));
                 result.Add(obj);
             }
