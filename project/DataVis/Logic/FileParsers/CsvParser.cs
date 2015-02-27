@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace DataVis.Logic
+namespace DataVis.Logic.FileParsers
 {
     public class CsvParser : IFileParser
     {

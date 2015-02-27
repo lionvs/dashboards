@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DataVis.Logic
+namespace DataVis.Logic.FileParsers
 {
     public interface IFileParser
     {
