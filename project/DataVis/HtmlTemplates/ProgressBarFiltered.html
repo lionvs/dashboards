@@ -1,19 +1,22 @@
-﻿<div class="widgetHeader">
-    Data status
-    <div class="widget-header-toolbar">
-        <span class="widgetHeaderBtn" ng-click="focusWidget()">0</span>
-        <span class="widgetHeaderBtn" ng-click="closeWidget()">X</span>
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        Data status
+        <div class="widget-header-toolbar">
+            <span class="widgetHeaderBtn" ng-click="focusWidget()">0</span>
+            <span class="widgetHeaderBtn" ng-click="closeWidget()">X</span>
+        </div>
     </div>
-</div>
-
-<div class="progressBarFilteredContainer">
-    <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="createListProgressBars()"></select>
-    <ol style="list-style: none outside none; padding-left:0px">
-        <li ng-repeat="listItem in config.listProgressBars">
-            <div class="info">{{listItem.name}} / {{listItem.percent}}%</div>
-            <div class="progress">
-                <div ng-style="listItem.style" class="progress-bar progress-bar-danger"></div>
-            </div>
-        </li>
-    </ol>
+    <div class="panel-body">
+        <div class="progressBarFilteredContainer">
+            <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="createListProgressBars()"></select>
+            <ol style="list-style: none outside none; padding-left:0px">
+                <li ng-repeat="listItem in config.listProgressBars">
+                    <div class="info">{{listItem.name}} / {{listItem.percent}}%</div>
+                    <div class="progress">
+                        <div ng-style="listItem.style" class="progress-bar progress-bar-danger"></div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
 </div>

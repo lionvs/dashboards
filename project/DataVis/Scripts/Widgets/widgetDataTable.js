@@ -19,7 +19,7 @@
 
     function setResizable(element, config, $) {
         if (config)
-            $(element).width(config.width).height(config.height);
+            $(element.children[0]).width(config.width).height(config.height);
         $(element.children[0]).resizable({
             resize: function (e, ui) {
                 config.width = ui.size.width;
