@@ -18,7 +18,7 @@ namespace DataVis.Logic.FileParsers
                 while ((line = sr.ReadLine()) != null)
                 {
                     var values = line.Split(',');
-                    List<object> listValuesLine = values.Cast<object>().ToList();
+                    var listValuesLine = values.Select(item => item == "" ? null : item).Cast<object>().ToList();
                     result.Add(listValuesLine);
                 }
             }
