@@ -5,14 +5,14 @@
 
         function onWidgetUnFocused(element) {
             $('#overlay').fadeOut('fast', function() {
-                element.zIndex(zIndexOfElement);
+                element[0].style.zIndex = zIndexOfElement;
             });
             widgetFocused = false;
         }
 
         function onWidgetFocused(element) {
-            zIndexOfElement = element.zIndex();
-            element.zIndex(9999);
+            zIndexOfElement = element[0].style.zIndex;
+            element[0].style.zIndex = 9999;
             $('#overlay').fadeIn('slow');
             widgetFocused = true;
         }
