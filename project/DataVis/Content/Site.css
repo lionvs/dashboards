@@ -39,7 +39,8 @@ input[type="checkbox"].input-validation-error {
 }
 
 .highChart {
-    width: 700px;
+    height: auto;
+    width: auto;
     position: absolute !important;
 }
 

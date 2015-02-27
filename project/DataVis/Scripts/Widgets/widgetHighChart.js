@@ -56,13 +56,13 @@
                     borderWidth: 0
                 }
             },
-            width: 'auto',
-            height: 'auto'
+            width: '700px',
+            height: 'auto',
         }
     }
 
     function setResizable(element, config, $) {
-        $(element).width(config.width).height(config.height);
+        $(element.children[0]).width(config.width).height(config.height);
         var chartElement = $(element).find("#chartArea");
         $(element.children[0]).resizable({
             resize: function (e, ui) {
