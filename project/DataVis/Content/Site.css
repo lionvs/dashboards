@@ -131,18 +131,10 @@ td {
 
 .rangeFilter {
     position: absolute;
-    border-width: 2px;
-    border-style: ridge;
-    border-radius: 4px;
-    background-color: rgba(232, 215, 215, 0.10);
 }
 
 .selectorFilter {
     position: absolute;
-    border-width: 2px;
-    border-style: ridge;
-    border-radius: 4px;
-    background-color: rgba(232, 215, 215, 0.10);
 }
 
 .filterBtn {
