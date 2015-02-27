@@ -186,13 +186,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\CsvParser.cs" />
     <Compile Include="Logic\DataParser.cs" />
+    <Compile Include="Logic\FileParsers\CsvParser.cs" />
+    <Compile Include="Logic\FileParsers\IFileParser.cs" />
+    <Compile Include="Logic\FileParsers\ParserFactory.cs" />
+    <Compile Include="Logic\FileParsers\XlsParser.cs" />
     <Compile Include="Logic\IDataParser.cs" />
-    <Compile Include="Logic\IFileParser.cs" />
     <Compile Include="App_Start\NinjectTypeRegistrator.cs" />
-    <Compile Include="Logic\ParserFactory.cs" />
-    <Compile Include="Logic\XlsParser.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashboardModel.cs" />
