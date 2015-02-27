@@ -1,23 +1,26 @@
-﻿<div class="widgetHeader">
-    Selector filter
-    <div class="widget-header-toolbar">
-        <span class="close-btn"><a href="" onclick="this.parentNode.parentNode.parentNode.style.opacity = '0.4'" ng-click="deactivateWidget();requireFiltering()" ng-show="config.isActiveNow">D</a></span>
-        <span class="close-btn"><a href="" onclick="this.parentNode.parentNode.parentNode.style.opacity = '1'" ng-click="activateWidget();requireFiltering()" ng-show="!config.isActiveNow">A</a></span>
-        <span class="close"><a href="" ng-click="closeWidget();deactivateWidget();requireFiltering()">X</a></span>
+﻿<div class="panel-primary">
+    <div class="panel-heading">
+        <span class="panel-title">
+            Selector filter
+            <span class="widgetHeaderBtn" onclick="this.parentNode.parentNode.parentNode.style.opacity = '0.4'" ng-click="deactivateWidget();requireFiltering()" ng-show="config.isActiveNow">D</span>
+            <span class="widgetHeaderBtn" onclick="this.parentNode.parentNode.parentNode.style.opacity = '1'" ng-click="activateWidget();requireFiltering()" ng-show="!config.isActiveNow">A</span>
+            <span class="widgetHeaderBtn" ng-click="closeWidget();deactivateWidget();requireFiltering()">X</span>
+        </span>
+    </div>
+
+    <div style="padding:3px">
+        <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
+        <div id="filterTableWrapper">
+            <div id="filterTableScroll">
+                <table>
+                    <tr ng-repeat="item in config.validationListOfValues">
+                        <td><input type="checkbox" ng-model="item.isValid"></td>
+                        <td>{{item.value}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br /><input type="button" class="btn-default" value="Filter data" ng-click="requireFiltering()">
     </div>
 </div>
 
-<div>
-    <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select>
-    <div id="filterTableWrapper">
-        <div id="filterTableScroll">
-            <table>
-                <tr ng-repeat="item in config.validationListOfValues">
-                    <td><input type="checkbox" ng-model="item.isValid"></td>
-                    <td>{{item.value}}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <br /><input type="button" class="filterBtn" value="Filter Data" ng-click="requireFiltering()">
-</div>

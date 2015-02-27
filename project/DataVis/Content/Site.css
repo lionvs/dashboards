@@ -136,7 +136,6 @@ td {
     border-width: 2px;
     border-style: ridge;
     border-radius: 4px;
-    padding: 1px;
     background-color: rgba(232, 215, 215, 0.10);
 }
 
@@ -145,7 +144,6 @@ td {
     border-width: 2px;
     border-style: ridge;
     border-radius: 4px;
-    padding: 1px;
     background-color: rgba(232, 215, 215, 0.10);
 }
 
@@ -177,7 +175,7 @@ td {
 }
 
 #filterTableScroll {
-    height: 170px;
+    height: 100px;
     overflow: auto;
 }
 
@@ -193,7 +191,7 @@ select.form-control.modalWindow {
     width: 100%;
     height: 25px;
     overflow: hidden;
-    background-color: red;
+    background-color: gray;
     cursor: move;
 }
 
@@ -260,4 +258,22 @@ select.form-control.modalWindow {
     padding-left: 10px;
     width: 20%;
     float: left;
+}
+
+.widgetHeaderBtn {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.widgetHeaderBtn:hover,
+.widgetHeaderBtn:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
