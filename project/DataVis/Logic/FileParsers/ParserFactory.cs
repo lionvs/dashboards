@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataVis.Logic
+namespace DataVis.Logic.FileParsers
 {
     public static class ParserFactory
     {

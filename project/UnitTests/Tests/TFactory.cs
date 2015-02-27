@@ -2,6 +2,7 @@
 using DataVis.BusinessLogic.Services;
 using DataVis.BusinessLogic.Services.Interfaces;
 using DataVis.Logic;
+using DataVis.Logic.FileParsers;
 
 namespace UnitTests.Tests
 {
