@@ -36,7 +36,8 @@
                 return;
             var sandbox = sandBox.create(element, eventManager);
             var moduleInstance = registeredWidgets[widgetName].init(sandbox);
-            widgetManager.addModule(moduleInstance, element, widgetName,position);
+            widgetManager.addModule(moduleInstance, element, widgetName, position);
+
         },
 
         startModule:function(module,element) {
@@ -76,8 +77,12 @@
             container.innerHTML = "";
             _.each(globalConfig, function(config) {
                 var element = angularHelper.createElement(container, config.name);
-                this.startWidget(config.name, element,config.position);
-                this.setConfig(element, config.config);
+                var $timeout = angularHelper.getTimeout(element);
+                var that = this;
+                $timeout(function () {
+                    that.startWidget(config.name, element, config.position);
+                    that.setConfig(element, config.config);
+                });
             }, this);
         }
     }

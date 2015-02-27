@@ -194,6 +194,7 @@
         } else {
             $.notify("chose .xlsx or .csv file");
         }
+        $("#fileToUpload")[0].value = null;
     },
 
     getSchema: function (data) {

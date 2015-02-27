@@ -8,7 +8,6 @@
         var $scope = angular.element(sandbox.getContainer()).scope();
         var myElement = angular.element(sandbox.getContainer());
         var $injector = myElement.injector();
-        var $timeout = $injector.get('$timeout');
         $scope.widgets = widgets;
     }
 
