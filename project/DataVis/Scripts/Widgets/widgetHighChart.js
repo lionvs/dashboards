@@ -31,7 +31,7 @@
             chartType: "spline",
             zoomType: zoomOptions[0],
             themeType: "dark",
-            chartHeight: 400,
+            chartHeight: 330,
             panning: true,
             panKey: 'shift',
             inverted: false,
@@ -57,7 +57,7 @@
                 }
             },
             width: '700px',
-            height: 'auto',
+            height: '400px',
         }
     }
 
@@ -68,6 +68,7 @@
             resize: function (e, ui) {
                 config.width = ui.size.width;
                 config.height = ui.size.height;
+                config.chartHeight = ui.size.height-70;
                 $(chartElement).highcharts().setSize(
                     element.children[0].offsetWidth-35,
                     element.children[0].offsetHeight - 70,
