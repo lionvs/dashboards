@@ -1,6 +1,6 @@
 ﻿var widgetManager = function () {
     var runningModules = [];
-    var draggableHeader = 'widgetHeader';
+    var draggableHeader = 'panel-heading';
     var limitTop = 30;
     var limitLeft = 0;
 

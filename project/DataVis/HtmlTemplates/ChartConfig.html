@@ -1,13 +1,17 @@
-﻿<div class="widgetHeader">
-    Chart
-    <div class="widget-header-toolbar">
-        <span class="widgetHeaderBtn" ng-click="focusWidget()">0</span>
-        <span class="widgetHeaderBtn" ng-click="closeWidget()">X</span>
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        Chart
+        <div class="widget-header-toolbar">
+            <span class="widgetHeaderBtn" ng-click="focusWidget()">0</span>
+            <span class="widgetHeaderBtn" ng-click="closeWidget()">X</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="chartArea"></div>
     </div>
 </div>
 
-
-    <div id="chartArea"></div>
+   
 <div id="chartConfigArea">
     <button id="chartConfigButton" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Options</button>
     <div collapse="isCollapsed">

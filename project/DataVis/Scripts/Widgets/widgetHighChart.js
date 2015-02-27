@@ -56,21 +56,21 @@
                     borderWidth: 0
                 }
             },
-            width: '700px',
-            height: '400px'
+            width: 'auto',
+            height: 'auto'
         }
     }
 
     function setResizable(element, config, $) {
         $(element).width(config.width).height(config.height);
-        var chartElement = $(element).children("#chartArea");
-        $(element).resizable({
+        var chartElement = $(element).find("#chartArea");
+        $(element.children[0]).resizable({
             resize: function (e, ui) {
                 config.width = ui.size.width;
                 config.height = ui.size.height;
                 $(chartElement).highcharts().setSize(
-                    element.offsetWidth,
-                    element.offsetHeight - 30,
+                    element.children[0].offsetWidth-35,
+                    element.children[0].offsetHeight - 70,
                     false
                 );
             }
@@ -91,11 +91,11 @@
         $scope.themeOptions = _.map(themeOptions, function (option) { return option.name });
 
         $scope.chartConfigUpdate = function () {
-            chartElement = $(element).children("#chartArea");
+            chartElement = $(element).find("#chartArea");
             $(chartElement).highcharts().setTitle({ text: config.title });
         };
         $scope.dataConfigUpdate = function () {
-            chartElement = $(element).children("#chartArea");
+            chartElement = $(element).find("#chartArea");
             drawChart(chartElement, data, config);
         };
     }
@@ -162,7 +162,7 @@
         var $injector = myElement.injector();
         var $timeout = $injector.get('$timeout');
         $timeout(function () {
-            var chartElement = $(element).children("#chartArea");
+            var chartElement = $(element).find("#chartArea");
             drawChart(chartElement, dataSource, config);
         }, 1);
     }
