@@ -14,7 +14,8 @@
 
     function getListOfValues(data, config) {
         config.listOfValues = _.uniq(_.map(data, function (num) {
-            return num[config.key];
+            var value = num[config.key];
+            return _.isString(value) ? value.toLowerCase() : value;
         }));
     }
 
@@ -24,8 +25,10 @@
     }
 
     function isValidWhenString(num, config) {
-        return _.indexOf(config.listOfValues, num[config.key]) >= config.indexOfMin
-            && _.indexOf(config.listOfValues, num[config.key]) <= config.indexOfMax;
+        var value = num[config.key];
+        var valueInLowerCase = _.isString(value) ? value.toLowerCase() : value;
+        return _.indexOf(config.listOfValues, valueInLowerCase) >= config.indexOfMin
+            && _.indexOf(config.listOfValues, valueInLowerCase) <= config.indexOfMax;
     }
 
 
@@ -39,8 +42,10 @@
             });
         }
         else {
-            config.indexOfMin = _.indexOf(config.listOfValues, config.min);
-            config.indexOfMax = _.indexOf(config.listOfValues, config.max);
+            var minInLowerCase = _.isString(config.min) ? config.min.toLowerCase() : config.min;
+            var maxInLowerCase = _.isString(config.max) ? config.max.toLowerCase() : config.max;
+            config.indexOfMin = _.indexOf(config.listOfValues, minInLowerCase);
+            config.indexOfMax = _.indexOf(config.listOfValues, maxInLowerCase);
             if (config.indexOfMax === -1) {
                 config.indexOfMax = Infinity;
                 config.max = Infinity;
