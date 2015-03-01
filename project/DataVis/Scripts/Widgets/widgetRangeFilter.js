@@ -60,6 +60,8 @@
         return filteredData;
     }
 
+    var requiredFilteringId;
+
     function fillScope($scope, sandbox, data, config) {
         $scope.$apply(function () {
             $scope.config = config;
@@ -67,12 +69,15 @@
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
             };
-            $scope.requireFiltering = function () {
-                var event = {
-                    type: events.requireFiltering,
-                    data: config
-                }
-                sandbox.notify(event);
+            $scope.requireLazyFiltering = function (timeout) {
+                clearTimeout(requiredFilteringId);
+                requiredFilteringId = setTimeout(function () {
+                    var event = {
+                        type: events.requireFiltering,
+                        data: config
+                    }
+                    sandbox.notify(event);
+                }, timeout);
             };
             $scope.deactivateWidget = function () {
                 config.isActiveNow = false;

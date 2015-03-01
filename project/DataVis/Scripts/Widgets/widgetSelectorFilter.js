@@ -44,16 +44,21 @@
         return filteredData;
     }
 
+    var requiredFilteringId;
+
     function fillScope($scope, sandbox, data, config) {
         $scope.$apply(function () {
             $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
             $scope.config = config;
-            $scope.requireFiltering = function () {
-                var event = {
-                    type: events.requireFiltering,
-                    data: config
-                }
-                sandbox.notify(event);
+            $scope.requireLazyFiltering = function (timeout) {
+                clearTimeout(requiredFilteringId);
+                requiredFilteringId = setTimeout(function () {
+                    var event = {
+                        type: events.requireFiltering,
+                        data: config
+                    }
+                    sandbox.notify(event);
+                }, timeout);
             };
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
