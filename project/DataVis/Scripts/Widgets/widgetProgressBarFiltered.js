@@ -17,8 +17,15 @@
         return countPercent(numberCurrent, numberOriginal);
     }
 
+    function numberToFixed(i, digits) {
+        var pow = Math.pow(10, digits);
+
+        return Math.floor(i * pow) / pow;
+    }
+
     function countPercent(numberCurrent, numberOriginal) {
-        return 100 - ((numberCurrent * 100) / numberOriginal);
+        var result = 100 - ((numberCurrent * 100) / numberOriginal);
+        return numberToFixed(result, 2);
     }
 
     function createListProgressBars(sandbox, config) {
