@@ -82,14 +82,7 @@
         var element = sandbox.getContainer();
         var dataSource = sandbox.getOriginalDatasource();
         var $ = sandbox.require('JQuery');
-
-        if (dataSource.data.length < 1) {
-            $(element).hide();
-            return;
-        }
-
         fillHtmlTemplate(sandbox, dataSource.data, config);
-        $(element).show();
     }
 
     return {
