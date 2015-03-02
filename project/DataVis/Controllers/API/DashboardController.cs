@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -44,7 +45,7 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = GetIdByUsername(dashboardModel.UserName) ?? GetCurrentUserId(),
+                    UserId = (dashboardModel.UserName == null) ? GetCurrentUserId() : GetIdByUsername(dashboardModel.UserName),
                     Description = dashboardModel.Description,
                     DataSource = dashboardModel.DataSource
                 };
@@ -84,8 +85,10 @@ namespace DataVis.Controllers.API
 
         private string GetIdByUsername(string username)
         {
-            var rand = new Random();
-            return "username" + rand.Next(4000000);
+            var conn = new SqlConnection(@"Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True");
+            var myCommand = new SqlCommand("select Id from AspNetUsers where UserName = " + username, conn);
+            var myReader = myCommand.ExecuteReader();
+            return "username";
         }
     }
 }
