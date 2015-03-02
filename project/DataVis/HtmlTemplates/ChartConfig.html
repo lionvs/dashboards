@@ -13,8 +13,8 @@
 
    
 <div id="chartConfigArea">
-    <button id="chartConfigButton" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Options</button>
-    <div collapse="isCollapsed">
+    <button ng-model="collapsButton" class="btn btn-default btn-block" ng-click="collapseOpen()">Options</button>
+    <div collapse ="collapse">
         <div class="well">
             <accordion close-others='oneAtATime' class='chartConfigs'>
                 <accordion-group is-open='status.open'>

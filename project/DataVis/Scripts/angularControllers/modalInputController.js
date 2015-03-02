@@ -6,6 +6,11 @@
         $scope.inputDashboardName = getCurrentDashboard["Title"];
         $scope.inputDashboardDescription = getCurrentDashboard["Description"];
     }
+    $scope.saveAsNewDashboard = function () {
+        proxy.saveDashboard($scope.inputDashboardName, $scope.inputDashboardDescription);
+        $rootScope.$broadcast("newDashboard", { changedTitle: $scope.inputDashboardName });
+        $scope.closeModal();
+    }
 
     $scope.saveDashboard = function () {
         if (getCurrentTitle === "") {

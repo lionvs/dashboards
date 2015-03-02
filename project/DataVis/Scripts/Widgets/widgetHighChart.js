@@ -84,7 +84,14 @@
         var $scope = angular.element(sandbox.getContainer()).scope();
         var element = angular.element(sandbox.getContainer());
         var chartElement;
-        $scope.isCollapsed = false;
+        $scope.collapse = true;
+        $scope.collapseOpen = function () {
+            if (!$scope.collapse)
+                $scope.collapse = true;
+            else
+                $scope.collapse = false;
+        }
+
         $scope.schemaOptions = schema;
         $scope.chartTypeOptions = _.map(plotOptions, function (option) { return option.type });
         $scope.config = config;
@@ -149,14 +156,8 @@
         var element = sandbox.getContainer();
         var dataSource = sandbox.getDatasource();
 
-        if (dataSource.data.length < 1)
-            $(element).hide();
-        else
-            $(element).show();
         setResizable(element, config, $);
         fillHtmlTemplate(sandbox, dataSource, config);
-
-
 
         var angular = sandbox.require('angular');
         var myElement = angular.element(sandbox.getContainer());
@@ -225,57 +226,6 @@
             series: series
         });
     }
-    function pieChart(element, datasource, configChart) {
-        var xAxis = getUniqueValues(datasource.data, configChart.xAxis);
-        var series = getPieSeries(datasource.data, xAxis, configChart);
-        $(element).highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: configChart.title
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                type: configChart.chartType,
-                name: 'Lviv',
-                data: [
-                    ['Firefox', 45.0],
-                    ['IE', 26.8],
-                    ['Chrome', 12.8],
-                    ['Safari', 8.5],
-                    ['Opera', 6.2],
-                    ['Others', 0.7]
-                ]
-            }]
-        });
-    }
-
-    getPieSeries(dataSource, xAxis, config)
-    {
-        var keys = {
-            xAxis: config.xAxis,
-            seriesName: config.seriesName,
-            rangeName: config.rangeName,
-            seriesData: config.seriesData
-        };
-        var groupedData = _.groupBy(data, function (row) { return row[keys.seriesName]; });
-    }
-
 
     function setDarkUnicaTheme() {
         // Load the fonts

@@ -24,6 +24,7 @@
     </script>
     <script src="~/Scripts/angularControllers/headerController.js"></script>
     <script src="~/Scripts/angularControllers/modalInputController.js"></script>
+    <script src="~/Scripts/angularControllers/shareDashboardController.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -71,6 +72,9 @@
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" ng-click="deleteDashboard()" ng-show="showDeleteButton">
                                     Delete
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="shareDashboard()" ng-show="showShareButton">
+                                    Share
                                 </button>
                             </form>
                         </div>

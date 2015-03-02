@@ -1,21 +1,13 @@
 ﻿application.controller("headerController", function ($scope, $modal, $timeout) {
-    $scope.saveEditDashboardButton = "Save";
-    $scope.currentDashboard = "";
-    $scope.storedDashboards = proxy.getListDashboards();
-    setTitles($scope);
+    onLoad();
 
     $scope.changeCurrentDashboard = function () {
-        $scope.currentDashboardObject = _.filter($scope.storedDashboards, function (dashboard) {
-            return (dashboard["Title"] === $scope.currentDashboard);
-        })[0];
+        setCurrentDashboardObject();
         if ($scope.currentDashboard === "") {
-            $scope.saveEditDashboardButton = "Save";
-            $scope.showDeleteButton = false;
-            cleanDashboard();
+            createDashboard();
         } else {
-            $scope.saveEditDashboardButton = "Edit";
-            $scope.showDeleteButton = true;
             setDashboard($scope.storedDashboards, $scope);
+            editDashboard();
         }
     };
 
@@ -24,9 +16,9 @@
             return (dashboard["Title"] === $scope.currentDashboard);
         })[0]["Id"];
         proxy.deleteDashboard(id);
-        cleanDashboard();
+        $scope.currentDashboard = _.last($scope.storedDashboards);
+        createDashboard();
         $timeout(function () {
-            $scope.currentDashboard === "";
             setTitles($scope);
         }, 3000);
     }
@@ -46,20 +38,67 @@
         });
     };
 
-    $scope.$on("newDashboard", function (event, args) {
-        $scope.currentDashboard = args.changedTitle;
-        $scope.saveEditDashboardButton = "Edit";
-        $scope.showDeleteButton = true;
+    $scope.shareDashboard = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/HtmlTemplates/ShareModalWindow.html',
+            controller: 'shareDashboardController',
+            resolve: {
+                getCurrentDashboard: function () {
+                    return $scope.currentDashboardObject;
+                },
+                getCurrentTitle: function () {
+                    return $scope.currentDashboard;
+                }
+            }
+        });
+    };
 
+    $scope.$on("newDashboard", function (event, args) {
         $timeout(function () {
+            $scope.currentDashboard = args.changedTitle;
             setTitles($scope);
+            editDashboard();
             $scope.currentDashboardObject = _.filter($scope.storedDashboards,
                 function (dashboard) {
-                return (dashboard["Title"] === args.changedTitle);
-            })[0];
-        }, 3000);
+                    return (dashboard["Title"] === args.changedTitle);
+                })[0];
+        }, 4000);
+    });
+
+    function onLoad() {
+        $scope.storedDashboards = proxy.getListDashboards();
+        if (_.size($scope.storedDashboards) === 0) {
+            createDashboard();
+        } else {
+            $scope.currentDashboard = $scope.storedDashboards[0]["Title"];
+            setCurrentDashboardObject();
+            editDashboard();
+            $timeout(function () {
+                setDashboard($scope.storedDashboards, $scope);
+            },250);
+        }
+        setTitles($scope);
     }
-    );
+
+    function createDashboard() {
+        $scope.saveEditDashboardButton = "Save";
+        $scope.showDeleteButton = false;
+        $scope.showShareButton = false;
+        $scope.currentDashboard = "";
+        cleanDashboard();
+    }
+
+    function editDashboard() {
+        $scope.saveEditDashboardButton = "Edit";
+        $scope.showDeleteButton = true;
+        $scope.showShareButton = true;
+    }
+
+    function setCurrentDashboardObject() {
+        $scope.currentDashboardObject = _.filter($scope.storedDashboards, function (dashboard) {
+            return (dashboard["Title"] === $scope.currentDashboard);
+        })[0];
+    }
 });
 
 function setDashboard(storedDashboards, $scope) {

@@ -63,6 +63,7 @@
 
         var dashboard = {
             Title: title,
+            UserName: null,
             Config: JSON.stringify(core.getGlobalConfig()),
             Description: description,
             DataSource: JSON.stringify({
@@ -195,6 +196,33 @@
             $.notify("chose .xlsx or .csv file");
         }
         $("#fileToUpload")[0].value = null;
+    },
+
+    shareDashboard: function (title, description, userName) {
+        user.setHeaders();
+
+        var dashboard = {
+            UserName: userName,
+            Title: title,
+            Config: JSON.stringify(core.getGlobalConfig()),
+            Description: description,
+            DataSource: JSON.stringify({
+                Copy: core.getDatasource(),
+                Original: core.getOriginalDatasource()
+            })
+        }
+
+        $.ajax({
+            headers: user.headers,
+            type: 'POST',
+            url: '/api/Dashboard',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(dashboard)
+        }).done(function () {
+            $.notify("done");
+        }).fail(function (resp) {
+            $.notify(resp.status + ": " + resp.statusText);
+        });
     },
 
     getSchema: function (data) {
