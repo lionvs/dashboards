@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -85,10 +87,17 @@ namespace DataVis.Controllers.API
 
         private string GetIdByUsername(string username)
         {
+            string result = null;
             var conn = new SqlConnection(@"Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True");
-            var myCommand = new SqlCommand("select Id from AspNetUsers where UserName = " + username, conn);
+            conn.Open();
+            var myCommand = new SqlCommand("select Id from AspNetUsers where UserName = '" + username + "';", conn);
             var myReader = myCommand.ExecuteReader();
-            return "username";
+            while (myReader.Read())
+            {
+                result = myReader.GetString(0);
+            }
+            conn.Close();
+            return result;
         }
     }
 }
