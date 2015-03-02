@@ -35,7 +35,6 @@
             panning: true,
             panKey: 'shift',
             inverted: false,
-            rangeName: 'Lviv',
             tooltip:
             {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -173,8 +172,8 @@
         name: "highChart",
         init: function (sandbox) {
             var config = getDefaultConfig(sandbox.getDatasource());
-            sandbox.listen(events.uploadedDataSource, function () {
-                config = getDefaultConfig(sandbox.getDatasource());
+            sandbox.listen(events.uploadedDataSource, function (dataSource) {
+                config = getDefaultConfig(dataSource);
                 createWidget(sandbox, config);
             });
             sandbox.listen(events.updatedDataSource, function () {

@@ -83,7 +83,6 @@
     function createDashboard() {
         $scope.saveEditDashboardButton = "Save";
         $scope.showDeleteButton = false;
-        $scope.showShareButton = false;
         $scope.currentDashboard = "";
         cleanDashboard();
     }
@@ -91,7 +90,6 @@
     function editDashboard() {
         $scope.saveEditDashboardButton = "Edit";
         $scope.showDeleteButton = true;
-        $scope.showShareButton = true;
     }
 
     function setCurrentDashboardObject() {

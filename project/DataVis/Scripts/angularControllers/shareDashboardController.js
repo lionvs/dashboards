@@ -6,7 +6,7 @@
     }
 
     $scope.sendDashboard = function () {
-        proxy.shareDashboard($scope.dashboardName, $scope.dashboardDescription, $scope.inputUserName);
+        proxy.saveDashboard($scope.dashboardName, $scope.dashboardDescription, $scope.inputUserName);
         $modalInstance.dismiss();
     };
 
