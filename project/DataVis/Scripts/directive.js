@@ -37,9 +37,6 @@
                                 else
                                     onWidgetFocused(element);
                             }
-                            scope.collapseWidget = function () {
-                                $(element).animate({ 'height': '30px' }, 500);
-                            }
                         }
                     }
                 });
