@@ -49,10 +49,6 @@ input[type="checkbox"].input-validation-error {
 }
 
 .dataTable {
-    width: 500px;
-    height: 400px;
-    min-width: 100px;
-    min-height: 30px;
     position: absolute !important;
 }
 
@@ -68,8 +64,6 @@ input[type="checkbox"].input-validation-error {
 }
 
 .progressBarFiltered {
-    width: 500px;
-    height: 400px;
     min-width: 100px;
     min-height: 30px;
     position: absolute !important;
@@ -267,3 +261,6 @@ select.form-control.modalWindow {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+ .panel-success {
+     margin: 0;
+ }
