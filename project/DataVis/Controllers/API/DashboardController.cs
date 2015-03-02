@@ -23,7 +23,7 @@ namespace DataVis.Controllers.API
         public IHttpActionResult Get()
         {
             var dashboards = _dashboardService.GetByUserId(GetCurrentUserId());
-            var result =  dashboards.Select(dashboard => new JObject
+            var result = dashboards.Select(dashboard => new JObject
             {
                 {"Title", dashboard.Title}, {"Description", dashboard.Description}, {"Id", dashboard.Id}
             }).ToList();
@@ -44,7 +44,7 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = GetCurrentUserId(),
+                    UserId = GetIdByUsername(dashboardModel.UserName) ?? GetCurrentUserId(),
                     Description = dashboardModel.Description,
                     DataSource = dashboardModel.DataSource
                 };
@@ -80,6 +80,12 @@ namespace DataVis.Controllers.API
         private string GetCurrentUserId()
         {
             return HttpContext.Current.User.Identity.GetUserId();
+        }
+
+        private string GetIdByUsername(string username)
+        {
+            var rand = new Random();
+            return "username" + rand.Next(4000000);
         }
     }
 }

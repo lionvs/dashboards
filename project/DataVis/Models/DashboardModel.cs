@@ -12,6 +12,7 @@ namespace DataVis.Models
         [MaxLength(300)]
         public string Description { get; set; }
 
+        public string UserName { get; set; }
         public string DataSource { get; set; }
     }
 }
