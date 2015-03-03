@@ -51,16 +51,14 @@
             $scope.schemaOptions = sandbox.getOriginalDatasource().schema;
             $scope.config = config;
             $scope.requireLazyFiltering = function (timeout) {
-                if (config.isActiveNow) {
-                    clearTimeout(requiredFilteringId);
-                    requiredFilteringId = setTimeout(function () {
-                        var event = {
-                            type: events.requireFiltering,
-                            data: config
-                        }
-                        sandbox.notify(event);
-                    }, timeout);
-                }
+                clearTimeout(requiredFilteringId);
+                requiredFilteringId = setTimeout(function () {
+                    var event = {
+                        type: events.requireFiltering,
+                        data: config
+                    }
+                    sandbox.notify(event);
+                }, timeout);
             };
             $scope.getListOfValues = function () {
                 getListOfValues(data, config);
