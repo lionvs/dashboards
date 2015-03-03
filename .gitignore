@@ -194,3 +194,10 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+project/DataVis/bin/DataVis.BusinessLogic.pdb
+*.dll
+project/DataVis/bin/DataVis.Data.dll
+project/DataVis/bin/DataVis.Data.pdb
+*.dll
+project/DataVis/bin/DataVis.pdb
+*.pdb
