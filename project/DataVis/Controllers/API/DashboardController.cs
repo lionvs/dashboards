@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -47,12 +44,19 @@ namespace DataVis.Controllers.API
                     Title = dashboardModel.Title,
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
-                    UserId = (dashboardModel.UserName == null) ? GetCurrentUserId() : GetIdByUsername(dashboardModel.UserName),
                     Description = dashboardModel.Description,
                     DataSource = dashboardModel.DataSource
                 };
-                _dashboardService.Add(dashboard);
-                return Ok();
+                try
+                {
+                    dashboard.UserId = (dashboardModel.UserName == null) ? GetCurrentUserId() : GetIdByUsername(dashboardModel.UserName);
+                    _dashboardService.Add(dashboard);
+                    return Ok(new { Message = (string)null });
+                }
+                catch (Exception e)
+                {
+                    return Ok(new { Message = e.Message });
+                }
             }
             return BadRequest();
         }
@@ -87,9 +91,11 @@ namespace DataVis.Controllers.API
 
         private string GetIdByUsername(string username)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var user1= context.Users.Where((user) => user.UserName == username).FirstOrDefault();
-            return user1.Id;
+            var context = new ApplicationDbContext();
+            var user = context.Users.FirstOrDefault(u => u.UserName == username);
+            if (user != null)
+                return user.Id;
+            throw new Exception(String.Format("User {0} does not exists.", username));
         }
     }
 }

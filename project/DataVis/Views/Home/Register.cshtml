@@ -1,22 +1,24 @@
-﻿<div class="row">
-    <div class="col-sm-4"></div>
+﻿<div class="container body-content">
+    <div class="row">
+        <div class="col-sm-4"></div>
 
-    <div class="col-sm-4">
-        <h3>Register</h3>
-        <div class="form-group">
-            <label>Username</label>
-            <input class="form-control" id="registerUsername" type="text" />
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input class="form-control" id="registerPassword"  type="password" />
-        </div>
-        <div class="form-group">
-            <label>Confirm Password</label>
-            <input class="form-control" id="registerConfirmPassword"  type="password" />
-        </div>
-        <div class="form-group">
-            <button onclick="proxy.register($('#registerUsername').val(), $('registerPassword').val(), $('#registerConfirmPassword').val())" class="btn btn-default">Register</button>
+        <div class="col-sm-4">
+            <h3>Register</h3>
+            <div class="form-group">
+                <label>Username</label>
+                <input class="form-control" id="registerUsername" type="text" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" id="registerPassword" type="password" />
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input class="form-control" id="registerConfirmPassword" type="password" />
+            </div>
+            <div class="form-group">
+                <button onclick="proxy.register($('#registerUsername').val(), $('registerPassword').val(), $('#registerConfirmPassword').val())" class="btn btn-default">Register</button>
+            </div>
         </div>
     </div>
 </div>
