@@ -196,6 +196,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -238,7 +239,6 @@
     <Content Include="Scripts\eventManager.js" />
     <Content Include="Scripts\events.js" />
     <Content Include="Scripts\Widgets\widgetDataTable.js" />
-    <Content Include="Scripts\Widgets\widgetHighChart.js" />
     <Content Include="Scripts\sandbox.js" />
     <Content Include="Scripts\Libraries\bootstrap.js" />
     <Content Include="Scripts\Libraries\modernizr-2.6.2.js" />
