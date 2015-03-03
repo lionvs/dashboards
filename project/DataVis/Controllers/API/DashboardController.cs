@@ -40,21 +40,25 @@ namespace DataVis.Controllers.API
 
         public IHttpActionResult Post(DashboardModel dashboardModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return BadRequest();
+            var dashboard = new Dashboard
             {
-                var dashboard = new Dashboard
-                {
-                    Title = dashboardModel.Title,
-                    Config = dashboardModel.Config,
-                    Id = Guid.NewGuid().ToString("n"),
-                    UserId = (dashboardModel.UserName == null) ? GetCurrentUserId() : GetIdByUsername(dashboardModel.UserName),
-                    Description = dashboardModel.Description,
-                    DataSource = dashboardModel.DataSource
-                };
-                _dashboardService.Add(dashboard);
-                return Ok();
+                Title = dashboardModel.Title,
+                Config = dashboardModel.Config,
+                Id = Guid.NewGuid().ToString("n"),
+                Description = dashboardModel.Description,
+                DataSource = dashboardModel.DataSource
+            };
+            try
+            {
+                dashboard.UserId = (dashboardModel.UserName == null) ? GetCurrentUserId() : GetIdByUsername(dashboardModel.UserName);
             }
-            return BadRequest();
+            catch (Exception e)
+            {
+                return Ok(new { Message = e.Message });
+            }
+            _dashboardService.Add(dashboard);
+            return Ok(new { Message = (string)null });
         }
 
         public IHttpActionResult Delete(string id)
@@ -87,9 +91,14 @@ namespace DataVis.Controllers.API
 
         private string GetIdByUsername(string username)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var user1= context.Users.Where((user) => user.UserName == username).FirstOrDefault();
-            return user1.Id;
+            ApplicationUser user;
+            using (var context = new ApplicationDbContext())
+            {
+                user = context.Users.FirstOrDefault(u => u.UserName == username);
+            }
+            if (user != null)
+                return user.Id;
+            throw new Exception(String.Format("User {0} is not exists", username));
         }
     }
 }

@@ -78,8 +78,10 @@
             url: '/api/Dashboard',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(dashboard)
-        }).done(function () {
-            $.notify("done");
+        }).done(function (resp) {
+            if (resp.Message == null)
+                $.notify("done");
+            else $.notify(resp.Message, "error");
         }).fail(function (resp) {
             $.notify(resp.status + ": " + resp.statusText);
         });
