@@ -23,6 +23,8 @@
         if (event.stopPropagation) {
             event.stopPropagation();
         }
+        if (!moduleDragDrop.dragWidgetName)
+            return;
         var posx = 0;
         var posy = 0;
         if (!event) var event = window.event;
@@ -45,6 +47,7 @@
         var $timeout = angularHelper.getTimeout(element);
         $timeout(function() {
             core.startWidget(moduleDragDrop.dragWidgetName, element, position);
+            moduleDragDrop.dragWidgetName = null;
         });
     }
     return {
