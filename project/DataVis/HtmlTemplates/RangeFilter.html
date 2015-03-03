@@ -1,9 +1,9 @@
 ﻿<div class="panel panel-success">
     <div class="panel-heading">
         Range filter
-        <span class="widgetHeaderBtn" onclick="this.parentNode.parentNode.parentNode.style.opacity = '0.4'" ng-click="deactivateWidget();requireLazyFiltering(800)" ng-show="config.isActiveNow">D</span>
+        <span class="widgetHeaderBtn" onclick="this.parentNode.parentNode.parentNode.style.opacity = '0.4'" ng-click="requireLazyFiltering(800);deactivateWidget()" ng-show="config.isActiveNow">D</span>
         <span class="widgetHeaderBtn" onclick="this.parentNode.parentNode.parentNode.style.opacity = '1'" ng-click="activateWidget();requireLazyFiltering(800)" ng-show="!config.isActiveNow">A</span>
-        <span class="widgetHeaderBtn" ng-click="closeWidget();deactivateWidget();requireLazyFiltering(800)">X</span>
+        <span class="widgetHeaderBtn" ng-click="closeWidget();requireLazyFiltering(800);deactivateWidget()">X</span>
     </div>
     <div class="panel-body">
             <select class="filterDropDown" ng-model="config.key" ng-options="opt as opt for opt in schemaOptions" ng-change="getListOfValues()"></select><br />

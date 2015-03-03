@@ -70,14 +70,16 @@
                 getListOfValues(data, config);
             };
             $scope.requireLazyFiltering = function (timeout) {
-                clearTimeout(requiredFilteringId);
-                requiredFilteringId = setTimeout(function () {
-                    var event = {
-                        type: events.requireFiltering,
-                        data: config
-                    }
-                    sandbox.notify(event);
-                }, timeout);
+                if (config.isActiveNow) {
+                    clearTimeout(requiredFilteringId);
+                    requiredFilteringId = setTimeout(function () {
+                        var event = {
+                            type: events.requireFiltering,
+                            data: config
+                        }
+                        sandbox.notify(event);
+                    }, timeout);
+                }
             };
             $scope.deactivateWidget = function () {
                 config.isActiveNow = false;
