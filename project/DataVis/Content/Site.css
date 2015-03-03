@@ -153,6 +153,14 @@ td {
     border-style: ridge;
 }
 
+.filterDropDown{
+    color: white;
+    background-color: #425368;
+}
+
+.filterDropDown option{
+    color: white;
+}
 
 #filterTableWrapper {
     position: relative;
