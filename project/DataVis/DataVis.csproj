@@ -221,6 +221,7 @@
     <Content Include="HtmlTemplates\ToolBox.html" />
     <Content Include="Scripts\angularControllers\headerController.js" />
     <Content Include="Scripts\angularControllers\modalInputController.js" />
+    <Content Include="Scripts\angularControllers\shareDashboardController.js" />
     <Content Include="Scripts\angularHelper.js" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\Libraries\angular-loader.js" />
