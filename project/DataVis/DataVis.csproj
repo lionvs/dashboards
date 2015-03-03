@@ -218,6 +218,7 @@
     <Content Include="HtmlTemplates\ProgressBarFiltered.html" />
     <Content Include="HtmlTemplates\RangeFilter.html" />
     <Content Include="HtmlTemplates\SelectorFilter.html" />
+    <Content Include="HtmlTemplates\ShareModalWindow.html" />
     <Content Include="HtmlTemplates\ToolBox.html" />
     <Content Include="Scripts\angularControllers\headerController.js" />
     <Content Include="Scripts\angularControllers\modalInputController.js" />
