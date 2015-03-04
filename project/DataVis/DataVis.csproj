@@ -211,6 +211,7 @@
     <Content Include="Content\Icons\progressBar.ico" />
     <Content Include="Content\Icons\RangeFilter.ico" />
     <Content Include="Content\Icons\SelectorFilter.ico" />
+    <Content Include="Content\Images\GettingStarted.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
