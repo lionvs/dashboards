@@ -44,6 +44,7 @@ var sandSignika = {
             },
             legend: {
                 itemStyle: {
+                    color: '#6e6e70',
                     fontWeight: 'bold',
                     fontSize: '13px'
                 }

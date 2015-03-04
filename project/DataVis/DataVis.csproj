@@ -211,7 +211,13 @@
     <Content Include="Content\Icons\progressBar.ico" />
     <Content Include="Content\Icons\RangeFilter.ico" />
     <Content Include="Content\Icons\SelectorFilter.ico" />
+    <Content Include="Content\Images\Config.jpg" />
+    <Content Include="Content\Images\DataUpload.jpg" />
+    <Content Include="Content\Images\DragDrop.jpg" />
+    <Content Include="Content\Images\Enjoy.jpg" />
     <Content Include="Content\Images\GettingStarted.jpg" />
+    <Content Include="Content\Images\RegisterOperation.jpg" />
+    <Content Include="Content\Images\SaveShare.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="HtmlTemplates\ChartConfig.html" />

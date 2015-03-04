@@ -23,6 +23,7 @@ var gridLight = {
             },
             title: {
                 style: {
+                    color: 'black',
                     fontSize: '16px',
                     fontWeight: 'bold',
                     textTransform: 'uppercase'
@@ -35,6 +36,7 @@ var gridLight = {
             },
             legend: {
                 itemStyle: {
+                    color: '#6e6e70',
                     fontWeight: 'bold',
                     fontSize: '13px'
                 }
