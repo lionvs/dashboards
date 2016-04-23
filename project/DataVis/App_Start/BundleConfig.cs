@@ -38,7 +38,9 @@ namespace DataVis
                     "~/Scripts/Widgets/*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/highchart").Include(
-        "~/Scripts/Widgets/widgetHighChart/*.js"));
+                "~/Scripts/Widgets/widget3dScatterChart/*.js",
+        "~/Scripts/Widgets/widgetHighChart/*.js"
+        ));
 
             bundles.Add(new ScriptBundle("~/bundles/themes").Include(
                     "~/Scripts/Widgets/widgetHighChart/themes/*.js"));

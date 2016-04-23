@@ -1,0 +1,58 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        Chart
+        <div class="widget-header-toolbar">
+            <span class="widgetHeaderBtn" ng-click="focusWidget()">0</span>
+            <span class="widgetHeaderBtn" ng-click="closeWidget()">X</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="chartArea"></div>
+    </div>
+</div>
+
+
+<div id="chartConfigArea">
+    <button ng-model="collapsButton" class="btn btn-default btn-block" ng-click="collapseOpen()">Options</button>
+    <div collapse="collapse">
+        <div class="well">
+            <accordion close-others='oneAtATime' class='chartConfigs'>
+                <accordion-group is-open='status.open'>
+                    <accordion-heading>
+                        Chart Options
+                    </accordion-heading>
+                    <p>
+                        <label class='col-sm-2 control-label'>Title</label><input type='text' ng-model='config.title' class='form-control' ng-change='chartConfigUpdate()'>
+                    </p>
+                    <p>
+                        <label class='col-sm-2 control-label'>Theme</label><select class='form-control' ng-model='config.themeType' ng-options='opt as opt for opt in themeOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                    <p>
+                        <label class='col-sm-2 control-label'>Zoom</label><select class='form-control' ng-model='config.zoomType' ng-options='opt as opt for opt in zoomOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                    <p>
+                        <label class='col-sm-2 control-label'>Invert axis</label><input type="checkbox" class="checkbox" ng-model='config.inverted' ng-change='dataConfigUpdate()' />
+                    </p>
+                </accordion-group>
+                <accordion-group is-open='status.isFirstOpen' is-disabled='status.isFirstDisabled'>
+                    <accordion-heading>
+                        Data Chart Config
+                    </accordion-heading>
+                    <p>
+                        <label class='col-sm-2 control-label'>X Axis</label><select class='form-control' ng-model='config.xAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                    <p>
+                        <label class='col-sm-2 control-label'>Series Names</label><select class='form-control' ng-model='config.seriesName' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                    <hr/>
+                    <p>
+                        <label class='col-sm-2 control-label'>Y Axis</label><select class='form-control' ng-model='config.seriesData' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                    <p>
+                        <label class='col-sm-2 control-label'>Line Type</label><select class='form-control' ng-model='config.chartType' ng-options='opt as opt for opt in chartTypeOptions' ng-change='dataConfigUpdate()'></select>
+                    </p>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+</div>

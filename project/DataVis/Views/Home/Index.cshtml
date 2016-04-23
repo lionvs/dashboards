@@ -12,6 +12,7 @@
     directive.create(application, widgetRangeFilter.name, "/HtmlTemplates/RangeFilter.html");
     directive.create(application, widgetSelectorFilter.name, "/HtmlTemplates/SelectorFilter.html");
     directive.create(application, widgetHighChart.name, "/HtmlTemplates/ChartConfig.html");
+    directive.create(application, widget3dScatterChart.name, "/HtmlTemplates/3dChartConfig.html");
     directive.create(application, moduleToolBox.name, "/HtmlTemplates/ToolBox.html");
     directive.create(application, widgetProgressBarFiltered.name, "/HtmlTemplates/ProgressBarFiltered.html");
 
@@ -27,7 +28,7 @@
         core.startModule(moduleFiltering);
         core.startModule(moduleToolBox, document.getElementById("toolBox"));
 
-        var widgets = [widgetDataTable, widgetRangeFilter, widgetSelectorFilter, widgetHighChart, widgetProgressBarFiltered];
+        var widgets = [widgetDataTable, widgetRangeFilter, widgetSelectorFilter, widget3dScatterChart, widgetHighChart, widgetProgressBarFiltered];
 
         registerWidgets(core, widgets);
 
