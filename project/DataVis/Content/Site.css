@@ -294,3 +294,9 @@ select.form-control.modalWindow {
   min-width: 100%;
   height: 500px;
 }
+
+.highChart3dScatterChart {
+    height: auto;
+    width: auto;
+    position: absolute !important;
+}
