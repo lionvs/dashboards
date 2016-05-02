@@ -26,13 +26,15 @@ namespace DataVis
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "0000000044189525",
-            //    clientSecret: "o4iVs0qr3b7-pEzFY4hcdOzMza7lchvy");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "0000000044189525",
+                clientSecret: "o4iVs0qr3b7-pEzFY4hcdOzMza7lchvy");
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            app.UseTwitterAuthentication(
+                consumerKey: "dKTJV7W0ehIsF9Aqg4kKBNQqi",
+                consumerSecret: "2UJem1Ig1fVscsVUiM30jjwnoZHTzpf0Nd1c1WH3OIjL7fxZSz");
+
+            app.UseVkontakteAuthentication("5445557", "9ktOlEbsK0PKDQERfbX0", "email,audio");
 
             app.UseFacebookAuthentication(
                 appId: "1132958306748373",
