@@ -13,21 +13,21 @@ namespace DataVis
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Home/Login"),
-                Provider = new CookieAuthenticationProvider
-                {
-                    OnApplyRedirect = ctx =>
-                    {
-                        if (!IsAjaxRequest(ctx.Request))
-                        {
-                            ctx.Response.Redirect(ctx.RedirectUri);
-                        }
-                    }
-                }
-            });
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
+            //    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+            //    LoginPath = new PathString("/Home/Login"),
+            //    Provider = new CookieAuthenticationProvider
+            //    {
+            //        OnApplyRedirect = ctx =>
+            //        {
+            //            if (!IsAjaxRequest(ctx.Request))
+            //            {
+            //                ctx.Response.Redirect(ctx.RedirectUri);
+            //            }
+            //        }
+            //    }
+            //});
         }
 
         private static bool IsAjaxRequest(IOwinRequest request)

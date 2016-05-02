@@ -47,11 +47,11 @@
 
     logOut: function () {
         $.ajax({
-            headers: user.headers,
             type: 'POST',
-            url: '/api/Account/Logout'
+            url: '/Account/LogOff'
         }).done(function () {
-            sessionStorage.removeItem(user.tokenKey);
+            sessionStorage.removeItem("__RequestVerificationToken");
+            sessionStorage.removeItem("ASP.NET_SessionId");
             location.reload();
         }).fail(function (resp) {
             $.notify(resp.status + ": " + resp.statusText);

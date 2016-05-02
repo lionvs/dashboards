@@ -1,4 +1,4 @@
-﻿<div class="container body-content">
+﻿@*<div class="container body-content">
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
@@ -12,4 +12,9 @@
             <a class="btn btn-default" href="/home/register">Register</a>
         </div>
     </div>
-</div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>*@

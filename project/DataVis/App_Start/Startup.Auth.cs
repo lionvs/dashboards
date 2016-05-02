@@ -11,53 +11,35 @@ namespace DataVis
 {
     public partial class Startup
     {
-        static Startup()
-        {
-            PublicClientId = "self";
-
-            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>());
-
-            OAuthOptions = new OAuthAuthorizationServerOptions
-            {
-                TokenEndpointPath = new PathString("/Token"),
-                Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AllowInsecureHttp = true
-            };
-        }
-
-        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
-
-        public static Func<UserManager<IdentityUser>> UserManagerFactory { get; set; }
-
-        public static string PublicClientId { get; private set; }
+       
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
             // Enable the application to use a cookie to store information for the signed in user
-            // and to use a cookie to temporarily store information about a user logging in with a third party login provider
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login")
+            });
+            // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
-            // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(OAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //    clientId: "0000000044189525",
+            //    clientSecret: "o4iVs0qr3b7-pEzFY4hcdOzMza7lchvy");
 
             //app.UseTwitterAuthentication(
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "1132958306748373",
+                appSecret: "a669ee46cdc0d19705332d9dd43378a9");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication(clientId: "637443079528-hdv21jbom72q19m6bkq0bjjma2c9lknn.apps.googleusercontent.com",
+         clientSecret: "M78YLMp1T9ake8imJ7iZrPx5");
         }
     }
 }
