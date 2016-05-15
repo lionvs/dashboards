@@ -34,6 +34,9 @@ namespace DataVis
             bundles.Add(new ScriptBundle("~/bundles/modules").Include(
                      "~/Scripts/Modules/*.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/themes").Include(
+                   "~/Scripts/Widgets/widgetHighChart/themes/*.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/widgets").Include(
                     "~/Scripts/Widgets/*.js"));
 
@@ -42,8 +45,7 @@ namespace DataVis
         "~/Scripts/Widgets/widgetHighChart/*.js"
         ));
 
-            bundles.Add(new ScriptBundle("~/bundles/themes").Include(
-                    "~/Scripts/Widgets/widgetHighChart/themes/*.js"));
+           
         }
     }
 }

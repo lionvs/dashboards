@@ -1,19 +1,18 @@
-﻿var widget3dScatterChart = function () {
+﻿var widget3dPie = function () {
 
     var plotOptions = [
-    { type: "line", draw: defaultChart },
-    { type: "scatter", draw: defaultChart },
-    { type: "column", draw: defaultChart },
-    { type: "spline", draw: defaultChart },
-    { type: "area", draw: defaultChart },
-    { type: "areaspline", draw: defaultChart },
-    { type: "bar", draw: defaultChart }
+    { type: "line", draw: defaultChart2 },
+    { type: "scatter", draw: defaultChart2 },
+    { type: "column", draw: defaultChart2 },
+    { type: "spline", draw: defaultChart2 },
+    { type: "area", draw: defaultChart2 },
+    { type: "areaspline", draw: defaultChart2 },
+    { type: "bar", draw: defaultChart2 }
     ];
-
     var themeOptions = [
-        { name: "dark", draw: darkUnica.runTheme },
-        { name: "sand", draw: sandSignika.runTheme },
-        { name: "grid", draw: gridLight.runTheme }
+    { name: "dark", draw: darkUnica.runTheme },
+    { name: "sand", draw: sandSignika.runTheme },
+    { name: "grid", draw: gridLight.runTheme }
     ]
 
     var zoomOptions = [
@@ -30,9 +29,9 @@
         return {
             title: "Title",
             xAxis: schema[0],
-            yAxis: schema[1],
-            zAxis: schema[2],
-            chartType: "scatter",
+            seriesName: schema[1],
+            seriesData: schema[2],
+            chartType: "spline",
             zoomType: zoomOptions[0],
             themeType: "dark",
             chartHeight: 330,
@@ -71,19 +70,50 @@
          .value();
     }
 
-    function setResizable(element, config, $) {
+    function getSeries(data, seriesNames, xAxis, configChart) {
+        var keys = {
+            xAxis: configChart.xAxis,
+            seriesName: configChart.seriesName,
+            seriesData: configChart.seriesData
+        };
+        var groupedData = _.groupBy(data, function (row) { return row[keys.seriesName]; });
+        var groupedSeriesData = _.map(groupedData, function (num) { return num; });
+        var seriesData = _.map(groupedSeriesData, function (element) {
+            return _.map(xAxis, function (abscissa) {
+                var point = _.map(_.filter(element, function (num) {
+                    return num[keys.xAxis] === abscissa;
+                }), function (row) {
+                    return row[keys.seriesData]
+                })[0];
+                if (_.isUndefined(point)) return null;
+                return point;
+            });
+        });
+        var seriesObject = _.zip(seriesNames, seriesData);
+        var series = _.map(seriesObject, function (num) {
+            var currentSeriesName;
+            if (_.isNumber(name)) { currentSeriesName = name.toString(); } else { currentSeriesName = num[0]; }
+            return { name: currentSeriesName, data: num[1] };
+        });
+        return series;
+    }
+
+    function setResizable(element, config, $, fn) {
         $(element.children[0]).width(config.width).height(config.height);
+        $(element.children[1]).width(config.width);
         var chartElement = $(element).find(highChartArea);
         $(element.children[0]).resizable({
             resize: function (e, ui) {
                 config.width = ui.size.width;
                 config.height = ui.size.height;
                 config.chartHeight = ui.size.height - 70;
+                $(element.children[1]).width(config.width);
                 $(chartElement).highcharts().setSize(
                     element.children[0].offsetWidth - 35,
                     element.children[0].offsetHeight - 70,
                     false
                 );
+                fn();
             }
         });
     }
@@ -101,12 +131,11 @@
             else
                 $scope.collapse = false;
         }
-
+        $scope.themeOptions = _.map(themeOptions, function (option) { return option.name });
         $scope.schemaOptions = schema;
         $scope.chartTypeOptions = _.map(plotOptions, function (option) { return option.type });
         $scope.config = config;
         $scope.zoomOptions = zoomOptions;
-        $scope.themeOptions = _.map(themeOptions, function (option) { return option.name });
 
         $scope.chartConfigUpdate = function () {
             chartElement = $(element).find(highChartArea);
@@ -132,15 +161,16 @@
         var chartElement = $(element).find(highChartArea);
         var dataSource = sandbox.getDatasource();
 
-        setResizable(element, config, $);
+        setResizable(element, config, $, function () { drawChart(chartElement, dataSource, config); });
         fillHtmlTemplate(sandbox, dataSource, config);
         drawChart(chartElement, dataSource, config);
     }
 
     return {
-        name: "highChart3dScatterChart",
+        name: "3dPie",
         init: function (sandbox) {
             var config = getDefaultConfig(sandbox.getDatasource());
+
             sandbox.listen(events.uploadedDataSource, function (dataSource) {
                 config = getDefaultConfig(dataSource);
                 createWidget(sandbox, config);
@@ -160,120 +190,44 @@
                 }
             }
         },
-        displayedName: "3d Chart",
+        displayedName: "3d Pie",
         imgUrl: "Chart",
-        title: "This is 3d chart"
+        title: "This is 3d Pie"
     }
 
-    function generateAxis(axisData, text) {
-        return _.every(axisData, function (d) { return _.isNumber(d) })
-            ? {
-                title: { text: text },
-                min: _.min(axisData),
-                max: _.max(axisData)
-            }
-            : {
-                title: { text: text },
-                categories: _.uniq(axisData)
-            }
-    }
-
-    function defaultChart(element, datasource, configChart) {
+    function defaultChart2(element, datasource, configChart) {
         var xAxis = getUniqueValues(datasource.data, configChart.xAxis);
-
-        Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {
-            return {
-                radialGradient: {
-                    cx: 0.4,
-                    cy: 0.3,
-                    r: 0.5
-                },
-                stops: [
-                    [0, color],
-                    [1, Highcharts.Color(color).brighten(-0.2).get('rgb')]
-                ]
-            };
+        var seriesNames = getUniqueValues(datasource.data, configChart.seriesName);
+        var series = getSeries(datasource.data, seriesNames, xAxis, configChart);
+        var intField = configChart.seriesName;
+        var data = xAxis.map(function (xAxisValue) {
+            var xAxisData = datasource.data.filter(function (d) { return d[configChart.xAxis] == xAxisValue });
+            var avg = xAxisData.map(function (d) { return d[intField] }).reduce(function (prev, curr) { return prev + curr }, 0);
+            return [xAxisValue, Math.round(avg / xAxisData.length)];
         });
-        var yAxis = generateAxis(datasource.data.map(function (d) { return d[configChart.yAxis] }), configChart.yAxis);
-        var zAxis = generateAxis(datasource.data.map(function (d) { return d[configChart.zAxis] }), configChart.zAxis);
-        var xAxis = generateAxis(datasource.data.map(function (d) { return d[configChart.xAxis] }), configChart.xAxis);
 
-        function dataGenerator(axisData, value) {
-            return axisData.categories ? axisData.categories.indexOf(value) : value;
-        }
-
-        var data = datasource.data.map(function (d) { return [dataGenerator(d[configChart.xAxis]), dataGenerator(d[configChart.yAxis]), dataGenerator(d[configChart.zAxis])] });
-
-        var chart = $(element).highcharts({
+        $(element).highcharts({
             chart: {
                 height: configChart.chartHeight,
-                margin: 100,
-                type: 'scatter',
+                type: 'pie',
                 options3d: {
                     enabled: true,
-                    alpha: 10,
-                    beta: 30,
-                    depth: 250,
-                    viewDistance: 5,
-                    fitToPlot: false,
-                    frame: {
-                        bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
-                        back: { size: 1, color: 'rgba(0,0,0,0.04)' },
-                        side: { size: 1, color: 'rgba(0,0,0,0.06)' }
-                    }
+                    alpha: 45
                 }
             },
             title: {
                 text: configChart.title
             },
             plotOptions: {
-                scatter: {
-                    width: 10,
-                    height: 10,
-                    depth: 10
+                pie: {
+                    innerSize: 100,
+                    depth: 45
                 }
-            },
-            yAxis: yAxis,
-            xAxis: xAxis,
-            zAxis: zAxis,
-            legend: {
-                enabled: false
             },
             series: [{
-                name: 'Data',
-                colorByPoint: true,
-                data: datasource.data.map(function (d) { return [dataGenerator(xAxis, d[configChart.xAxis]), dataGenerator(yAxis, d[configChart.yAxis]), dataGenerator(zAxis, d[configChart.zAxis])] })
+                name: intField,
+                data: data
             }]
-        });
-
-        $(element).bind('mousedown.hc touchstart.hc', function (eStart) {
-            var chart = $(element).highcharts();
-            eStart = chart.pointer.normalize(eStart);
-
-            var posX = eStart.pageX,
-                posY = eStart.pageY,
-                alpha = chart.options.chart.options3d.alpha,
-                beta = chart.options.chart.options3d.beta,
-                newAlpha,
-                newBeta,
-                sensitivity = 5; // lower is more sensitive
-
-            $(document).bind({
-                'mousemove.hc touchdrag.hc': function (e) {
-                    // Run beta
-                    newBeta = beta + (posX - e.pageX) / sensitivity;
-                    chart.options.chart.options3d.beta = newBeta;
-
-                    // Run alpha
-                    newAlpha = alpha + (e.pageY - posY) / sensitivity;
-                    chart.options.chart.options3d.alpha = newAlpha;
-
-                    chart.redraw(false);
-                },
-                'mouseup touchend': function () {
-                    $(document).unbind('.hc');
-                }
-            });
         });
     }
 }();

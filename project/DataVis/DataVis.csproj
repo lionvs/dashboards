@@ -282,6 +282,7 @@
     <Content Include="Content\Images\SaveShare.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="HtmlTemplates\3dPieChartConfig.html" />
     <Content Include="HtmlTemplates\3dChartConfig.html" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
     <Content Include="HtmlTemplates\ModalWindow.html" />
@@ -318,6 +319,7 @@
     <Content Include="Scripts\Libraries\respond.js" />
     <Content Include="Scripts\user.js" />
     <Content Include="HtmlTemplates\DataTable.html" />
+    <Content Include="Scripts\Widgets\widget3dPie.js" />
     <Content Include="Scripts\Widgets\widgetHighChart\themes\darkUnica.js" />
     <Content Include="Scripts\Widgets\widgetHighChart\themes\gridLight.js" />
     <Content Include="Scripts\Widgets\widgetHighChart\themes\sandSignika.js" />

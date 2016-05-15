@@ -33,10 +33,10 @@
                         Data Chart Config
                     </accordion-heading>
                     <p>
-                        <label class='col-sm-2 control-label'>X Axis</label><select class='form-control' ng-model='config.xAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                        <label class='col-sm-2 control-label'>Series</label><select class='form-control' ng-model='config.xAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
                     </p>
                     <p>
-                        <label class='col-sm-2 control-label'>Y Axis</label><select class='form-control' ng-model='config.yAxis' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
+                        <label class='col-sm-2 control-label'>Data</label><select class='form-control' ng-model='config.seriesName' ng-options='opt as opt for opt in schemaOptions' ng-change='dataConfigUpdate()'></select>
                     </p>
                 </accordion-group>
             </accordion>
