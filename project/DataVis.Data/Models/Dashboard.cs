@@ -8,5 +8,6 @@ namespace DataVis.Data.Models
         public string Description { get; set; }
         public string DataSource { get; set; }
         public string UserId { get; set; }
+        public string HidedWidgets { get; set; }
     }
 }

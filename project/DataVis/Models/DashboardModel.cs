@@ -14,5 +14,6 @@ namespace DataVis.Models
 
         public string UserName { get; set; }
         public string DataSource { get; set; }
+        public string HidedWidgets { get; set; }
     }
 }

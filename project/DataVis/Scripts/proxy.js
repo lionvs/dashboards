@@ -69,7 +69,8 @@
             DataSource: JSON.stringify({
                 Copy: core.getDatasource(),
                 Original: core.getOriginalDatasource()
-            })
+            }),
+            HidedWidgets: JSON.stringify(core.getHidedWidgets())
         }
 
         $.ajax({
@@ -144,7 +145,8 @@
             DataSource: JSON.stringify({
                 Copy: core.getDatasource(),
                 Original: core.getOriginalDatasource()
-            })
+            }),
+            HidedWidgets: JSON.stringify(core.getHidedWidgets())
         }
         $.ajax({
             headers: user.headers,

@@ -74,8 +74,23 @@
         getGlobalConfig: function() {
             return widgetManager.getGlobalConfig();
         },
-        setGlobalConfig: function (globalConfig, container,newDataSource) {
+        getHidedWidgets: function () {
+            var toolBoxScope = angular.element($("#toolBox")).scope();
+            return toolBoxScope.widgets.filter(function (w) { return !w.active; }).map(function (w) { return w.name});
+        },
+        setGlobalConfig: function (globalConfig, container,newDataSource, hidedWidgets) {
             this.stopAllWidgets();
+
+            var toolBoxScope = angular.element($("#toolBox")).scope();
+            if (hidedWidgets && hidedWidgets.length > 0) {
+                toolBoxScope.widgets = toolBoxScope.widgets.map(function (w) {
+                    if (hidedWidgets.indexOf(w.name) != -1) {
+                        w.active = false;
+                    }
+                    return w;
+                });
+            }
+
             dataSource = newDataSource.Copy;
             originalDataSource = newDataSource.Original;
             container.innerHTML = "";

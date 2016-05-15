@@ -45,7 +45,8 @@ namespace DataVis.Controllers.API
                     Config = dashboardModel.Config,
                     Id = Guid.NewGuid().ToString("n"),
                     Description = dashboardModel.Description,
-                    DataSource = dashboardModel.DataSource
+                    DataSource = dashboardModel.DataSource,
+                    HidedWidgets = dashboardModel.HidedWidgets
                 };
                 try
                 {

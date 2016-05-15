@@ -119,10 +119,11 @@ function setDashboard(storedDashboards, $scope) {
         return (dashboard["Title"] === $scope.currentDashboard)
     })[0]["Id"];
     var dashboard = proxy.getDashboard(id);
-    console.log('asd');
+    console.log(dashboard);
     var data = JSON.parse(dashboard["DataSource"]);
     var globalConfig = JSON.parse(dashboard["Config"]);
-    core.setGlobalConfig(globalConfig, document.getElementById("dashboard"), data);
+    var hidedWidgets = JSON.parse(dashboard["HidedWidgets"]);
+    core.setGlobalConfig(globalConfig, document.getElementById("dashboard"), data, hidedWidgets);
 }
 
 function cleanDashboard(parameters) {
