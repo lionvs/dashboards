@@ -86,7 +86,14 @@
                 toolBoxScope.widgets = toolBoxScope.widgets.map(function (w) {
                     if (hidedWidgets.indexOf(w.name) != -1) {
                         w.active = false;
+                    } else {
+                        w.active = true;
                     }
+                    return w;
+                });
+            } else {
+                toolBoxScope.widgets = toolBoxScope.widgets.map(function (w) {
+                    w.active = true;
                     return w;
                 });
             }
