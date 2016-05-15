@@ -1,5 +1,6 @@
 ﻿<ul class="list-group" style="position:absolute">
-    <li class="list-group-item" ng-repeat="widget in widgets" draggable="true">
+    <li class="list-group-item" ng-repeat="widget in widgets|
+  filter: { active: true}" draggable=" true">
         <img id="{{widget.name}}" title="{{widget.title}}" src="/Content/Icons/{{widget.imgUrl}}.ico " draggable="false" width="30" height="30" />
         &nbsp; {{widget.displayedName}}
     </li>

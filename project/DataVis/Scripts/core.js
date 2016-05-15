@@ -31,6 +31,10 @@
             });
         },
 
+        getRegisteredWidgets: function(){
+            return registeredWidgets;
+        },
+
         startWidget: function (widgetName, element, position) {
             if (!registeredWidgets[widgetName])
                 return;

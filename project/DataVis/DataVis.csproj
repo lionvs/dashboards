@@ -285,12 +285,14 @@
     <Content Include="HtmlTemplates\3dPieChartConfig.html" />
     <Content Include="HtmlTemplates\3dChartConfig.html" />
     <Content Include="HtmlTemplates\ChartConfig.html" />
+    <Content Include="HtmlTemplates\Settings.html" />
     <Content Include="HtmlTemplates\ModalWindow.html" />
     <Content Include="HtmlTemplates\ProgressBarFiltered.html" />
     <Content Include="HtmlTemplates\RangeFilter.html" />
     <Content Include="HtmlTemplates\SelectorFilter.html" />
     <Content Include="HtmlTemplates\ShareModalWindow.html" />
     <Content Include="HtmlTemplates\ToolBox.html" />
+    <Content Include="Scripts\angularControllers\settingsController.js" />
     <Content Include="Scripts\angularControllers\headerController.js" />
     <Content Include="Scripts\angularControllers\modalInputController.js" />
     <Content Include="Scripts\angularControllers\shareDashboardController.js" />

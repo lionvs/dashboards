@@ -41,7 +41,7 @@
             fillHtmlTemplate(sandbox);
             dragHandler(sandbox);
             sandbox.listen(events.registerWidgetRequest, function (data) {
-                widgets.push({ imgUrl: data.imgUrl, name: data.name, title: data.title, displayedName: data.displayedName });
+                widgets.push({active: true, imgUrl: data.imgUrl, name: data.name, title: data.title, displayedName: data.displayedName });
             });
         },
     }

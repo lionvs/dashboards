@@ -38,6 +38,21 @@
         });
     };
 
+    $scope.settings = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/HtmlTemplates/Settings.html',
+            controller: 'settingsController',
+            resolve: {
+                getCurrentDashboard: function () {
+                    return $scope.currentDashboardObject;
+                },
+                getCurrentTitle: function () {
+                    return $scope.currentDashboard;
+                }
+            }
+        });
+    };
+
     $scope.shareDashboard = function () {
         var modalInstance = $modal.open({
             templateUrl: '/HtmlTemplates/ShareModalWindow.html',
@@ -104,6 +119,7 @@ function setDashboard(storedDashboards, $scope) {
         return (dashboard["Title"] === $scope.currentDashboard)
     })[0]["Id"];
     var dashboard = proxy.getDashboard(id);
+    console.log('asd');
     var data = JSON.parse(dashboard["DataSource"]);
     var globalConfig = JSON.parse(dashboard["Config"]);
     core.setGlobalConfig(globalConfig, document.getElementById("dashboard"), data);

@@ -27,6 +27,7 @@
     </script>
     <script src="~/Scripts/angularControllers/headerController.js"></script>
     <script src="~/Scripts/angularControllers/modalInputController.js"></script>
+    <script src="~/Scripts/angularControllers/settingsController.js"></script>
     <script src="~/Scripts/angularControllers/shareDashboardController.js"></script>
 </head>
 <body>
@@ -78,6 +79,10 @@
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" ng-click="shareDashboard()">
                                     Share
+                                </button>
+
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="settings()" value="Save">
+                                    Settings
                                 </button>
                             </form>
                         </div>

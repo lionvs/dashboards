@@ -1,0 +1,17 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title"> Settings</h4>
+    </div>
+    <div class="modal-body">
+        <ol style="list-style: none outside none; padding-left:0px">
+            <li ng-repeat="widget in widgets">
+                <div class="form-group">
+                    <label><input type="checkbox" ng-model="widget.active"> {{widget.displayedName}}</label>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" aria-hidden="true" ng-click="closeModal()">Close</button>
+    </div>
+</div>
